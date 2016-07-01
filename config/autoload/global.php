@@ -13,8 +13,10 @@
  */
 return array(
     'apigility' => [
+        
         'config' => [
-            'url' => 'http://localhost/KonohaLabs/Zf2/api/public/',
+            'url' => 'http://diedds.com/ws/died_ws3/public/',
+//            'debug' => true,
         ]
     ],
     'module_layouts' => [
