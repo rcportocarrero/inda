@@ -1,0 +1,28 @@
+<?php echo $this->doctype(); ?>
+
+<html lang="en">
+
+
+    <?php
+    // Header
+    echo $this->partial('_header.phtml', []);
+    ?>   
+
+
+    <body>
+        <?php
+        echo $this->partial('_navbar.phtml', []);
+        ?> 
+        <div class="container">
+            <?php echo $this->content; ?>
+            <hr>
+
+            <?php
+            // Footer
+            echo $this->partial('_footer.phtml', []);
+            ?>  
+
+        </div> <!-- /container -->
+        <?php echo $this->inlineScript() ?>
+    </body>
+</html>

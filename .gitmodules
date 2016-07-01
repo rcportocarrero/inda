@@ -1,0 +1,6 @@
+[submodule "module/BaseX"]
+	path = module/BaseX
+	url = git@git.diedds.com:sing88/BaseX.git
+[submodule "module/Usuario"]
+	path = module/Usuario
+	url = git@git.diedds.com:sing88/BaseAppUsuario.git
