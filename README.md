@@ -1,9 +1,8 @@
-=======================
 App Died Base
 =======================
 Clonar el App usando:
 
-git clone <repositorio> --recursive
+    git clone repositorio --recursive
 
 
 
