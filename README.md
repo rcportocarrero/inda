@@ -1,3 +1,35 @@
+=======================
+ZendSkeletonApplication
+=======================
+Clonar el App usando:
+
+git clone <repositorio> --recursive
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+=======================
 ZendSkeletonApplication
 =======================
 
