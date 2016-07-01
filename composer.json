@@ -12,6 +12,7 @@
         "zendframework/zendframework": "2.4.*",
         "doctrine/doctrine-orm-module": "0.8.*",
         "guzzlehttp/guzzle": "~6.0",
-        "zendframework/zend-developer-tools": "0.*"
+        "zendframework/zend-developer-tools": "0.*",
+        "bjyoungblood/bjy-profiler": "^1.1"
     }
 }
