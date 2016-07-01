@@ -12,6 +12,11 @@
  * file.
  */
 return array(
+    'apigility' => [
+        'config' => [
+            'url' => 'http://localhost/KonohaLabs/Zf2/api/public/',
+        ]
+    ],
     'module_layouts' => [
         'Application' => 'layout/layout.phtml',
         'Usuario' => 'layout/layout_usuario.phtml',
