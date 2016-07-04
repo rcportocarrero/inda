@@ -40,8 +40,8 @@ class Module
         return [
             'factories' => [
                 'Application\Model\ProyectoTable' => function($sm) {
-                    $dbAdapter = $sm->get('Zend\Db\Adapter\Adapter');
-//                    $dbAdapter = $sm->get('db1');
+//                    $dbAdapter = $sm->get('Zend\Db\Adapter\Adapter');
+                    $dbAdapter = $sm->get('db1');
                     $table = new \Application\Model\ProyectoTable($dbAdapter);
                     return $table;
                 },

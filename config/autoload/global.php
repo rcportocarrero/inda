@@ -11,13 +11,20 @@
  * control, so do not include passwords or other sensitive information in this
  * file.
  */
-return array(
+return [
     'apigility' => [
-        
         'config' => [
             'url' => 'http://diedds.com/ws/died_ws3/public/',
-//            'debug' => true,
+            'grant_type' => 'password',
+            'client_id' => 'testclient',
+            'client_secret' => 'testpass',
+            'debug' => true
+//            'auth_url' => 'auth',
         ]
+    ],
+    'auth' => [
+        'mode' => 'oauth', // oauth => 'Apigility' -/- local => 'en su propia bd'
+        'x' => 'x',
     ],
     'module_layouts' => [
         'Application' => 'layout/layout.phtml',
@@ -29,4 +36,4 @@ return array(
             'ViewJsonStrategy',
         ]
     ]
-);
+];
