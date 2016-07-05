@@ -20,7 +20,8 @@ return [
             'client_secret' => 'testpass',
             'debug' => true
 //            'auth_url' => 'auth',
-        ]
+        ],
+        'acl' => 1,
     ],
     'auth' => [
         'mode' => 'oauth', // oauth => 'Apigility' -/- local => 'en su propia bd'
