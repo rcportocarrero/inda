@@ -1,8 +1,8 @@
 /*Variables header*/
 /*Colores por concurso*/
 /*Acceso*/
-/*@color_principal_concurso: #098CA6;*/
 /*@color_principal_concurso: #a8b23f;*/
+/*@color_principal_concurso: #427f76;*/
 /*@color_principal_concurso: #eb5b4e;*/
 /*Header*/
 .img_logo_evdocente {
@@ -46,13 +46,13 @@
 h3,
 h2,
 h1 {
-  color: #427f76;
+  color: #098ca6;
 }
 a {
-  color: #427f76;
+  color: #098ca6;
 }
 a:hover {
-  color: rgba(66, 127, 118, 0.9);
+  color: rgba(9, 140, 166, 0.9);
 }
 /*BOTONES*/
 .btn-rojo {
@@ -64,13 +64,13 @@ a:hover {
   color: white;
 }
 .boton {
-  background-color: #427f76;
-  border-color: #427f76;
+  background-color: #098ca6;
+  border-color: #098ca6;
   color: #fff;
 }
 .boton:hover {
-  background-color: rgba(66, 127, 118, 0.9);
-  border-color: #427f76;
+  background-color: rgba(9, 140, 166, 0.9);
+  border-color: #098ca6;
   color: #fff;
 }
 .banner_top_black {
