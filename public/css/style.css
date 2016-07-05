@@ -4,6 +4,22 @@
 /*@color_principal_concurso: #a8b23f;*/
 /*@color_principal_concurso: #427f76;*/
 /*@color_principal_concurso: #eb5b4e;*/
+html {
+  position: relative;
+  min-height: 100%;
+}
+body {
+  /* Margin bottom by footer height */
+  margin-bottom: 60px;
+}
+.footer {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  /* Set the fixed height of the footer here */
+  height: 60px;
+  background-color: #444242;
+}
 /*Header*/
 .img_logo_evdocente {
   content: url('../img/etiqueta-ev.jpg');

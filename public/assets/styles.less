@@ -1,6 +1,23 @@
 @import "variables.less"; 
 @import "mixins.less"; 
 
+html {
+  position: relative;
+  min-height: 100%;
+}
+body {
+  /* Margin bottom by footer height */
+  margin-bottom: 60px;
+}
+.footer {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  /* Set the fixed height of the footer here */
+  height: 60px;
+  background-color: @fondo_footer;
+}
+
 /*Header*/
 .img_logo_evdocente {
     content: url(@img_evd);
