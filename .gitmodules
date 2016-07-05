@@ -7,3 +7,6 @@
 [submodule "public/js/lib/UsuarioJS"]
 	path = public/js/lib/UsuarioJS
 	url = git@git.diedds.com:sing88/BaseAppUsuarioJS.git
+[submodule "module/BaseX"]
+	path = module/BaseX
+	url = https://git.diedds.com/sing88/BaseX.git

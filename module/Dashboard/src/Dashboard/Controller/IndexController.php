@@ -29,7 +29,7 @@ class IndexController extends \BaseX\Controller\BaseController {
 //
 //        $logger->log(\Zend\Log\Logger::EMERG, 'Emergency message');
 //        $logger->emerg('Emergency message 4');
-    
+//    
         
         
     }
