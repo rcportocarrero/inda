@@ -1,0 +1,43 @@
+[
+    {
+        "collapsible": false,
+        "menu": [{
+                "items": [
+                    {
+                        "id": "mnuPresentacion",
+                        "metodo": "menu_presentacion",
+                        "titulo": "Material de ayuda"
+                    },
+                    {
+                        "id": "mnuComiteEvaluación",
+                        "metodo": "menu_comite_evaluacion",
+                        "titulo": "Registro de evaluación"
+                    },
+                    {
+                        "id": "mnuComiteEvaluaciónActa",
+                        "metodo": "menu_comite_acta",
+                        "titulo": "Emisión de actas"
+                    }
+                ]
+            }]
+    },
+    {
+        "collapsible": true,
+        "titulo": "Datos de usuario",
+        "opciones": [{
+                "titulo": "Cambio de Correo Electrónico",
+                "id": "mnuCambioCorreo",
+                "metodo": "menu_correo"
+            }, {
+                "titulo": "Cambio de contraseña",
+                "id": "mnuCambioClave",
+                "metodo": "menu_clave"
+            },
+            {
+                "titulo": "Cambio de celular",
+                "id": "mnuCambioCelular",
+                "metodo": "menu_celular"
+            }
+        ]
+    }
+]

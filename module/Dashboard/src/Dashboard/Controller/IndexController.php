@@ -11,11 +11,14 @@ class IndexController extends \BaseX\Controller\BaseController {
 
     public function indexAction() {
 
-        var_dump($this->getSessionStorage()->isAuthenticate());
-        var_dump($this->getSessionStorage()->get('user'));
-        var_dump($this->getSessionStorage()->get('users_acl'));
+//        var_dump($this->getSessionStorage()->isAuthenticate());
+//        var_dump($this->getSessionStorage()->get('user'));
+//        var_dump($this->getSessionStorage()->get('users_acl'));
         
-        $view = new ViewModel();
+        $params_view = [
+            'users_acl' => json_decode($this->getSessionStorage()->get('users_acl')),
+        ];
+        $view = new ViewModel($params_view);
         return $view;
 //        $writer = new \Zend\Log\Writer\Stream('log/app.log');
 //        $logger = new \Zend\Log\Logger();

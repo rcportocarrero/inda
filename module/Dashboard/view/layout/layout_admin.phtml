@@ -3,27 +3,83 @@
 <html lang="en">
 
 
-    <?php
-    // Header
-    echo $this->partial('_header.phtml', []);
-    ?>   
+    <head>
+        <meta charset="utf-8">
+
+        <?php echo $this->headTitle('ZF2 ' . $this->translate('Skeleton Application'))->setSeparator(' - ')->setAutoEscape(false) ?>
+
+        <?php
+        echo $this->headMeta()
+                ->appendName('viewport', 'width=device-width, initial-scale=1.0')
+                ->appendHttpEquiv('X-UA-Compatible', 'IE=edge')
+        ?>
+
+        <!-- Le styles -->
+        <?php
+        echo $this->headLink(array('rel' => 'shortcut icon', 'type' => 'image/vnd.microsoft.icon', 'href' => $this->basePath() . '/img/favicon.ico'))
+                ->prependStylesheet($this->basePath('css/style.css'))
+                ->prependStylesheet($this->basePath('css/bootstrap-theme.min.css'))
+                ->prependStylesheet($this->basePath('css/bootstrap.min.css'))
+        ?>
+
+        <!-- Scripts -->
+        <?php
+        echo $this->headScript()
+                ->prependFile($this->basePath('js/bootstrap.min.js'))
+                ->prependFile($this->basePath('js/jquery.min.js'))
+                ->prependFile($this->basePath('js/respond.min.js'), 'text/javascript', array('conditional' => 'lt IE 9',))
+                ->prependFile($this->basePath('js/html5shiv.min.js'), 'text/javascript', array('conditional' => 'lt IE 9',))
+        ;
+        ?>
+    </head>
 
 
     <body>
-        <h1>LAYOUT ADMIN</h1>
-        <?php
-        echo $this->partial('_navbar.phtml', []);
-        ?> 
-        <div class="container">
+        <div class="row row-fluid">
+            <div class="col-md-12 banner_top_titulo">
+                <div class="col-md-6 col-sm-6 col-xs-12">
+                    <img class="img-responsive center-block img_logo_evdocente"/>
+                </div>
+                <div class="col-md-6 col-sm-6 col-xs-12">
+                    <a target="_blank" href="http://www.minedu.gob.pe/" class="text-center">
+                        <img class="img-responsive center-block img_logo_minedu"/>
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div class="row barra_top">
+            <div class="col-lg-6">
+                
+            </div>
+            <div class="col-lg-6">
+                <a href="<?php echo $this->url('usuario/sec', array('action' => 'logout')); ?>">Salir</a>
+            </div>
+            
+        </div>
+        <!--        <nav class="navbar navbar-inverse banner_top">
+                    <div class="container-fluid">
+                        <div class="navbar-header">
+                            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                                <span class="sr-only">Toggle navigation</span>
+                                <span class="icon-bar"></span>
+                                <span class="icon-bar"></span>
+                                <span class="icon-bar"></span>
+                            </button>
+                        </div>
+                    </div>
+        
+                </nav>-->
+        <div class="container-fluid">
+
+            <?php
+//            echo $this->partial('_menu.phtml', []);
+            ?>
             <?php echo $this->content; ?>
             <hr>
-            <?php
-            echo $this->partial('_menu.phtml', []);
-            ?>
-            <?php
-            // Footer
-            echo $this->partial('_footer.phtml', []);
-            ?>  
+
+            <footer class="footer">
+                <p>&copy; 2005 - <?php echo date('Y') ?> by Zend Technologies Ltd. <?php echo $this->translate('All rights reserved.') ?></p>
+            </footer>
 
         </div> <!-- /container -->
         <?php echo $this->inlineScript() ?>
