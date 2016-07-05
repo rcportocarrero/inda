@@ -12,6 +12,7 @@
  * file.
  */
 return [
+    
     'apigility' => [
         'config' => [
             'url' => 'http://diedds.com/ws/died_ws3/public/',
@@ -21,11 +22,12 @@ return [
             'debug' => true
 //            'auth_url' => 'auth',
         ],
-        'acl' => 1,
     ],
     'auth' => [
         'mode' => 'oauth', // oauth => 'Apigility' -/- local => 'en su propia bd'
-        'x' => 'x',
+        'app_id' => 15,
+        'acl_id' => 0,
+        'multirole' => 0,
     ],
     'module_layouts' => [
         'Application' => 'layout/layout.phtml',

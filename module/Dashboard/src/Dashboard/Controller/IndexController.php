@@ -13,6 +13,10 @@ class IndexController extends \BaseX\Controller\BaseController {
 
         var_dump($this->getSessionStorage()->isAuthenticate());
         var_dump($this->getSessionStorage()->get('user'));
+        var_dump($this->getSessionStorage()->get('users_acl'));
+        
+        $view = new ViewModel();
+        return $view;
 //        $writer = new \Zend\Log\Writer\Stream('log/app.log');
 //        $logger = new \Zend\Log\Logger();
 //        $logger->addWriter($writer);
