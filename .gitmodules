@@ -1,6 +1,6 @@
 [submodule "module/Usuario"]
 	path = module/Usuario
-	url = git@git.diedds.com:sing88/BaseAppUsuario.git
+	url = https://git.diedds.com/sing88/BaseAppUsuario.git
 [submodule "public/js/lib/BaseXJS"]
 	path = public/js/lib/BaseXJS
 	url = git@git.diedds.com:sing88/BaseXJS.git
