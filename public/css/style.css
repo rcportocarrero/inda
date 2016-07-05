@@ -1,1 +1,183 @@
-.img_logo_evdocente{content: url('../img/etiqueta-ev.jpg');padding-top: 30px}.img_logo_minedu{content: url('../img/logo_ministerio_educacion.gif')}.banner_top_titulo{background-color: white;height: 120px;padding: 20px 50px}.barra_top{background-color: #94C5CC;border-color: #93C5CD;height: 40px}.fondo_footer{background-color: #444242}.font-principal{color: #777}.img_logo_concurso{content: url('../img/etiqueta.jpg');padding-top: 20px}.img_phone_contact{content: url('../img/mdesign/ic_phone_black_24dp_1x.png')}.img_captcha{content: url('../img/logincaptcha.png')}.img_captcha_refresh{content: url('../img/refresh.png')}h3,h2,h1{color: #427f76}a{color: #427f76}a:hover{color: rgba(66,127,118,0.9)}.btn-rojo{background-color: #af0d15;color: white}.btn-rojo:hover{background-color: rgba(175,13,21,0.9);color: white}.boton{background-color: #427f76;border-color: #427f76;color: #fff}.boton:hover{background-color: rgba(66,127,118,0.9);border-color: #427f76;color: #fff}.banner_top_black{background-color: #94C5CC;color: white;padding: 8px 50px}.fondo{background-color: #ebeff2}.footer_color{background-color: #444242;color: #94c5cc}.banner_2_login{background-color: #ebeff2;border-color: #93C5CD;color: #333}.linea{background: #cbced1 none repeat scroll 0 0;display: block;height: 1px}
+/*Variables header*/
+/*Colores por concurso*/
+/*Acceso*/
+/*@color_principal_concurso: #098CA6;*/
+/*@color_principal_concurso: #a8b23f;*/
+/*@color_principal_concurso: #eb5b4e;*/
+/*Header*/
+.img_logo_evdocente {
+  content: url('../img/etiqueta-ev.jpg');
+  padding-top: 30px;
+}
+.img_logo_minedu {
+  content: url('../img/logo_ministerio_educacion.gif');
+}
+.banner_top_titulo {
+  background-color: white;
+  height: 120px;
+  padding: 20px 50px;
+}
+.barra_top {
+  background-color: #94C5CC;
+  border-color: #93C5CD;
+  height: 40px;
+}
+/*BODY*/
+.fondo_footer {
+  background-color: #444242;
+}
+.font-principal {
+  color: #777777;
+}
+.img_logo_concurso {
+  content: url('../img/etiqueta.jpg');
+  padding-top: 20px;
+}
+.img_phone_contact {
+  content: url('../img/mdesign/ic_phone_black_24dp_1x.png');
+}
+.img_captcha {
+  content: url('../img/logincaptcha.png');
+}
+.img_captcha_refresh {
+  content: url('../img/refresh.png');
+}
+/*GENERICOS*/
+h3,
+h2,
+h1 {
+  color: #427f76;
+}
+a {
+  color: #427f76;
+}
+a:hover {
+  color: rgba(66, 127, 118, 0.9);
+}
+/*BOTONES*/
+.btn-rojo {
+  background-color: #af0d15;
+  color: white;
+}
+.btn-rojo:hover {
+  background-color: rgba(175, 13, 21, 0.9);
+  color: white;
+}
+.boton {
+  background-color: #427f76;
+  border-color: #427f76;
+  color: #fff;
+}
+.boton:hover {
+  background-color: rgba(66, 127, 118, 0.9);
+  border-color: #427f76;
+  color: #fff;
+}
+.banner_top_black {
+  background-color: #94C5CC;
+  color: white;
+  /*height: 35px;*/
+  padding: 8px 50px;
+}
+.fondo {
+  background-color: #ebeff2;
+}
+.footer_color {
+  background-color: #444242;
+  color: #94c5cc;
+}
+.banner_2_login {
+  background-color: #ebeff2;
+  /*#ebeff2 none repeat scroll 0 0*/
+  border-color: #93C5CD;
+  color: #333;
+}
+.linea {
+  background: #cbced1 none repeat scroll 0 0;
+  display: block;
+  height: 1px;
+}
+/*
+body > .container {
+    padding: 60px 15px 0;
+}
+
+.container .text-muted {
+    margin: 20px 0;
+}
+
+.footer > .container {
+    padding-right: 15px;
+    padding-left: 15px;
+}
+
+code {
+    font-size: 80%;
+}
+
+.main {
+    padding: 20px;
+}
+@media (min-width: 768px) {
+    .main {
+        padding-right: 40px;
+        padding-left: 40px;
+    }
+}
+.main .page-header {
+    margin-top: 0;
+}
+
+.placeholders {
+    margin-bottom: 30px;
+    text-align: center;
+}
+.placeholders h4 {
+    margin-bottom: 0;
+}
+.placeholder {
+    margin-bottom: 20px;
+}
+.placeholder img {
+    display: inline-block;
+    border-radius: 50%;
+}
+
+.menu_1{
+
+    font-weight: bold;
+}
+
+.menu_1 li{
+    background-color: #9A999E; 
+    color: #FFF;
+    padding: 10px;
+}
+
+.menu_1 li:hover{
+    background-color: #098CA6; 
+    color: white;
+    cursor: pointer;
+    cursor: hand;
+}
+
+.logo-titulo1 {
+    font-family: monospace;
+    color: #D41217;
+}
+.logo-titulo2 {
+    font-family: Tahoma;
+}
+
+.panel-heading h4{
+    color: #777777; 
+}
+
+.btn-naranja {
+    background-color: #f36b45;
+    border-color: #f36b45;
+    color: #fff;
+}
+.btn-naranja:hover {
+    color:white;
+}*/
