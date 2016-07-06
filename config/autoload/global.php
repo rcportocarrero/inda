@@ -37,7 +37,7 @@ return [
     'module_layouts' => [
         'Application' => 'layout/layout.phtml',
         'Usuario' => 'layout/layout_usuario.phtml',
-//        'Admin' => 'layout/layout_admin.phtml'
+        'Dashboard' => 'layout/layout_admin.phtml'
     ],
     'view_manager' => [
         'strategies' => [

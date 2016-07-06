@@ -113,6 +113,22 @@ a:hover {
   display: block;
   height: 1px;
 }
+/* Dashboard  */
+.nav > li > a:hover,
+.nav > li > a:focus {
+  background-color: #93c5cd !important;
+  color: #ffffff !important;
+}
+.navbar-collapse.in {
+  overflow-y: visible !important;
+}
+.menu_1 > li > a {
+  color: #ffffff;
+}
+.menu_1 > li > a:hover {
+  background-color: #93c5cd !important;
+  color: #ffffff !important;
+}
 /*
 body > .container {
     padding: 60px 15px 0;
