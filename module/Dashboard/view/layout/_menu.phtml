@@ -1,28 +1,7 @@
-<style>
-
-/*    .nav > li > a:hover, .nav > li > a:focus {
-        background-color: #93c5cd !important;
-        color: #ffffff !important;
-    }*/
-    .navbar-collapse.in {
-        overflow-y: visible !important;
-    }
-/*    .nav > li > a {
-        padding: 0px !important;
-    }*/
-/*    .menu_1 > li > a {
-        color: #777777 ;
-    }*/
-/*    .menu_1 > li > a:hover {
-        background-color: #93c5cd !important;
-        color: #ffffff !important;
-    }*/
-</style>
-<b>MENU</b>
 <?php
 $usuario = $this->users_acl->rows;
 ?>
-<ul class='nav nav-sidebar menu_1'>
+<ul class="nav nav-sidebar left_menu">
     <?php
     $str_datos = file_get_contents(getcwd() . "/public/perfil/" . $usuario->ruta);
     $json = json_decode($str_datos);
@@ -32,7 +11,7 @@ $usuario = $this->users_acl->rows;
         if ($parrafo->collapsible) {
             echo '<li class="dropdown" data-function-handle="mnuCollapsible">';
             echo '<a class="dropdown-toggle nav-menu-user"  data-toggle="dropdown" href="#">' . $parrafo->titulo . ' <span class="glyphicon glyphicon-chevron-down"></span></a>';
-            echo '<ul class="dropdown-menu menu_1" >';
+            echo '<ul class="dropdown-menu left_menu" >';
             foreach ($parrafo->opciones as $listas) {
                 echo '<li id="' . $listas->id . '" data-function-handle="' . $listas->metodo . '"><a href="#">' . $listas->titulo . '</a></li>';
             }
