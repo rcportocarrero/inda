@@ -1,4 +1,12 @@
-<?php echo $this->doctype(); ?>
+<?php
+echo $this->doctype();
+$base_url = $this->basePath();
+$apps_var = $this->apps_var;
+//var_dump($apps_var);
+$usuario = $this->users_acl;
+$usuario = $usuario->rows;
+//var_dump($usuario);
+?>
 
 <html lang="en">
 
@@ -6,7 +14,7 @@
     <head>
         <meta charset="utf-8">
 
-        <?php echo $this->headTitle('ZF2 ' . $this->translate('Skeleton Application'))->setSeparator(' - ')->setAutoEscape(false) ?>
+        <?php echo $this->headTitle($apps_var['app_title'])->setSeparator(' - ')->setAutoEscape(false) ?>
 
         <?php
         echo $this->headMeta()
@@ -18,7 +26,6 @@
         <?php
         echo $this->headLink(array('rel' => 'shortcut icon', 'type' => 'image/vnd.microsoft.icon', 'href' => $this->basePath() . '/img/favicon.ico'))
                 ->prependStylesheet($this->basePath('css/style.css'))
-                ->prependStylesheet($this->basePath('css/bootstrap-theme.min.css'))
                 ->prependStylesheet($this->basePath('css/bootstrap.min.css'))
         ?>
 
@@ -35,26 +42,51 @@
 
 
     <body>
+
+        <nav class="navbar navbar-inverse banner_top">
+            <div class="container-fluid">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                </div>
+            </div>
+        </nav>
         <div class="row row-fluid">
             <div class="col-md-12 banner_top_titulo">
                 <div class="col-md-6 col-sm-6 col-xs-12">
-                    <img class="img-responsive center-block img_logo_evdocente"/>
+                    <a class="text-center" href="http://evaluaciondocente.perueduca.pe" target="_blank">
+                        <img class=" img-responsive center-block " style="max-height: 80px;" src="<?php echo $base_url; ?>/img/logo-sistema.png">
+                    </a>
                 </div>
                 <div class="col-md-6 col-sm-6 col-xs-12">
-                    <a target="_blank" href="http://www.minedu.gob.pe/" class="text-center">
-                        <img class="img-responsive center-block img_logo_minedu"/>
+                    <a class="text-center" href="http://www.minedu.gob.pe/" target="_blank">
+                        <img class="img-responsive center-block" src="<?php echo $base_url; ?>/img/logo_ministerio_educacion.gif">
                     </a>
                 </div>
             </div>
         </div>
-        <div class="row barra_top">
-            <div class="col-lg-6">
-                
+        <div class="row dashboard_barra_top">
+
+            <div class="col-lg-4 col-md-6 col-sm-12 col-xs-12 text-center">
+                Bienvenido(a): <?php echo $usuario->first_name . ' ' . $usuario->last_name; ?>
             </div>
-            <div class="col-lg-6">
-                <a href="<?php echo $this->url('usuario/sec', array('action' => 'logout')); ?>">Salir</a>
+            <div class="col-lg-4 col-md-6 col-sm-12 col-xs-12  text-center">
+                Último acceso: <?php
+                if (utf8_encode($usuario->fec_ultimo_acceso) === '') {
+                    echo date("Y-m-d H:i:s");
+                } else {
+                    echo $usuario->fec_ultimo_acceso;
+                };
+                ?>
             </div>
-            
+            <div class="col-lg-4 col-md-6 col-sm-12 col-xs-12 text-center">
+                <a id="btn_cerrar_sesion" href="<?php echo $this->url('usuario/sec', array('action' => 'logout')); ?>">Cerrar sesión</a>
+            </div>
+
         </div>
         <!--        <nav class="navbar navbar-inverse banner_top">
                     <div class="container-fluid">
@@ -67,7 +99,7 @@
                             </button>
                         </div>
                     </div>
-        
+
                 </nav>-->
         <div class="container-fluid">
 
@@ -77,8 +109,26 @@
             <?php echo $this->content; ?>
             <hr>
 
+
+
             <footer class="footer">
-                <p>&copy; 2005 - <?php echo date('Y') ?> by Zend Technologies Ltd. <?php echo $this->translate('All rights reserved.') ?></p>
+                <div class="container">
+                    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 text-center">
+                        <br />
+                        <p class="text-muted footer_color">
+                            Línea de atención al comité de evaluación<br />
+                            <?php echo $apps_var['number_support1']; ?><br>
+                        </p>
+                        <!--<a href="mailto:evaluaciondocente.cpm@perueduca.pe">evaluaciondocente.cpm@perueduca.pe</a>-->
+                    </div>
+                    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 text-center">
+                         <br />
+                        <p class="text-muted footer_color">
+                            <?php echo date('Y'); ?> &copy; Todos los derechos reservados
+                        </p>
+                    </div> 
+                    <!--<div class="clearfix"></div>-->
+                </div>
             </footer>
 
         </div> <!-- /container -->

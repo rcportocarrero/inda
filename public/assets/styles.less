@@ -7,7 +7,7 @@ html {
 }
 body {
     /* Margin bottom by footer height */
-    margin-bottom: 60px;
+    margin-bottom: 80px;
 }
 .body_bg {
     background-color: #EBEFF2;
@@ -17,7 +17,7 @@ body {
     bottom: 0;
     width: 100%;
     /* Set the fixed height of the footer here */
-    height: 60px;
+    height: 80px;
     background-color: @fondo_footer;
 }
 
@@ -149,6 +149,9 @@ a:hover{
     cursor: hand;
 }*/
 
+.nav > li > a {
+    padding: 0px !important;
+}
 .nav > li > a:hover, .nav > li > a:focus {
     background-color: @dashboard_menu_bg_color !important;
     color: @dashboard_menu_color !important;
@@ -157,12 +160,67 @@ a:hover{
 .navbar-collapse.in {
     overflow-y: visible !important;
 }
-.menu_1 > li > a {
-    color: @dashboard_menu_color ;
-}
+/*.menu_1 > li > a {
+    color: @dashboard_menu_li_color ;
+}*/
 
-.menu_1 > li > a:hover {
+/*.menu > li > a:hover {
     background-color: @dashboard_menu_bg_color !important;
     color: @dashboard_menu_color !important;
+}*/
+/*.menu_1 li:hover, .menu_1 li.clicked {
+    background-color: @dashboard_menu_bg_color !important;
+    color: @dashboard_menu_color;
+}*/
+
+.banner_top{
+    background-color: @dashboard_banner_top_bg_color !important;
+    border-color: @dashboard_banner_top_border_color !important;
+    /*height: 40px;*/ 
+}
+.dashboard_barra_top {
+    background-color: @dashboard_banner_top_black;
+    color: white;
+    padding: 8px;
+}
+#btn_cerrar_sesion{
+    color: @dashboard_banner_link;
 }
 
+a.dropdown-toggle.nav-menu-user{
+    padding-left: 0px !important;
+}
+
+.left_menu {
+    font-weight: bold;
+    .clicked{
+        background-color: @dashboard_menu_bg_color !important;
+        color: @dashboard_menu_color;
+    }
+    li{
+
+        background-color: @dashboard_left_menu_li_color;
+        color: @dashboard_menu_li_color;
+        padding: 10px;
+        /*background-color: @dashboard_menu_bg_color !important;*/
+        a {
+            color: @dashboard_menu_li_color ;
+            :hover {
+                background-color: @dashboard_menu_bg_color !important;
+                color: @dashboard_menu_color !important;
+            }
+        }
+        &:hover{
+
+            background-color: @dashboard_menu_bg_color !important;
+            color: @dashboard_menu_color;
+
+        }
+    }
+    /*    li:hover{
+    
+            background-color: @dashboard_menu_bg_color !important;
+            color: @dashboard_menu_color;
+    
+        }*/
+}

@@ -14,9 +14,14 @@ class IndexController extends \BaseX\Controller\BaseController {
 //        var_dump($this->getSessionStorage()->isAuthenticate());
 //        var_dump($this->getSessionStorage()->get('user'));
 //        var_dump($this->getSessionStorage()->get('users_acl'));
-        
+        $app_config = $this->getConfig('app');
+        $users_acl = json_decode($this->getSessionStorage()->get('users_acl'));
+        $this->layout()->apps_var = $app_config;
+        $this->layout()->users_acl = $users_acl;
+
         $params_view = [
-            'users_acl' => json_decode($this->getSessionStorage()->get('users_acl')),
+            'apps_var' => $app_config,
+            'users_acl' => $users_acl,
         ];
         $view = new ViewModel($params_view);
         return $view;
@@ -33,8 +38,6 @@ class IndexController extends \BaseX\Controller\BaseController {
 //        $logger->log(\Zend\Log\Logger::EMERG, 'Emergency message');
 //        $logger->emerg('Emergency message 4');
 //    
-        
-        
     }
 
 }
