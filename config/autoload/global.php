@@ -12,7 +12,7 @@
  * file.
  */
 return [
-    
+
     'apigility' => [
         'config' => [
             'url' => 'http://diedds.com/ws/died_ws3/public/',
@@ -22,6 +22,11 @@ return [
             'debug' => true
 //            'auth_url' => 'auth',
         ],
+    ],
+    'captcha' => [
+        'enabled' => true,
+        'diccionario' => 'ABCDEFGHIJKLMNOPQRSTUVWXYZ',
+        'tamano_codigo' => 5
     ],
     'auth' => [
         'mode' => 'oauth', // oauth => 'Apigility' -/- local => 'en su propia bd'
