@@ -191,7 +191,7 @@ a.dropdown-toggle.nav-menu-user {
 .left_menu li a {
   color: #777777;
 }
-.left_menu li a :hover {
+.left_menu li a:hover {
   background-color: #93c5cd !important;
   color: #ffffff !important;
 }
