@@ -16,15 +16,24 @@ class IndexController extends \BaseX\Controller\BaseController {
 //        var_dump($this->getSessionStorage()->get('users_acl'));
         $app_config = $this->getConfig('app');
         $users_acl = json_decode($this->getSessionStorage()->get('users_acl'));
+        $username = $this->getSessionStorage()->get('user');
+        $token_sesion = sha1($username . time());
+        $this->Session()->token_sesion = $token_sesion;
+
         $this->layout()->apps_var = $app_config;
         $this->layout()->users_acl = $users_acl;
+        $this->layout()->token_sesion = $this->Session()->token_sesion;
+        
+//        var_dump($token_sesion);
 
         $params_view = [
             'apps_var' => $app_config,
             'users_acl' => $users_acl,
         ];
+
         $view = new ViewModel($params_view);
         return $view;
+
 //        $writer = new \Zend\Log\Writer\Stream('log/app.log');
 //        $logger = new \Zend\Log\Logger();
 //        $logger->addWriter($writer);
@@ -38,6 +47,12 @@ class IndexController extends \BaseX\Controller\BaseController {
 //        $logger->log(\Zend\Log\Logger::EMERG, 'Emergency message');
 //        $logger->emerg('Emergency message 4');
 //    
+    }
+
+    public function presentacionAction() {
+        $view = new ViewModel();
+        $view->setTerminal(true);
+        return $view;
     }
 
 }

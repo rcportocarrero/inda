@@ -32,12 +32,22 @@ $usuario = $usuario->rows;
         <!-- Scripts -->
         <?php
         echo $this->headScript()
+                ->prependFile($this->basePath('js/app/menu_presentacion.js?v=' . md5(time())))
+                ->prependFile($this->basePath('js/app/menu.js?v=' . md5(time())))
+                ->prependFile($this->basePath('js/app/app.js?v=' . md5(time())))
+                ->prependFile($this->basePath('js/app/_strings.js'))
+                ->prependFile($this->basePath('js/lib/bootbox.min.js'))
+                ->prependFile($this->basePath('js/lib/BaseXJS/BaseX.js'))
                 ->prependFile($this->basePath('js/bootstrap.min.js'))
                 ->prependFile($this->basePath('js/jquery.min.js'))
                 ->prependFile($this->basePath('js/respond.min.js'), 'text/javascript', array('conditional' => 'lt IE 9',))
                 ->prependFile($this->basePath('js/html5shiv.min.js'), 'text/javascript', array('conditional' => 'lt IE 9',))
         ;
         ?>
+
+        <script type="text/javascript">
+            var root = "<?php echo $base_url; ?>";
+        </script>
     </head>
 
 
@@ -82,11 +92,12 @@ $usuario = $usuario->rows;
                     echo $usuario->fec_ultimo_acceso;
                 };
                 ?>
+
+                <input type="hidden" id="hdn_sesion_token" name="hdn_sesion_token" value="<?php echo $this->token_sesion; ?>" />
             </div>
             <div class="col-lg-4 col-md-6 col-sm-12 col-xs-12 text-center">
                 <a id="btn_cerrar_sesion" href="<?php echo $this->url('usuario/sec', array('action' => 'logout')); ?>">Cerrar sesión</a>
             </div>
-
         </div>
         <!--        <nav class="navbar navbar-inverse banner_top">
                     <div class="container-fluid">
@@ -122,11 +133,11 @@ $usuario = $usuario->rows;
                         <!--<a href="mailto:evaluaciondocente.cpm@perueduca.pe">evaluaciondocente.cpm@perueduca.pe</a>-->
                     </div>
                     <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 text-center">
-                         <br />
+                        <br />
                         <p class="text-muted footer_color">
                             <?php echo date('Y'); ?> &copy; Todos los derechos reservados
                         </p>
-                    </div> 
+                    </div>
                     <!--<div class="clearfix"></div>-->
                 </div>
             </footer>
