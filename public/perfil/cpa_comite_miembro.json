@@ -7,14 +7,9 @@
                 "titulo": "Material de ayuda"
             },
             {
-                "id": "mnuComiteEvaluación",
-                "metodo": "menu_comite_evaluacion",
-                "titulo": "Registro de evaluación"
-            },
-            {
                 "id": "mnuComiteEvaluaciónActa",
-                "metodo": "menu_comite_acta",
-                "titulo": "Emisión de actas"
+                "metodo": "menu_datos_usuario",
+                "titulo": "Datos de usuario"
             }
         ]
     }

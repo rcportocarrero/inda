@@ -32,6 +32,7 @@ $usuario = $usuario->rows;
         <!-- Scripts -->
         <?php
         echo $this->headScript()
+                ->prependFile($this->basePath('js/app/menu_datos_usuario.js?v=' . md5(time())))
                 ->prependFile($this->basePath('js/app/menu_presentacion.js?v=' . md5(time())))
                 ->prependFile($this->basePath('js/app/menu.js?v=' . md5(time())))
                 ->prependFile($this->basePath('js/app/app.js?v=' . md5(time())))

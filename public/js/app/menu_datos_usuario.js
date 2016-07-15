@@ -1,9 +1,8 @@
-function menu_presentacion() {
-
-    load_menu_presentacion();
+function menu_datos_usuario() {
+    load_menu_datos_usuario();
 }
 
-function load_menu_presentacion(ops) {
+function load_menu_datos_usuario(ops) {
     if (ops === undefined) {
         ops = 0;
     }
@@ -12,7 +11,7 @@ function load_menu_presentacion(ops) {
         return;
     }
 
-    BaseX.load_html(root + '/dashboard/index/presentacion', {
+    BaseX.load_html(root + '/usuario/perfil/index', {
         data: ops,
         success: function (xhr) {
 
