@@ -1,5 +1,5 @@
-@import "variables.less"; 
-@import "mixins.less"; 
+@import "variables.less";
+@import "mixins.less";
 
 html {
     position: relative;
@@ -32,14 +32,14 @@ body {
 
 .banner_top_titulo{
     background-color: white;
-    height: 120px; 
+    height: 120px;
     padding: 20px 50px;
 }
 
 .barra_top{
     background-color: #94C5CC;
     border-color: #93C5CD;
-    height: 40px; 
+    height: 40px;
 }
 /*BODY*/
 
@@ -137,13 +137,13 @@ a:hover{
 }
 
 .menu_1 li{
-    background-color: #9A999E; 
+    background-color: #9A999E;
     color: #FFF;
     padding: 10px;
 }
 
 .menu_1 li:hover{
-    background-color: #098CA6; 
+    background-color: #098CA6;
     color: white;
     cursor: pointer;
     cursor: hand;
@@ -176,7 +176,7 @@ a:hover{
 .banner_top{
     background-color: @dashboard_banner_top_bg_color !important;
     border-color: @dashboard_banner_top_border_color !important;
-    /*height: 40px;*/ 
+    /*height: 40px;*/
 }
 .dashboard_barra_top {
     background-color: @dashboard_banner_top_black;
@@ -218,9 +218,27 @@ a.dropdown-toggle.nav-menu-user{
         }
     }
     /*    li:hover{
-    
+
             background-color: @dashboard_menu_bg_color !important;
             color: @dashboard_menu_color;
-    
+
         }*/
+}
+
+/* Pefil */
+
+#div_perfil{
+    /*overflow-y: scroll;*/
+    margin-bottom: 65px;
+
+    .row_selected{
+        background-color: red;
+        color: white;
+    }
+}
+
+.died_hr{
+    border-color: @died_hr_color;
+    margin-bottom: 5px;
+    margin-top: 5px;
 }

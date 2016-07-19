@@ -120,13 +120,13 @@ a:hover {
 }
 
 .menu_1 li{
-    background-color: #9A999E; 
+    background-color: #9A999E;
     color: #FFF;
     padding: 10px;
 }
 
 .menu_1 li:hover{
-    background-color: #098CA6; 
+    background-color: #098CA6;
     color: white;
     cursor: pointer;
     cursor: hand;
@@ -172,10 +172,10 @@ a.dropdown-toggle.nav-menu-user {
 .left_menu {
   font-weight: bold;
   /*    li:hover{
-    
+
             background-color: @dashboard_menu_bg_color !important;
             color: @dashboard_menu_color;
-    
+
         }*/
 }
 .left_menu .clicked {
@@ -198,4 +198,18 @@ a.dropdown-toggle.nav-menu-user {
 .left_menu li:hover {
   background-color: #93c5cd !important;
   color: #ffffff;
+}
+/* Pefil */
+#div_perfil {
+  /*overflow-y: scroll;*/
+  margin-bottom: 65px;
+}
+#div_perfil .row_selected {
+  background-color: red;
+  color: white;
+}
+.died_hr {
+  border-color: #000000;
+  margin-bottom: 5px;
+  margin-top: 5px;
 }

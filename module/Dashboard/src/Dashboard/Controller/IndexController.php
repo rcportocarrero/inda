@@ -24,6 +24,7 @@ class IndexController extends \BaseX\Controller\BaseController {
         $this->layout()->users_acl = $users_acl;
         $this->layout()->token_sesion = $this->Session()->token_sesion;
         
+//        var_dump($users_acl);
 //        var_dump($token_sesion);
 
         $params_view = [
