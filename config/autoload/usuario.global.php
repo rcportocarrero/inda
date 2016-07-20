@@ -29,7 +29,6 @@ return [
         ],
         
         'registro' => [
-           
         ],
         'recuperacion' => [
             'ultimas_claves' => 1,
@@ -42,7 +41,10 @@ return [
                 'template_recuperacion_id' => 11, //  ID del Template de Email
                 'template_cambio_clave_id' => 12, //  ID del Template de Email
                 'template_cambio_correo_id' => 14, //  ID del Template de Email
-            ]
+            ],
+            'template_cambio_clave_id' => 1,
+            'correo_confirmacion_cclave' => true,
+            'correo_confirmacion_ccorreo' => true,
         ],
     ]
 ];
