@@ -50,7 +50,9 @@ function load_menu_datos_usuario(ops) {
             perfil_row_pass_detail_guardar.off('click');
             perfil_row_pass_detail_guardar.on('click', function (evt) {
 
-                alert('Guardar contraseña');
+                perfil_row_pass_detail_guardar.prop('disabled', true);
+
+//                alert('Guardar contraseña');
 
                 var pass_old = jQuery('#perfil_pass_clave_old');
                 var pass_pri = jQuery('#perfil_pass_nueva_clave');
@@ -74,10 +76,15 @@ function load_menu_datos_usuario(ops) {
                             message: xhr.msg,
                             success: {
                                 callback: function () {
-                                    perfil_row_pass_detail_guardar.prop('disabled', true);
+//                                    if(_id > 0){
+                                    perfil_row_pass_detail_guardar.prop('disabled', false);
+                                      if(_id > 0){
+                                          
+                                      }
                                 }
                             }
                         });
+                        perfil_row_pass_detail_guardar.prop('disabled', false);
 
                     }
                 });

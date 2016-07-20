@@ -1,3 +1,10 @@
+var _config = {
+    url_valida_sesion:root + '/usuario/sesion/valida',
+    url_logout: root + '/usuario/sec/logout'
+};
+
+//document.location = root + '/usuario/sec/logout';
+
 jQuery(document).on('ready', function () {
 
     menu();
@@ -13,7 +20,7 @@ function valida_sesion() {
         async: false
     });
     jQuery.ajax({
-        url: root + '/usuario/sesion/valida',
+        url: _config.url_valida_sesion,
         data: {
             neko: jQuery('#hdn_sesion_token').val(),
         },
@@ -30,7 +37,7 @@ function valida_sesion() {
                             label: "Aceptar",
                             className: "btn-naranja",
                             callback: function () {
-                                document.location = root + '/usuario/sec/logout';
+                                document.location = _config.url_logout;
                             }
                         }
                     }
@@ -49,7 +56,7 @@ function valida_sesion() {
                                     label: "Aceptar",
                                     className: "btn-naranja",
                                     callback: function () {
-                                        document.location = root + '/usuario/sec/logout';
+                                        document.location = _config.url_logout;
                                     }
                                 }
                             }
@@ -67,7 +74,7 @@ function valida_sesion() {
                                 label: "Aceptar",
                                 className: "btn-naranja",
                                 callback: function () {
-                                    document.location = root + '/usuario/sec/logout';
+                                    document.location = _config.url_logout;
                                 }
                             }
                         }
