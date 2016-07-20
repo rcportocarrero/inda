@@ -30,7 +30,7 @@ function valida_sesion() {
                             label: "Aceptar",
                             className: "btn-naranja",
                             callback: function () {
-                                document.location = root + '/usuario/index/logout';
+                                document.location = root + '/usuario/sec/logout';
                             }
                         }
                     }
@@ -49,7 +49,7 @@ function valida_sesion() {
                                     label: "Aceptar",
                                     className: "btn-naranja",
                                     callback: function () {
-                                        document.location = root + '/usuario/index/logout';
+                                        document.location = root + '/usuario/sec/logout';
                                     }
                                 }
                             }
@@ -67,7 +67,7 @@ function valida_sesion() {
                                 label: "Aceptar",
                                 className: "btn-naranja",
                                 callback: function () {
-                                    document.location = root + '/usuario/index/logout';
+                                    document.location = root + '/usuario/sec/logout';
                                 }
                             }
                         }

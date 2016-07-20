@@ -15,11 +15,11 @@ return [
 
     'apigility' => [
         'config' => [
-            'url' => 'http://diedds.com/ws/died_ws3/public/',
+            'url' => 'http://diedds.com/ws/died_ws5/public/',
             'grant_type' => 'password',
             'client_id' => 'testclient',
             'client_secret' => 'testpass',
-            'debug' => true
+//            'debug' => true
 //            'auth_url' => 'auth',
         ],
     ],
@@ -30,7 +30,7 @@ return [
     ],
     'auth' => [
         'mode' => 'oauth', // oauth => 'Apigility' -/- local => 'en su propia bd'
-        'app_id' => 15,
+        'app_id' => 18,
         'acl_id' => 0,
         'multirole' => 0,
     ],

@@ -27,10 +27,13 @@ return [
             ]
         ],
         'registro' => [
-           
         ],
         'recuperacion' => [
-           
+            'ultimas_claves' => 1,
+            'template_cambio_clave_id' => 1,
+            'diccionario_clave' => 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuwxyz1234567890@)(',
+            'correo_confirmacion_cclave' => true,
+            'correo_confirmacion_ccorreo' => true,
         ],
     ]
 ];
