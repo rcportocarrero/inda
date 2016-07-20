@@ -15,8 +15,8 @@ return [
     'usuario' => [
         'captcha' => [
             'enabled' => true,
-            'diccionario' => 'ABCDEFGHIJKLMNOPQRSTUVWXYZ',
-            'tamano_codigo' => 5
+            'diccionario' => 'A', //'ABCDEFGHIJKLMNOPQRSTUVWXYZ',
+            'tamano_codigo' => 1 //5
         ],
         'login' => [
             'tamanio' => [
@@ -24,13 +24,25 @@ return [
                 'caracteres_max_clave' => 15,
                 'caracteres_min_dni' => 8,
                 'caracteres_max_dni' => 12,
+                'caracteres_max_correo' => 150
             ]
         ],
+        
         'registro' => [
            
         ],
         'recuperacion' => [
-           
+            'ultimas_claves' => 1,
+            'diccionario_clave' => 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuwxyz1234567890@)(',
+            'opciones_recuperar'=>[
+               'sms' => true
+            ],
+            'templates' =>[
+                'template_email_id' => 1, //  ID del Template de Emaile App
+                'template_recuperacion_id' => 11, //  ID del Template de Email
+                'template_cambio_clave_id' => 12, //  ID del Template de Email
+                'template_cambio_correo_id' => 14, //  ID del Template de Email
+            ]
         ],
     ]
 ];
