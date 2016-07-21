@@ -28,7 +28,9 @@ $usuario = $usuario->rows;
                 ->prependStylesheet($this->basePath('css/style.css'))
                 ->prependStylesheet($this->basePath('css/bootstrap.min.css'))
         ?>
-
+        <script type="text/javascript">
+            var root = "<?php echo $base_url; ?>";
+        </script>
         <!-- Scripts -->
         <?php
         echo $this->headScript()
@@ -49,9 +51,7 @@ $usuario = $usuario->rows;
         ;
         ?>
 
-        <script type="text/javascript">
-            var root = "<?php echo $base_url; ?>";
-        </script>
+
     </head>
 
 
