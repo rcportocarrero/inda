@@ -25,7 +25,6 @@ body {
 }
 /*Header*/
 .img_logo_evdocente {
-  content: url('../img/etiqueta-ev.jpg');
   padding-top: 30px;
 }
 .img_logo_minedu {
