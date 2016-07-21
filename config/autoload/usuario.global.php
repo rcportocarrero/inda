@@ -45,6 +45,8 @@ return [
             'template_cambio_clave_id' => 1,
             'correo_confirmacion_cclave' => true,
             'correo_confirmacion_ccorreo' => true,
+            'token_min_clave' => 6,
+            'token_max_clave' => 6,
         ],
     ]
 ];
