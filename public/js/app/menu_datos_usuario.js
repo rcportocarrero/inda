@@ -79,7 +79,7 @@ function load_menu_datos_usuario(ops) {
 //                                    if(_id > 0){
                                     perfil_row_pass_detail_guardar.prop('disabled', false);
                                       if(_id > 0){
-                                          
+                                          document.location = _config.url_logout;
                                       }
                                 }
                             }
