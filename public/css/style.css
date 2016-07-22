@@ -25,6 +25,7 @@ body {
 }
 /*Header*/
 .img_logo_evdocente {
+  /*content: url(@img_evd);*/
   padding-top: 30px;
 }
 .img_logo_minedu {
@@ -204,11 +205,17 @@ a.dropdown-toggle.nav-menu-user {
   margin-bottom: 65px;
 }
 #div_perfil .row_selected {
-  background-color: red;
-  color: white;
+  background-color: #ff0000;
+  color: #ffffff;
 }
 .died_hr {
   border-color: #000000;
   margin-bottom: 5px;
   margin-top: 5px;
+}
+/* Panel Custom Died */
+.panel-primary .panel-heading {
+  background-color: '#ff0000';
+  border-color: '#428bca';
+  color: '#fff';
 }
