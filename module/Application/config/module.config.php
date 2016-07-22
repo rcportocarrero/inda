@@ -18,7 +18,9 @@ return array(
                 'options' => array(
                     'route' => '/',
                     'defaults' => array(
-                        'controller' => 'Application\Controller\Index',
+//                        'controller' => 'Application\Controller\Index',
+//                        'action' => 'index',
+                        'controller' => 'Usuario\Controller\Sec',
                         'action' => 'index',
                     ),
                 ),
@@ -76,8 +78,8 @@ return array(
     ),
     'controllers' => array(
         'invokables' => array(
-            'Application\Controller\Index' => 'Application\Controller\IndexController',
-            'Application\Controller\Proyecto' =>'Application\Controller\ProyectoController',
+//            'Application\Controller\Index' => 'Application\Controller\IndexController',
+//            'Application\Controller\Proyecto' => 'Application\Controller\ProyectoController',
         ),
     ),
     'view_manager' => array(
@@ -103,5 +105,4 @@ return array(
             ),
         ),
     ),
-    
 );
