@@ -9,7 +9,7 @@
             {
                 "id": "mnuComiteEvaluaciónActa",
                 "metodo": "menu_datos_usuario",
-                "titulo": "Datos de usuario"
+                "titulo": "Perfil de usuario"
             }
         ]
     }
