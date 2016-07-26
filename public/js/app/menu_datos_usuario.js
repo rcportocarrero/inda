@@ -49,8 +49,7 @@ function load_menu_datos_usuario(ops) {
 
             perfil_row_pass_detail_guardar.off('click');
             perfil_row_pass_detail_guardar.on('click', function (evt) {
-                
-                perfil_row_pass_detail_guardar.prop('disabled', true);
+            perfil_row_pass_detail_guardar.prop('disabled', true);
 
 //                alert('Guardar contraseña');
 
@@ -76,7 +75,6 @@ function load_menu_datos_usuario(ops) {
                             message: xhr.msg,
                             success: {
                                 callback: function () {
-//                                    if(_id > 0){
                                     perfil_row_pass_detail_guardar.prop('disabled', false);
                                       if(_id > 0){
                                           document.location = _config.url_logout;
@@ -85,9 +83,9 @@ function load_menu_datos_usuario(ops) {
                             }
                         });
                         perfil_row_pass_detail_guardar.prop('disabled', false);
-
                     }
                 });
+
             });
 
             // Cambiar contraseña - Boton cancelar
@@ -354,15 +352,359 @@ function load_menu_datos_usuario(ops) {
                 row_cambio_celular_alt.removeClass('row_selected');
             });
 
+<<<<<<< HEAD
             //***********************************************//  
             //== Cambiar Celular Alternativo Usuario - FIN ==//
             //***********************************************//
+=======
+            /*
+             * ****************************
+             * Perfil de Informacion adicional
+             * ****************************
+             * Correo alternativo
+             *
+             */
 
+            var pefil_adicional_btn_cambiar_email = jQuery('#pefil_adicional_btn_cambiar_email');
+
+            // Cambio de correo
+            var div_row_cambio_correo_alternativo = jQuery('#div_row_cambio_correo_alternativo');
+            var row_cambio_correo_alternativo_title = jQuery('#row_cambio_correo_alternativo_title');
+            var perfil_row_pass_correo_alter_cancelar = jQuery('#perfil_row_pass_correo_alter_cancelar');
+
+            div_row_cambio_correo_alternativo.hide();
+            /* Cambio de correo */
+            pefil_adicional_btn_cambiar_email.off('click');
+            pefil_adicional_btn_cambiar_email.on('click', function (evt) {
+                evt.preventDefault();
+                row_cambio_correo_alternativo_title.addClass('row_selected');
+                pefil_adicional_btn_cambiar_email.hide();
+                div_row_cambio_correo_alternativo.show();
+            });
+
+            // Cambiar correo alternativo - Boton cancelar
+            perfil_row_pass_correo_alter_cancelar.off('click');
+            perfil_row_pass_correo_alter_cancelar.on('click', function (evt) {
+                row_cambio_correo_alternativo_title.removeClass('row_selected');
+                pefil_adicional_btn_cambiar_email.show();
+                div_row_cambio_correo_alternativo.hide();
+            });
+
+            // Cambiar correo alternativo - Boton guardar
+
+            var perfil_row_pass_correo_alter_guardar = jQuery('#perfil_row_pass_correo_alter_guardar');
+
+            perfil_row_pass_correo_alter_guardar.off('click');
+            perfil_row_pass_correo_alter_guardar.on('click', function (evt) {
+
+                bootbox.confirm({
+                    title: '<b>Confirmación</b>',
+                    message: 'Desea actualizar su correo electrónico alternativo',
+                    buttons: {
+                        'cancel': {
+                            label: 'No',
+                            className: 'btn-default pull-left'
+                        },
+                        'confirm': {
+                            label: 'Sí',
+                            className: 'btn-danger pull-right'
+                        }
+                    },
+                    callback: function (result) {
+                        if (result) {
+
+                            perfil_row_pass_correo_alter_guardar.prop('disabled', true);
+
+                            var correo_alternativo = jQuery('#perfil_cambio_correo_alternativo');
+                            var obj = {
+                                correo_alternativo: correo_alternativo.val(),
+                            };
+
+                            BaseX.post({
+                                url: root + '/usuario/perfil/perfil-cambiar-correo-alternativo',
+                                data: obj,
+                                success: function (xhr, txtSting) {
+                                    var _id = parseInt(xhr.id);
+                                    BaseX.dialogAceptar({
+                                        message: xhr.msg,
+                                        success: {
+                                            callback: function () {
+                                                perfil_row_pass_correo_alter_guardar.prop('disabled', false);
+                                                  if(_id > 0){
+                                                      load_menu_datos_usuario();
+                                                  }
+                                            }
+                                        }
+                                    });
+                                    perfil_row_pass_correo_alter_guardar.prop('disabled', false);
+                                }
+                            });
+
+                        }
+                    }
+                });
+
+            });
+
+            /*
+             * ****************************
+             * Perfil de Contacto de Referencia
+             * ****************************
+             * Datos de referencia
+             *
+             */
+
+//            jQuery('#perfil_cambio_nombre_referencia').filter_input({regex: '[a-zA-Z]'});
+//            jQuery('#perfil_cambio_celular_referencia').filter_input({regex: '[0-9]'});
+
+            var pefil_adicional_ref_btn_cambiar_nombre = jQuery('#pefil_adicional_ref_btn_cambiar_nombre');
+
+            // Cambio de nombre
+            var div_row_cambio_nombre_referencia = jQuery('#div_row_cambio_nombre_referencia');
+            var row_cambio_nombre_referencia_title = jQuery('#row_cambio_nombre_referencia_title');
+            var perfil_row_pass_nombre_ref_cancelar = jQuery('#perfil_row_pass_nombre_ref_cancelar');
+>>>>>>> ae1c788265b3f65b6ae1078216f8344ef5f1075e
+
+            div_row_cambio_nombre_referencia.hide();
+            /* Cambio de nombre */
+            pefil_adicional_ref_btn_cambiar_nombre.off('click');
+            pefil_adicional_ref_btn_cambiar_nombre.on('click', function (evt) {
+                evt.preventDefault();
+                row_cambio_nombre_referencia_title.addClass('row_selected');
+                pefil_adicional_ref_btn_cambiar_nombre.hide();
+                div_row_cambio_nombre_referencia.show();
+            });
+
+            // Cambiar nombre referencia - Boton cancelar
+            perfil_row_pass_nombre_ref_cancelar.off('click');
+            perfil_row_pass_nombre_ref_cancelar.on('click', function (evt) {
+                row_cambio_nombre_referencia_title.removeClass('row_selected');
+                pefil_adicional_ref_btn_cambiar_nombre.show();
+                div_row_cambio_nombre_referencia.hide();
+            });
+
+            // Cambiar nombre - Boton guardar
+
+            var perfil_row_pass_nombre_ref_guardar = jQuery('#perfil_row_pass_nombre_ref_guardar');
+
+            perfil_row_pass_nombre_ref_guardar.off('click');
+            perfil_row_pass_nombre_ref_guardar.on('click', function (evt) {
+
+                bootbox.confirm({
+                    title: '<b>Confirmación</b>',
+                    message: 'Desea actualizar el nombre de contacto de referencia',
+                    buttons: {
+                        'cancel': {
+                            label: 'No',
+                            className: 'btn-default pull-left'
+                        },
+                        'confirm': {
+                            label: 'Sí',
+                            className: 'btn-danger pull-right'
+                        }
+                    },
+                    callback: function (result) {
+                        if (result) {
+
+                            perfil_row_pass_nombre_ref_guardar.prop('disabled', true);
+
+                            var nombre_referencia = jQuery('#perfil_cambio_nombre_referencia');
+                            var obj = {
+                                nombre_referencia: nombre_referencia.val(),
+                            };
+
+                            BaseX.post({
+                                url: root + '/usuario/perfil/perfil-cambiar-nombre-referencia',
+                                data: obj,
+                                success: function (xhr, txtSting) {
+                                    var _id = parseInt(xhr.id);
+                                    BaseX.dialogAceptar({
+                                        message: xhr.msg,
+                                        success: {
+                                            callback: function () {
+                                                perfil_row_pass_nombre_ref_guardar.prop('disabled', false);
+                                                  if(_id > 0){
+                                                      load_menu_datos_usuario();
+                                                  }
+                                            }
+                                        }
+                                    });
+                                    perfil_row_pass_nombre_ref_guardar.prop('disabled', false);
+                                }
+                            });
+
+                        }
+                    }
+                });
+
+            });
+
+
+            /*********************************************************/
+
+            var pefil_adicional_ref_btn_cambiar_num_cel = jQuery('#pefil_adicional_ref_btn_cambiar_num_cel');
+
+            // Cambio de celular
+            var div_row_cambio_celular_referencia = jQuery('#div_row_cambio_celular_referencia');
+            var row_cambio_celular_referencia_title = jQuery('#row_cambio_celular_referencia_title');
+            var perfil_row_pass_celular_ref_cancelar = jQuery('#perfil_row_pass_celular_ref_cancelar');
+
+            div_row_cambio_celular_referencia.hide();
+            /* Cambio de celular */
+            pefil_adicional_ref_btn_cambiar_num_cel.off('click');
+            pefil_adicional_ref_btn_cambiar_num_cel.on('click', function (evt) {
+                evt.preventDefault();
+                row_cambio_celular_referencia_title.addClass('row_selected');
+                pefil_adicional_ref_btn_cambiar_num_cel.hide();
+                div_row_cambio_celular_referencia.show();
+            });
+
+            // Cambiar celular referencia - Boton cancelar
+            perfil_row_pass_celular_ref_cancelar.off('click');
+            perfil_row_pass_celular_ref_cancelar.on('click', function (evt) {
+                row_cambio_celular_referencia_title.removeClass('row_selected');
+                pefil_adicional_ref_btn_cambiar_num_cel.show();
+                div_row_cambio_celular_referencia.hide();
+            });
+
+            // Cambiar nombre - Boton guardar
+
+            var perfil_row_pass_celular_ref_guardar = jQuery('#perfil_row_pass_celular_ref_guardar');
+
+            perfil_row_pass_celular_ref_guardar.off('click');
+            perfil_row_pass_celular_ref_guardar.on('click', function (evt) {
+
+                bootbox.confirm({
+                    title: '<b>Confirmación</b>',
+                    message: 'Desea actualizar el número de celular de referencia',
+                    buttons: {
+                        'cancel': {
+                            label: 'No',
+                            className: 'btn-default pull-left'
+                        },
+                        'confirm': {
+                            label: 'Sí',
+                            className: 'btn-danger pull-right'
+                        }
+                    },
+                    callback: function (result) {
+                        if (result) {
+
+                            perfil_row_pass_celular_ref_guardar.prop('disabled', true);
+
+                            var celular_referencia = jQuery('#perfil_cambio_celular_referencia');
+                            var obj = {
+                                celular_referencia: celular_referencia.val(),
+                            };
+
+                            BaseX.post({
+                                url: root + '/usuario/perfil/perfil-cambiar-celular-referencia',
+                                data: obj,
+                                success: function (xhr, txtSting) {
+                                    var _id = parseInt(xhr.id);
+                                    BaseX.dialogAceptar({
+                                        message: xhr.msg,
+                                        success: {
+                                            callback: function () {
+                                                perfil_row_pass_celular_ref_guardar.prop('disabled', false);
+                                                  if(_id > 0){
+                                                      load_menu_datos_usuario();
+                                                  }
+                                            }
+                                        }
+                                    });
+                                    perfil_row_pass_celular_ref_guardar.prop('disabled', false);
+                                }
+                            });
+
+                        }
+                    }
+                });
+
+            });
+
+            /*********************************************************/
+
+            var pefil_adicional_ref_btn_cambiar_num_tel = jQuery('#pefil_adicional_ref_btn_cambiar_num_tel');
+
+            // Cambio de telefono fijo referencia
+            var div_row_cambio_telefono_referencia = jQuery('#div_row_cambio_telefono_referencia');
+            var row_cambio_telefono_referencia_title = jQuery('#row_cambio_telefono_referencia_title');
+            var perfil_row_pass_telefono_ref_cancelar = jQuery('#perfil_row_pass_telefono_ref_cancelar');
+
+            div_row_cambio_telefono_referencia.hide();
+            /* Cambio de telefono fijo referencia */
             pefil_adicional_ref_btn_cambiar_num_tel.off('click');
             pefil_adicional_ref_btn_cambiar_num_tel.on('click', function (evt) {
                 evt.preventDefault();
+                row_cambio_telefono_referencia_title.addClass('row_selected');
+                pefil_adicional_ref_btn_cambiar_num_tel.hide();
+                div_row_cambio_telefono_referencia.show();
             });
 
+            // Cambiar telefono fijo referencia - Boton cancelar
+            perfil_row_pass_telefono_ref_cancelar.off('click');
+            perfil_row_pass_telefono_ref_cancelar.on('click', function (evt) {
+                row_cambio_telefono_referencia_title.removeClass('row_selected');
+                pefil_adicional_ref_btn_cambiar_num_tel.show();
+                div_row_cambio_telefono_referencia.hide();
+            });
+
+            // Cambiar telefono fijo referencia - Boton guardar
+
+            var perfil_row_pass_telefono_ref_guardar = jQuery('#perfil_row_pass_telefono_ref_guardar');
+
+            perfil_row_pass_telefono_ref_guardar.off('click');
+            perfil_row_pass_telefono_ref_guardar.on('click', function (evt) {
+
+                bootbox.confirm({
+                    title: '<b>Confirmación</b>',
+                    message: 'Desea actualizar el número de teléfono fijo de referencia',
+                    buttons: {
+                        'cancel': {
+                            label: 'No',
+                            className: 'btn-default pull-left'
+                        },
+                        'confirm': {
+                            label: 'Sí',
+                            className: 'btn-danger pull-right'
+                        }
+                    },
+                    callback: function (result) {
+                        if (result) {
+
+                            perfil_row_pass_telefono_ref_guardar.prop('disabled', true);
+
+                            var telefono_referencia = jQuery('#perfil_cambio_telefono_referencia');
+                            var obj = {
+                                telefono_referencia: telefono_referencia.val(),
+                            };
+
+                            BaseX.post({
+                                url: root + '/usuario/perfil/perfil-cambiar-telefono-referencia',
+                                data: obj,
+                                success: function (xhr, txtSting) {
+                                    var _id = parseInt(xhr.id);
+                                    BaseX.dialogAceptar({
+                                        message: xhr.msg,
+                                        success: {
+                                            callback: function () {
+                                                perfil_row_pass_telefono_ref_guardar.prop('disabled', false);
+                                                  if(_id > 0){
+                                                      load_menu_datos_usuario();
+                                                  }
+                                            }
+                                        }
+                                    });
+                                    perfil_row_pass_telefono_ref_guardar.prop('disabled', false);
+                                }
+                            });
+
+                        }
+                    }
+                });
+
+            });
 
         }
     });

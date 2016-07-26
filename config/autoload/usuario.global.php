@@ -27,7 +27,11 @@ return [
                 'caracteres_max_correo' => 150
             ]
         ],
-        'registro' => [
+        'perfil' => [
+            'num_celular' => 9,
+            'telefono_fijo' => 10,
+            'email_alterno' => 150,
+            'contacto_nombres' => 150,
         ],
         'recuperacion' => [
             'ultimas_claves' => 1,
