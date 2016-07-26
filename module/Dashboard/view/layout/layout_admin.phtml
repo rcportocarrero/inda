@@ -6,6 +6,7 @@ $apps_var = $this->apps_var;
 $usuario = $this->users_acl->rows;
 //$usuario = $usuario->rows;
 //var_dump($usuario);
+$recuperar_config = $this->recuperar_config;
 ?>
 
 <html lang="en">
@@ -30,6 +31,13 @@ $usuario = $this->users_acl->rows;
         ?>
         <script type="text/javascript">
             var root = "<?php echo $base_url; ?>";
+
+            var min_clave = '<?php echo $recuperar_config['caracteres_min_clave']; ?>';
+            var max_clave = '<?php echo $recuperar_config['caracteres_max_clave']; ?>';
+            var min_dni = '<?php echo $recuperar_config['caracteres_min_dni']; ?>';
+            var max_dni = '<?php echo $recuperar_config['caracteres_max_dni']; ?>';
+            var max_correo = '<?php echo $recuperar_config['caracteres_max_correo']; ?>';
+
         </script>
         <!-- Scripts -->
         <?php
