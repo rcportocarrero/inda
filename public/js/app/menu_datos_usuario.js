@@ -352,11 +352,11 @@ function load_menu_datos_usuario(ops) {
                 row_cambio_celular_alt.removeClass('row_selected');
             });
 
-<<<<<<< HEAD
             //***********************************************//  
             //== Cambiar Celular Alternativo Usuario - FIN ==//
             //***********************************************//
-=======
+            
+            
             /*
              * ****************************
              * Perfil de Informacion adicional
@@ -463,7 +463,6 @@ function load_menu_datos_usuario(ops) {
             var div_row_cambio_nombre_referencia = jQuery('#div_row_cambio_nombre_referencia');
             var row_cambio_nombre_referencia_title = jQuery('#row_cambio_nombre_referencia_title');
             var perfil_row_pass_nombre_ref_cancelar = jQuery('#perfil_row_pass_nombre_ref_cancelar');
->>>>>>> ae1c788265b3f65b6ae1078216f8344ef5f1075e
 
             div_row_cambio_nombre_referencia.hide();
             /* Cambio de nombre */
