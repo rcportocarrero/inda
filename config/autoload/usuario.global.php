@@ -49,12 +49,19 @@ return [
         ],
         'cambio' => [
             'ultimas_claves' => 1,
+            'diccionario_clave' => 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuwxyz1234567890@)(',
+            'diccionario_correo' => 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuwxyz1234567890.-_@',
+            'templates' => [
+                'template_cambio_clave_id' => 12, //  ID del Template de Email
+                'template_cambio_correo_id' => 14, //  ID del Template de Email
+            ],
             'caracteres_min_clave' => 8,
             'caracteres_max_clave' => 15,
             'caracteres_max_correo' => 150,
             'caracteres_min_dni' => 8,
-            'caracteres_max_dni' => 12,
-            'diccionario_clave' => 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuwxyz1234567890@)(',
+            'caracteres_max_dni' => 12,  
+            'caracteres_long_celular' => 9,
+            'caracteres_long_telefono' => 9,
             'correo_confirmacion_cclave' => true,
             'correo_confirmacion_ccorreo' => true,
         ]

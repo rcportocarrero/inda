@@ -49,7 +49,7 @@ function load_menu_datos_usuario(ops) {
 
             perfil_row_pass_detail_guardar.off('click');
             perfil_row_pass_detail_guardar.on('click', function (evt) {
-
+                
                 perfil_row_pass_detail_guardar.prop('disabled', true);
 
 //                alert('Guardar contraseña');
@@ -98,8 +98,265 @@ function load_menu_datos_usuario(ops) {
                 row_cambio_contrasena_title.removeClass('row_selected');
             });
             // Fin contraseña Row
+            
+            //**************************************//
+            //--Cambiar Correo Electrónico--INICIO--//
+            //**************************************//
+            
+            var row_cambio_correo = jQuery('#row_cambio_correo');
+            var pefil_btn_cambiar_correo = jQuery('#pefil_btn_cambiar_correo');
+            var div_row_cambio_correo = jQuery('#div_row_cambio_correo');            
+            var perfil_row_correo_cancelar = jQuery('#perfil_row_correo_cancelar');
+            var perfil_row_correo_guardar = jQuery('#perfil_row_correo_guardar');
+            
+            div_row_cambio_correo.hide();
+            pefil_btn_cambiar_correo.off('click');
+            pefil_btn_cambiar_correo.on('click', function (evt) {
+                evt.preventDefault();
+                row_cambio_correo.addClass('row_selected');
+                pefil_btn_cambiar_correo.hide();
+                div_row_cambio_correo.show();
+            });
+            
+            perfil_row_correo_guardar.off('click');
+            perfil_row_correo_guardar.on('click', function (evt) {
 
+                perfil_row_correo_guardar.prop('disabled', true);
+                
+                var correo_old = jQuery('#perfil_correo_old');
+                var correo_pri = jQuery('#perfil_correo_nuevo');
+                var correo_ver = jQuery('#perfil_correo_nuevo_confir');
 
+                var obj = {
+                    correo_old: correo_old.val(),
+                    correo_pri: correo_pri.val(),
+                    correo_ver: correo_ver.val()
+                };
+                
+                BaseX.post({
+                    url: root + '/usuario/perfil/perfil-cambiar-correo',
+                    data: obj,
+                    success: function (xhr, txtSting) {                        
+                        var _id = parseInt(xhr.id);
+                        BaseX.dialogAceptar({
+                            message: xhr.msg,
+                            success: {
+                                callback: function () {
+                                    perfil_row_correo_guardar.prop('disabled', false);                                    
+                                        if(_id > 0){
+                                            //document.location = _config.url_logout;
+                                        }
+                                }
+                            }
+                        });
+                        perfil_row_correo_guardar.prop('disabled', false);
+                    }
+                });
+            });
+            
+            perfil_row_correo_cancelar.off('click');
+            perfil_row_correo_cancelar.on('click', function (evt) {
+                pefil_btn_cambiar_correo.show();
+                div_row_cambio_correo.hide();
+                row_cambio_correo.removeClass('row_selected');
+            });
+            //****************************************//
+            //== Cambiar Correo Electrónico --- FIN ==//
+            //****************************************//
+            
+            //****************************************//
+            //== Cambiar Celular Usuario --- INICIO ==//
+            //****************************************//
+            
+            var row_cambio_celular = jQuery('#row_cambio_celular');
+            var pefil_btn_cambiar_celular = jQuery('#pefil_btn_cambiar_celular');
+            var div_row_cambio_celular = jQuery('#div_row_cambio_celular');            
+            var perfil_row_celular_cancelar = jQuery('#perfil_row_celular_cancelar');
+            var perfil_row_celular_guardar = jQuery('#perfil_row_celular_guardar');
+            
+            div_row_cambio_celular.hide();
+            pefil_btn_cambiar_celular.off('click');
+            pefil_btn_cambiar_celular.on('click', function (evt) {
+                evt.preventDefault();
+                row_cambio_celular.addClass('row_selected');
+                pefil_btn_cambiar_celular.hide();
+                div_row_cambio_celular.show();
+            });
+            
+            perfil_row_celular_guardar.off('click');
+            perfil_row_celular_guardar.on('click', function (evt) {
+
+                perfil_row_celular_guardar.prop('disabled', true);
+                
+                var celular_old = jQuery('#perfil_celular_old');
+                var celular_pri = jQuery('#perfil_celular_nuevo');
+                var celular_ver = jQuery('#perfil_celular_nuevo_confir');
+
+                var obj = {
+                    celular_old: celular_old.val(),
+                    celular_pri: celular_pri.val(),
+                    celular_ver: celular_ver.val()
+                };
+                
+                BaseX.post({
+                    url: root + '/usuario/perfil/perfil-cambiar-celular',
+                    data: obj,
+                    success: function (xhr, txtSting) {                        
+                        var _id = parseInt(xhr.id);
+                        BaseX.dialogAceptar({
+                            message: xhr.msg,
+                            success: {
+                                callback: function () {
+                                    perfil_row_celular_guardar.prop('disabled', false);                                    
+                                        if(_id > 0){
+                                            //document.location = _config.url_logout;
+                                        }
+                                }
+                            }
+                        });
+                        perfil_row_celular_guardar.prop('disabled', false);
+                    }
+                });
+            });
+            
+            perfil_row_celular_cancelar.off('click');
+            perfil_row_celular_cancelar.on('click', function (evt) {
+                pefil_btn_cambiar_celular.show();
+                div_row_cambio_celular.hide();
+                row_cambio_celular.removeClass('row_selected');
+            });
+
+            //****************************************//  
+            //== Cambiar Celular Usuario ------ FIN ==//
+            //****************************************//
+            
+            //****************************************//
+            //== Cambiar Telefono Usuario -- INICIO ==//
+            //****************************************//
+            
+            var row_cambio_telefono = jQuery('#row_cambio_telefono');
+            var pefil_btn_cambiar_telefono = jQuery('#pefil_btn_cambiar_telefono');
+            var div_row_cambio_telefono = jQuery('#div_row_cambio_telefono');            
+            var perfil_row_telefono_cancelar = jQuery('#perfil_row_telefono_cancelar');
+            var perfil_row_telefono_guardar = jQuery('#perfil_row_telefono_guardar');
+            
+            div_row_cambio_telefono.hide();
+            pefil_btn_cambiar_telefono.off('click');
+            pefil_btn_cambiar_telefono.on('click', function (evt) {
+                evt.preventDefault();
+                row_cambio_telefono.addClass('row_selected');
+                pefil_btn_cambiar_telefono.hide();
+                div_row_cambio_telefono.show();
+            });
+            
+            perfil_row_telefono_guardar.off('click');
+            perfil_row_telefono_guardar.on('click', function (evt) {
+
+                perfil_row_telefono_guardar.prop('disabled', true);
+                
+                var telefono_old = jQuery('#perfil_telefono_old');
+                var telefono_pri = jQuery('#perfil_telefono_nuevo');
+
+                var obj = {
+                    telefono_old: telefono_old.val(),
+                    telefono_pri: telefono_pri.val()
+                };
+                
+                BaseX.post({
+                    url: root + '/usuario/perfil/perfil-cambiar-telefono',
+                    data: obj,
+                    success: function (xhr, txtSting) {                        
+                        var _id = parseInt(xhr.id);
+                        BaseX.dialogAceptar({
+                            message: xhr.msg,
+                            success: {
+                                callback: function () {
+                                    perfil_row_telefono_guardar.prop('disabled', false);                                    
+                                        if(_id > 0){
+                                            //document.location = _config.url_logout;
+                                        }
+                                }
+                            }
+                        });
+                        perfil_row_telefono_guardar.prop('disabled', false);
+                    }
+                });
+            });
+            
+            perfil_row_telefono_cancelar.off('click');
+            perfil_row_telefono_cancelar.on('click', function (evt) {
+                pefil_btn_cambiar_telefono.show();
+                div_row_cambio_telefono.hide();
+                row_cambio_telefono.removeClass('row_selected');
+            });
+
+            //****************************************//  
+            //== Cambiar Telefono Usuario ----- FIN ==//
+            //****************************************//
+
+            //**************************************************//
+            //== Cambiar Celular Alternativo Usuario - INICIO ==//
+            //**************************************************//
+            
+            var row_cambio_celular_alt = jQuery('#row_cambio_celular_alternativo');
+            var pefil_btn_cambiar_celular_alt = jQuery('#pefil_btn_cambiar_celular_alternativo');
+            var div_row_cambio_celular_alt = jQuery('#div_row_cambio_celular_alternativo');            
+            var perfil_row_celular_alt_cancelar = jQuery('#perfil_row_celular_alternativo_cancelar');
+            var perfil_row_celular_alt_guardar = jQuery('#perfil_row_celular_alternativo_guardar');
+            
+            div_row_cambio_celular_alt.hide();
+            pefil_btn_cambiar_celular_alt.off('click');
+            pefil_btn_cambiar_celular_alt.on('click', function (evt) {
+                evt.preventDefault();
+                row_cambio_celular_alt.addClass('row_selected');
+                pefil_btn_cambiar_celular_alt.hide();
+                div_row_cambio_celular_alt.show();
+            });
+            
+            perfil_row_celular_alt_guardar.off('click');
+            perfil_row_celular_alt_guardar.on('click', function (evt) {
+
+                perfil_row_celular_alt_guardar.prop('disabled', true);
+                
+                var celular_alt_old = jQuery('#perfil_celular_alternativo_old');
+                var celular_alt_pri = jQuery('#perfil_celular_alternativo_nuevo');
+
+                var obj = {
+                    celular_alt_old: celular_alt_old.val(),
+                    celular_alt_pri: celular_alt_pri.val()
+                };
+                
+                BaseX.post({
+                    url: root + '/usuario/perfil/perfil-cambiar-celular-alt',
+                    data: obj,
+                    success: function (xhr, txtSting) {                        
+                        var _id = parseInt(xhr.id);
+                        BaseX.dialogAceptar({
+                            message: xhr.msg,
+                            success: {
+                                callback: function () {
+                                    perfil_row_celular_alt_guardar.prop('disabled', false);                                    
+                                        if(_id > 0){
+                                            //document.location = _config.url_logout;
+                                        }
+                                }
+                            }
+                        });
+                        perfil_row_celular_alt_guardar.prop('disabled', false);
+                    }
+                });
+            });
+            
+            perfil_row_celular_alt_cancelar.off('click');
+            perfil_row_celular_alt_cancelar.on('click', function (evt) {
+                pefil_btn_cambiar_celular_alt.show();
+                div_row_cambio_celular_alt.hide();
+                row_cambio_celular_alt.removeClass('row_selected');
+            });
+
+            //***********************************************//  
+            //== Cambiar Celular Alternativo Usuario - FIN ==//
+            //***********************************************//
 
             pefil_adicional_ref_btn_cambiar_num_tel.off('click');
             pefil_adicional_ref_btn_cambiar_num_tel.on('click', function (evt) {
