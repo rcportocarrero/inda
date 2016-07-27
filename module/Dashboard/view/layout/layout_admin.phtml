@@ -3,8 +3,8 @@ echo $this->doctype();
 $base_url = $this->basePath();
 $apps_var = $this->apps_var;
 //var_dump($apps_var);
-$usuario = $this->users_acl;
-$usuario = $usuario->rows;
+$usuario = $this->users_acl->rows;
+//$usuario = $usuario->rows;
 //var_dump($usuario);
 $recuperar_config = $this->recuperar_config;
 ?>

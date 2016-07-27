@@ -15,10 +15,7 @@ function load_menu_presentacion(ops) {
     BaseX.load_html(root + '/dashboard/index/presentacion', {
         data: ops,
         success: function (xhr) {
-
             jQuery('#workArea').html(xhr);
-
-
         }
     });
 }
