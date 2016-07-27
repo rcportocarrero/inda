@@ -428,9 +428,17 @@ function load_menu_datos_usuario(ops) {
             perfil_row_pass_correo_alter_guardar.off('click');
             perfil_row_pass_correo_alter_guardar.on('click', function (evt) {
 
+                var perfil_correo_old = jQuery('#perfil_correo_old');
+                var correo_alternativo = jQuery('#perfil_cambio_correo_alternativo');
+
+                if(perfil_correo_old.val().trim() === correo_alternativo.val().trim()){
+                   jQuery_mensaje('El correo electrónico alternativo debe ser distinto al correo electrónico.');
+                   return false;
+                }
+
                 bootbox.confirm({
                     title: '<b>Confirmación</b>',
-                    message: 'Desea actualizar su correo electrónico alternativo',
+                    message: '“¿Desea registrar un correo electrónico alternativo?',
                     buttons: {
                         'cancel': {
                             label: 'No',
@@ -446,7 +454,6 @@ function load_menu_datos_usuario(ops) {
 
                             perfil_row_pass_correo_alter_guardar.prop('disabled', true);
 
-                            var correo_alternativo = jQuery('#perfil_cambio_correo_alternativo');
                             var obj = {
                                 correo_alternativo: correo_alternativo.val(),
                             };
@@ -485,9 +492,7 @@ function load_menu_datos_usuario(ops) {
              *
              */
 
-//            jQuery('#perfil_cambio_nombre_referencia').filter_input({regex: '[a-zA-Z]'});
-//            jQuery('#perfil_cambio_celular_referencia').filter_input({regex: '[0-9]'});
-
+            jQuery('#perfil_cambio_nombre_referencia').filter_input({regex:'[a-zA-Z]'});
             var pefil_adicional_ref_btn_cambiar_nombre = jQuery('#pefil_adicional_ref_btn_cambiar_nombre');
 
             // Cambio de nombre
@@ -520,7 +525,6 @@ function load_menu_datos_usuario(ops) {
             });
 
             // Cambiar nombre - Boton guardar
-
             var perfil_row_pass_nombre_ref_guardar = jQuery('#perfil_row_pass_nombre_ref_guardar');
 
             perfil_row_pass_nombre_ref_guardar.off('click');
@@ -577,7 +581,7 @@ function load_menu_datos_usuario(ops) {
 
 
             /*********************************************************/
-
+            jQuery('#perfil_cambio_celular_referencia').filter_input({regex: '[0-9]'});
             var pefil_adicional_ref_btn_cambiar_num_cel = jQuery('#pefil_adicional_ref_btn_cambiar_num_cel');
 
             // Cambio de celular
@@ -666,7 +670,7 @@ function load_menu_datos_usuario(ops) {
             });
 
             /*********************************************************/
-
+            jQuery('#perfil_cambio_telefono_referencia').filter_input({regex: '[0-9]'});
             var pefil_adicional_ref_btn_cambiar_num_tel = jQuery('#pefil_adicional_ref_btn_cambiar_num_tel');
 
             // Cambio de telefono fijo referencia
@@ -705,6 +709,19 @@ function load_menu_datos_usuario(ops) {
             perfil_row_pass_telefono_ref_guardar.off('click');
             perfil_row_pass_telefono_ref_guardar.on('click', function (evt) {
 
+                var codigo_referencia = jQuery('#perfil_lista_codigo_referencia');
+                var telefono_referencia = jQuery('#perfil_cambio_telefono_referencia');
+
+                if(codigo_referencia.val() < 1){
+                   jQuery_mensaje('Ingrese un código de ciudad.');
+                   return false;
+                }
+
+                if(telefono_referencia.val().length < 6){
+                   jQuery_mensaje('Ingrese un numero de telefono fijo válido.');
+                   return false;
+                }
+
                 bootbox.confirm({
                     title: '<b>Confirmación</b>',
                     message: 'Desea actualizar el número de teléfono fijo de referencia',
@@ -723,9 +740,7 @@ function load_menu_datos_usuario(ops) {
 
                             perfil_row_pass_telefono_ref_guardar.prop('disabled', true);
 
-                            var codigo_telefono_referencia = jQuery('#perfil_lista_codigo_referencia');
-                            var telefono_referencia = jQuery('#perfil_cambio_telefono_referencia');
-                            var codigo_telefono_referencia = codigo_telefono_referencia.val()+telefono_referencia.val();
+                            var codigo_telefono_referencia = codigo_referencia.val()+telefono_referencia.val();
                             var obj = {
                                 telefono_referencia: codigo_telefono_referencia,
                             };
@@ -754,8 +769,21 @@ function load_menu_datos_usuario(ops) {
                     }
                 });
 
-            });            
+            });
 
+        }
+    });
+}
+
+function jQuery_mensaje(mensaje) {
+    bootbox.dialog({
+        message: mensaje,
+        title: "Mensaje del sistema",
+        buttons: {
+            success: {
+                label: "Aceptar",
+                className: "btn-naranja",
+            }
         }
     });
 }
