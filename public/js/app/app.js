@@ -6,12 +6,8 @@ var _config = {
 //document.location = root + '/usuario/sec/logout';
 
 jQuery(document).on('ready', function () {
-
-    menu();
-
-
+    menu();    
 });
-
 
 function valida_sesion() {
     var rp = true;

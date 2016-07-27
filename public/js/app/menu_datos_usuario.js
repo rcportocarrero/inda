@@ -382,7 +382,6 @@ function load_menu_datos_usuario(ops) {
             //== Cambiar Celular Alternativo Usuario - FIN ==//
             //***********************************************//
 
-
             /*
              * ****************************
              * Perfil de Informacion adicional
@@ -755,7 +754,7 @@ function load_menu_datos_usuario(ops) {
                     }
                 });
 
-            });
+            });            
 
         }
     });
