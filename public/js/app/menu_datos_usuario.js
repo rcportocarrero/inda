@@ -49,43 +49,57 @@ function load_menu_datos_usuario(ops) {
 
             perfil_row_pass_detail_guardar.off('click');
             perfil_row_pass_detail_guardar.on('click', function (evt) {
-            perfil_row_pass_detail_guardar.prop('disabled', true);
+                bootbox.confirm({
+                    title: '<b>Confirmación</b>',
+                    message: '¿Desea actualizar su contraseña?',
+                    buttons: {
+                        'cancel': {
+                            label: 'No',
+                            className: 'btn-default pull-left'
+                        },
+                        'confirm': {
+                            label: 'Sí',
+                            className: 'btn-danger pull-right'
+                        }
+                    },
+                    callback: function (result) {
+                        if (result) {
+                            perfil_row_pass_detail_guardar.prop('disabled', true);
 
-//                alert('Guardar contraseña');
+                            var pass_old = jQuery('#perfil_pass_clave_old');
+                            var pass_pri = jQuery('#perfil_pass_nueva_clave');
+                            var pass_ver = jQuery('#perfil_pass_nueva_clave_confir');
+                            
+                            var obj = {
+                                password_old: pass_old.val(),
+                                password_pri: pass_pri.val(),
+                                password_ver: pass_ver.val(),
+                            };
 
-                var pass_old = jQuery('#perfil_pass_clave_old');
-                var pass_pri = jQuery('#perfil_pass_nueva_clave');
-                var pass_ver = jQuery('#perfil_pass_nueva_clave_confir');
+                            BaseX.post({
+                                url: root + '/usuario/perfil/perfil-cambiar-clave',
+                                data: obj,
+                                success: function (xhr, txtSting) {
 
-//                perfilCambiarClave
-                var obj = {
-                    password_old: pass_old.val(),
-                    password_pri: pass_pri.val(),
-                    password_ver: pass_ver.val(),
-                };
+                                    var _id = parseInt(xhr.id);
 
-                BaseX.post({
-                    url: root + '/usuario/perfil/perfil-cambiar-clave',
-                    data: obj,
-                    success: function (xhr, txtSting) {
-
-                        var _id = parseInt(xhr.id);
-
-                        BaseX.dialogAceptar({
-                            message: xhr.msg,
-                            success: {
-                                callback: function () {
+                                    BaseX.dialogAceptar({
+                                        message: xhr.msg,
+                                        success: {
+                                            callback: function () {
+                                                perfil_row_pass_detail_guardar.prop('disabled', false);
+                                                  if(_id > 0){
+                                                      document.location = _config.url_logout;
+                                                  }
+                                            }
+                                        }
+                                    });
                                     perfil_row_pass_detail_guardar.prop('disabled', false);
-                                      if(_id > 0){
-                                          document.location = _config.url_logout;
-                                      }
                                 }
-                            }
-                        });
-                        perfil_row_pass_detail_guardar.prop('disabled', false);
+                            });
+                        }
                     }
                 });
-
             });
 
             // Cambiar contraseña - Boton cancelar
@@ -122,37 +136,54 @@ function load_menu_datos_usuario(ops) {
 
             perfil_row_correo_guardar.off('click');
             perfil_row_correo_guardar.on('click', function (evt) {
+                bootbox.confirm({
+                    title: '<b>Confirmación</b>',
+                    message: '¿Desea actualizar su correo electr&oacute;nico?',
+                    buttons: {
+                        'cancel': {
+                            label: 'No',
+                            className: 'btn-default pull-left'
+                        },
+                        'confirm': {
+                            label: 'Sí',
+                            className: 'btn-danger pull-right'
+                        }
+                    },
+                    callback: function (result) {
+                        if (result) {
+                            perfil_row_correo_guardar.prop('disabled', true);
 
-                perfil_row_correo_guardar.prop('disabled', true);
+                            var correo_old = jQuery('#perfil_correo_old');
+                            var correo_pri = jQuery('#perfil_correo_nuevo');
+                            var correo_ver = jQuery('#perfil_correo_nuevo_confir');
 
-                var correo_old = jQuery('#perfil_correo_old');
-                var correo_pri = jQuery('#perfil_correo_nuevo');
-                var correo_ver = jQuery('#perfil_correo_nuevo_confir');
+                            var obj = {
+                                correo_old: correo_old.val(),
+                                correo_pri: correo_pri.val(),
+                                correo_ver: correo_ver.val()
+                            };
 
-                var obj = {
-                    correo_old: correo_old.val(),
-                    correo_pri: correo_pri.val(),
-                    correo_ver: correo_ver.val()
-                };
-
-                BaseX.post({
-                    url: root + '/usuario/perfil/perfil-cambiar-correo',
-                    data: obj,
-                    success: function (xhr, txtSting) {
-                        var _id = parseInt(xhr.id);
-                        BaseX.dialogAceptar({
-                            message: xhr.msg,
-                            success: {
-                                callback: function () {
-                                    perfil_row_correo_guardar.prop('disabled', false);
-                                        if(_id > 0){
-                                            //document.location = _config.url_logout;
-                                            document.location.href = root + '/dashboard';
+                            BaseX.post({
+                                url: root + '/usuario/perfil/perfil-cambiar-correo',
+                                data: obj,
+                                success: function (xhr, txtSting) {
+                                    var _id = parseInt(xhr.id);
+                                    BaseX.dialogAceptar({
+                                        message: xhr.msg,
+                                        success: {
+                                            callback: function () {
+                                                perfil_row_correo_guardar.prop('disabled', false);
+                                                    if(_id > 0){
+                                                        load_menu_datos_usuario();
+                                                        document.location.href = root + '/dashboard';
+                                                    }
+                                            }
                                         }
+                                    });
+                                    perfil_row_correo_guardar.prop('disabled', false);
                                 }
-                            }
-                        });
-                        perfil_row_correo_guardar.prop('disabled', false);
+                            });
+                        }
                     }
                 });
             });
@@ -194,37 +225,53 @@ function load_menu_datos_usuario(ops) {
 
             perfil_row_celular_guardar.off('click');
             perfil_row_celular_guardar.on('click', function (evt) {
+                bootbox.confirm({
+                    title: '<b>Confirmación</b>',
+                    message: '¿Desea actualizar su n&uacute;mero de celular?',
+                    buttons: {
+                        'cancel': {
+                            label: 'No',
+                            className: 'btn-default pull-left'
+                        },
+                        'confirm': {
+                            label: 'Sí',
+                            className: 'btn-danger pull-right'
+                        }
+                    },
+                    callback: function (result) {
+                        if (result) {
+                            perfil_row_celular_guardar.prop('disabled', true);
 
-                perfil_row_celular_guardar.prop('disabled', true);
+                            var celular_old = jQuery('#perfil_celular_old');
+                            var celular_pri = jQuery('#perfil_celular_nuevo');
+                            var celular_ver = jQuery('#perfil_celular_nuevo_confir');
 
-                var celular_old = jQuery('#perfil_celular_old');
-                var celular_pri = jQuery('#perfil_celular_nuevo');
-                var celular_ver = jQuery('#perfil_celular_nuevo_confir');
+                            var obj = {
+                                celular_old: celular_old.val(),
+                                celular_pri: celular_pri.val(),
+                                celular_ver: celular_ver.val()
+                            };
 
-                var obj = {
-                    celular_old: celular_old.val(),
-                    celular_pri: celular_pri.val(),
-                    celular_ver: celular_ver.val()
-                };
-
-                BaseX.post({
-                    url: root + '/usuario/perfil/perfil-cambiar-celular',
-                    data: obj,
-                    success: function (xhr, txtSting) {
-                        var _id = parseInt(xhr.id);
-                        BaseX.dialogAceptar({
-                            message: xhr.msg,
-                            success: {
-                                callback: function () {
-                                    perfil_row_celular_guardar.prop('disabled', false);
-                                        if(_id > 0){
-                                            //document.location = _config.url_logout;
-                                            document.location.href = root + '/dashboard';
+                            BaseX.post({
+                                url: root + '/usuario/perfil/perfil-cambiar-celular',
+                                data: obj,
+                                success: function (xhr, txtSting) {
+                                    var _id = parseInt(xhr.id);
+                                    BaseX.dialogAceptar({
+                                        message: xhr.msg,
+                                        success: {
+                                            callback: function () {
+                                                perfil_row_celular_guardar.prop('disabled', false);
+                                                    if(_id > 0){
+                                                        load_menu_datos_usuario();
+                                                    }
+                                            }
                                         }
+                                    });
+                                    perfil_row_celular_guardar.prop('disabled', false);
                                 }
-                            }
-                        });
-                        perfil_row_celular_guardar.prop('disabled', false);
+                            });
+                        }
                     }
                 });
             });
@@ -267,36 +314,55 @@ function load_menu_datos_usuario(ops) {
 
             perfil_row_telefono_guardar.off('click');
             perfil_row_telefono_guardar.on('click', function (evt) {
+                bootbox.confirm({
+                    title: '<b>Confirmación</b>',
+                    message: '¿Desea actualizar su n&uacute;mero de tel&eacute;fono fijo?',
+                    buttons: {
+                        'cancel': {
+                            label: 'No',
+                            className: 'btn-default pull-left'
+                        },
+                        'confirm': {
+                            label: 'Sí',
+                            className: 'btn-danger pull-right'
+                        }
+                    },
+                    callback: function (result) {                        
+                        if (result) {
+                            perfil_row_telefono_guardar.prop('disabled', true);
 
-                perfil_row_telefono_guardar.prop('disabled', true);
-
-                var telefono_old = jQuery('#perfil_telefono_old');
-                var telefono_pri = jQuery('#perfil_telefono_nuevo');
-
-                var obj = {
-                    telefono_old: telefono_old.val(),
-                    telefono_pri: telefono_pri.val()
-                };
-
-                BaseX.post({
-                    url: root + '/usuario/perfil/perfil-cambiar-telefono',
-                    data: obj,
-                    success: function (xhr, txtSting) {
-                        var _id = parseInt(xhr.id);
-                        BaseX.dialogAceptar({
-                            message: xhr.msg,
-                            success: {
-                                callback: function () {
-                                    perfil_row_telefono_guardar.prop('disabled', false);
-                                        if(_id > 0){
-                                            //document.location = _config.url_logout;
+                            var telefono_old = jQuery('#perfil_telefono_old');
+                            var codigo_telefono = jQuery('#perfil_lista_codigo_ciudad');
+                            var telefono = jQuery('#perfil_telefono_nuevo');            
+                            var telefono_pri = codigo_telefono.val()+telefono.val();
+                            
+                            var obj = {
+                                telefono_old: telefono_old.val(),
+                                telefono_pri: telefono_pri
+                            };
+                            
+                            BaseX.post({
+                                url: root + '/usuario/perfil/perfil-cambiar-telefono',
+                                data: obj,
+                                success: function (xhr, txtSting) {
+                                    var _id = parseInt(xhr.id);
+                                    BaseX.dialogAceptar({
+                                        message: xhr.msg,
+                                        success: {
+                                            callback: function () {
+                                                perfil_row_telefono_guardar.prop('disabled', false);
+                                                    if(_id > 0){
+                                                        load_menu_datos_usuario();
+                                                    }
+                                            }
                                         }
+                                    });
+                                    perfil_row_telefono_guardar.prop('disabled', false);
                                 }
-                            }
-                        });
-                        perfil_row_telefono_guardar.prop('disabled', false);
+                            });
+                        }
                     }
-                });
+                });    
             });
 
             perfil_row_telefono_cancelar.off('click');
@@ -336,35 +402,52 @@ function load_menu_datos_usuario(ops) {
             });
 
             perfil_row_celular_alt_guardar.off('click');
-            perfil_row_celular_alt_guardar.on('click', function (evt) {
+            perfil_row_celular_alt_guardar.on('click', function (evt) {                
+                bootbox.confirm({
+                    title: '<b>Confirmación</b>',
+                    message: '¿Desea actualizar su n&uacute;mero de celular alternativo?',
+                    buttons: {
+                        'cancel': {
+                            label: 'No',
+                            className: 'btn-default pull-left'
+                        },
+                        'confirm': {
+                            label: 'Sí',
+                            className: 'btn-danger pull-right'
+                        }
+                    },
+                    callback: function (result) {
+                        if (result) {
+                            perfil_row_celular_alt_guardar.prop('disabled', true);
 
-                perfil_row_celular_alt_guardar.prop('disabled', true);
+                            var celular_alt_old = jQuery('#perfil_celular_alternativo_old');
+                            var celular_alt_pri = jQuery('#perfil_celular_alternativo_nuevo');
 
-                var celular_alt_old = jQuery('#perfil_celular_alternativo_old');
-                var celular_alt_pri = jQuery('#perfil_celular_alternativo_nuevo');
+                            var obj = {
+                                celular_alt_old: celular_alt_old.val(),
+                                celular_alt_pri: celular_alt_pri.val()
+                            };
 
-                var obj = {
-                    celular_alt_old: celular_alt_old.val(),
-                    celular_alt_pri: celular_alt_pri.val()
-                };
-
-                BaseX.post({
-                    url: root + '/usuario/perfil/perfil-cambiar-celular-alt',
-                    data: obj,
-                    success: function (xhr, txtSting) {
-                        var _id = parseInt(xhr.id);
-                        BaseX.dialogAceptar({
-                            message: xhr.msg,
-                            success: {
-                                callback: function () {
-                                    perfil_row_celular_alt_guardar.prop('disabled', false);
-                                        if(_id > 0){
-                                            //document.location = _config.url_logout;
+                            BaseX.post({
+                                url: root + '/usuario/perfil/perfil-cambiar-celular-alt',
+                                data: obj,
+                                success: function (xhr, txtSting) {
+                                    var _id = parseInt(xhr.id);
+                                    BaseX.dialogAceptar({
+                                        message: xhr.msg,
+                                        success: {
+                                            callback: function () {
+                                                perfil_row_celular_alt_guardar.prop('disabled', false);
+                                                    if(_id > 0){
+                                                        load_menu_datos_usuario();
+                                                    }
+                                            }
                                         }
+                                    });
+                                    perfil_row_celular_alt_guardar.prop('disabled', false);
                                 }
-                            }
-                        });
-                        perfil_row_celular_alt_guardar.prop('disabled', false);
+                            });
+                        }
                     }
                 });
             });
@@ -382,13 +465,9 @@ function load_menu_datos_usuario(ops) {
             //== Cambiar Celular Alternativo Usuario - FIN ==//
             //***********************************************//
 
-            /*
-             * ****************************
-             * Perfil de Informacion adicional
-             * ****************************
-             * Correo alternativo
-             *
-             */
+            //**************************************************//
+            //== Cambiar Correo Alternativo Usuario -- INICIO ==//
+            //**************************************************//
 
             var pefil_adicional_btn_cambiar_email = jQuery('#pefil_adicional_btn_cambiar_email');
 
@@ -430,7 +509,7 @@ function load_menu_datos_usuario(ops) {
 
                 bootbox.confirm({
                     title: '<b>Confirmación</b>',
-                    message: 'Desea actualizar su correo electrónico alternativo',
+                    message: '¿Desea actualizar su correo electrónico alternativo?',
                     buttons: {
                         'cancel': {
                             label: 'No',
@@ -477,16 +556,9 @@ function load_menu_datos_usuario(ops) {
 
             });
 
-            /*
-             * ****************************
-             * Perfil de Contacto de Referencia
-             * ****************************
-             * Datos de referencia
-             *
-             */
-
-//            jQuery('#perfil_cambio_nombre_referencia').filter_input({regex: '[a-zA-Z]'});
-//            jQuery('#perfil_cambio_celular_referencia').filter_input({regex: '[0-9]'});
+            //***********************************************//
+            //== Cambiar Correo Alternativo Usuario -- FIN ==//
+            //***********************************************//
 
             var pefil_adicional_ref_btn_cambiar_nombre = jQuery('#pefil_adicional_ref_btn_cambiar_nombre');
 
@@ -528,7 +600,7 @@ function load_menu_datos_usuario(ops) {
 
                 bootbox.confirm({
                     title: '<b>Confirmación</b>',
-                    message: 'Desea actualizar el nombre de contacto de referencia',
+                    message: '¿Desea actualizar el nombre de contacto de referencia?',
                     buttons: {
                         'cancel': {
                             label: 'No',
@@ -618,7 +690,7 @@ function load_menu_datos_usuario(ops) {
 
                 bootbox.confirm({
                     title: '<b>Confirmación</b>',
-                    message: 'Desea actualizar el número de celular de referencia',
+                    message: '¿Desea actualizar el número de celular de referencia?',
                     buttons: {
                         'cancel': {
                             label: 'No',
@@ -707,7 +779,7 @@ function load_menu_datos_usuario(ops) {
 
                 bootbox.confirm({
                     title: '<b>Confirmación</b>',
-                    message: 'Desea actualizar el número de teléfono fijo de referencia',
+                    message: '¿Desea actualizar el número de teléfono fijo de referencia?',
                     buttons: {
                         'cancel': {
                             label: 'No',
