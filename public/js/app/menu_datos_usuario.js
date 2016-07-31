@@ -50,15 +50,15 @@ function load_menu_datos_usuario(ops) {
             perfil_row_pass_detail_guardar.off('click');
             perfil_row_pass_detail_guardar.on('click', function (evt) {
                 bootbox.confirm({
-                    title: '<b>Confirmación</b>',
+                    title: _strings.app.confirmacion.titulo,
                     message: '¿Desea actualizar su contraseña?',
                     buttons: {
                         'cancel': {
-                            label: 'No',
+                            label: _strings.app.confirmacion.opc_cancel,
                             className: 'btn-default pull-left'
                         },
                         'confirm': {
-                            label: 'Sí',
+                            label: _strings.app.confirmacion.opc_confirm,
                             className: 'btn-danger pull-right'
                         }
                     },
@@ -116,8 +116,6 @@ function load_menu_datos_usuario(ops) {
             //**************************************//
 
             var row_cambio_correo = jQuery('#row_cambio_correo');
-            var perfil_ttl_correo = jQuery('#perfil_ttl_correo');
-            var perfil_lbl_correo = jQuery('#perfil_lbl_correo');
             var perfil_btn_cambiar_correo = jQuery('#perfil_btn_cambiar_correo');
             var div_row_cambio_correo = jQuery('#div_row_cambio_correo');
             var perfil_row_correo_cancelar = jQuery('#perfil_row_correo_cancelar');
@@ -127,25 +125,22 @@ function load_menu_datos_usuario(ops) {
             perfil_btn_cambiar_correo.off('click');
             perfil_btn_cambiar_correo.on('click', function (evt) {
                 evt.preventDefault();
-                row_cambio_correo.addClass('row_selected');
-                perfil_ttl_correo.html("Cambiar correo electr&oacute;nico:");
-                perfil_lbl_correo.hide();
-                perfil_btn_cambiar_correo.hide();
+                row_cambio_correo.hide();
                 div_row_cambio_correo.show();
             });
 
             perfil_row_correo_guardar.off('click');
             perfil_row_correo_guardar.on('click', function (evt) {
                 bootbox.confirm({
-                    title: '<b>Confirmación</b>',
+                    title: _strings.app.confirmacion.titulo,
                     message: '¿Desea actualizar su correo electr&oacute;nico?',
                     buttons: {
                         'cancel': {
-                            label: 'No',
+                            label: _strings.app.confirmacion.opc_cancel,
                             className: 'btn-default pull-left'
                         },
                         'confirm': {
-                            label: 'Sí',
+                            label: _strings.app.confirmacion.opc_confirm,
                             className: 'btn-danger pull-right'
                         }
                     },
@@ -190,11 +185,8 @@ function load_menu_datos_usuario(ops) {
 
             perfil_row_correo_cancelar.off('click');
             perfil_row_correo_cancelar.on('click', function (evt) {
-                perfil_ttl_correo.html("Correo electr&oacute;nico:");
-                perfil_lbl_correo.show();
-                perfil_btn_cambiar_correo.show();
+                row_cambio_correo.show();
                 div_row_cambio_correo.hide();
-                row_cambio_correo.removeClass('row_selected');
             });
             //****************************************//
             //== Cambiar Correo Electrónico --- FIN ==//
@@ -205,36 +197,31 @@ function load_menu_datos_usuario(ops) {
             //****************************************//
 
             var row_cambio_celular = jQuery('#row_cambio_celular');
-            var perfil_ttl_celular = jQuery('#perfil_ttl_celular');
-            var perfil_lbl_celular = jQuery('#perfil_lbl_celular');
-            var perfil_btn_cambiar_celular = jQuery('#perfil_btn_cambiar_celular');
+            var perfil_btn_cambiar_celular = jQuery('#perfil_btn_cambiar_celular');            
             var div_row_cambio_celular = jQuery('#div_row_cambio_celular');
             var perfil_row_celular_cancelar = jQuery('#perfil_row_celular_cancelar');
             var perfil_row_celular_guardar = jQuery('#perfil_row_celular_guardar');
-
+            
             div_row_cambio_celular.hide();
             perfil_btn_cambiar_celular.off('click');
             perfil_btn_cambiar_celular.on('click', function (evt) {
                 evt.preventDefault();
-                row_cambio_celular.addClass('row_selected');
-                perfil_ttl_celular.html("Cambiar n&uacute;mero de celular:");
-                perfil_lbl_celular.hide();
-                perfil_btn_cambiar_celular.hide();
+                row_cambio_celular.hide();
                 div_row_cambio_celular.show();
             });
 
             perfil_row_celular_guardar.off('click');
             perfil_row_celular_guardar.on('click', function (evt) {
                 bootbox.confirm({
-                    title: '<b>Confirmación</b>',
+                    title: _strings.app.confirmacion.titulo,
                     message: '¿Desea actualizar su n&uacute;mero de celular?',
                     buttons: {
                         'cancel': {
-                            label: 'No',
+                            label: _strings.app.confirmacion.opc_cancel,
                             className: 'btn-default pull-left'
                         },
                         'confirm': {
-                            label: 'Sí',
+                            label: _strings.app.confirmacion.opc_confirm,
                             className: 'btn-danger pull-right'
                         }
                     },
@@ -278,11 +265,8 @@ function load_menu_datos_usuario(ops) {
 
             perfil_row_celular_cancelar.off('click');
             perfil_row_celular_cancelar.on('click', function (evt) {
-                perfil_ttl_correo.html("N&uacute;mero de celular:");
-                perfil_lbl_correo.show();
-                perfil_btn_cambiar_celular.show();
+                row_cambio_celular.show();
                 div_row_cambio_celular.hide();
-                row_cambio_celular.removeClass('row_selected');
             });
 
             //****************************************//
@@ -294,8 +278,6 @@ function load_menu_datos_usuario(ops) {
             //****************************************//
 
             var row_cambio_telefono = jQuery('#row_cambio_telefono');
-            var perfil_ttl_telefono = jQuery('#perfil_ttl_telefono');
-            var perfil_lbl_telefono = jQuery('#perfil_lbl_telefono');
             var perfil_btn_cambiar_telefono = jQuery('#perfil_btn_cambiar_telefono');
             var div_row_cambio_telefono = jQuery('#div_row_cambio_telefono');
             var perfil_row_telefono_cancelar = jQuery('#perfil_row_telefono_cancelar');
@@ -305,25 +287,22 @@ function load_menu_datos_usuario(ops) {
             perfil_btn_cambiar_telefono.off('click');
             perfil_btn_cambiar_telefono.on('click', function (evt) {
                 evt.preventDefault();
-                row_cambio_telefono.addClass('row_selected');
-                perfil_ttl_telefono.html("Cambiar n&uacute;mero de tel&eacute;fono fijo:");
-                perfil_lbl_telefono.hide();
-                perfil_btn_cambiar_telefono.hide();
+                row_cambio_telefono.hide();
                 div_row_cambio_telefono.show();
             });
 
             perfil_row_telefono_guardar.off('click');
             perfil_row_telefono_guardar.on('click', function (evt) {
                 bootbox.confirm({
-                    title: '<b>Confirmación</b>',
+                    title: _strings.app.confirmacion.titulo,
                     message: '¿Desea actualizar su n&uacute;mero de tel&eacute;fono fijo?',
                     buttons: {
                         'cancel': {
-                            label: 'No',
+                            label: _strings.app.confirmacion.opc_cancel,
                             className: 'btn-default pull-left'
                         },
                         'confirm': {
-                            label: 'Sí',
+                            label: _strings.app.confirmacion.opc_confirm,
                             className: 'btn-danger pull-right'
                         }
                     },
@@ -367,11 +346,8 @@ function load_menu_datos_usuario(ops) {
 
             perfil_row_telefono_cancelar.off('click');
             perfil_row_telefono_cancelar.on('click', function (evt) {
-                perfil_ttl_telefono.html("N&uacute;mero de tel&eacute;fono fijo:");
-                perfil_lbl_telefono.show();
-                perfil_btn_cambiar_telefono.show();
+                row_cambio_telefono.show();
                 div_row_cambio_telefono.hide();
-                row_cambio_telefono.removeClass('row_selected');
             });
 
             //****************************************//
@@ -383,8 +359,6 @@ function load_menu_datos_usuario(ops) {
             //**************************************************//
 
             var row_cambio_celular_alt = jQuery('#row_cambio_celular_alternativo');
-            var perfil_ttl_celular_alt = jQuery('#perfil_ttl_celular_alternativo');
-            var perfil_lbl_celular_alt = jQuery('#perfil_lbl_celular_alternativo');
             var perfil_btn_cambiar_celular_alt = jQuery('#perfil_btn_cambiar_celular_alternativo');
             var div_row_cambio_celular_alt = jQuery('#div_row_cambio_celular_alternativo');
             var perfil_row_celular_alt_cancelar = jQuery('#perfil_row_celular_alternativo_cancelar');
@@ -394,25 +368,22 @@ function load_menu_datos_usuario(ops) {
             perfil_btn_cambiar_celular_alt.off('click');
             perfil_btn_cambiar_celular_alt.on('click', function (evt) {
                 evt.preventDefault();
-                row_cambio_celular_alt.addClass('row_selected');
-                perfil_ttl_celular_alt.html("Cambiar n&uacute;mero de celular alternativo:");
-                perfil_lbl_celular_alt.hide();
-                perfil_btn_cambiar_celular_alt.hide();
+                row_cambio_celular_alt.hide();
                 div_row_cambio_celular_alt.show();
             });
 
             perfil_row_celular_alt_guardar.off('click');
             perfil_row_celular_alt_guardar.on('click', function (evt) {                
                 bootbox.confirm({
-                    title: '<b>Confirmación</b>',
+                    title: _strings.app.confirmacion.titulo,
                     message: '¿Desea actualizar su n&uacute;mero de celular alternativo?',
                     buttons: {
                         'cancel': {
-                            label: 'No',
+                            label: _strings.app.confirmacion.opc_cancel,
                             className: 'btn-default pull-left'
                         },
                         'confirm': {
-                            label: 'Sí',
+                            label: _strings.app.confirmacion.opc_confirm,
                             className: 'btn-danger pull-right'
                         }
                     },
@@ -454,91 +425,61 @@ function load_menu_datos_usuario(ops) {
 
             perfil_row_celular_alt_cancelar.off('click');
             perfil_row_celular_alt_cancelar.on('click', function (evt) {
-                perfil_ttl_celular_alt.html("N&uacute;mero de celular alternativo:");
-                perfil_lbl_celular_alt.show();
-                perfil_btn_cambiar_celular_alt.show();
+                row_cambio_celular_alt.show();
                 div_row_cambio_celular_alt.hide();
-                row_cambio_celular_alt.removeClass('row_selected');
             });
 
             //***********************************************//
             //== Cambiar Celular Alternativo Usuario - FIN ==//
             //***********************************************//
-
+            
             //**************************************************//
-            //== Cambiar Correo Alternativo Usuario -- INICIO ==//
+            //== Cambiar Dirección Usuario ----------- INICIO ==//
             //**************************************************//
 
-            var pefil_adicional_btn_cambiar_email = jQuery('#pefil_adicional_btn_cambiar_email');
+            var row_cambio_direccion = jQuery('#row_cambio_direccion');
+            var perfil_btn_cambiar_direccion = jQuery('#perfil_btn_cambiar_direccion');
+            var div_row_cambio_direccion = jQuery('#div_row_cambio_direccion');
+            var perfil_row_direccion_cancelar = jQuery('#perfil_row_direccion_cancelar');
+            var perfil_row_direccion_guardar = jQuery('#perfil_row_direccion_guardar');
 
-            // Cambio de correo
-            var div_row_cambio_correo_alternativo_in = jQuery('#div_row_cambio_correo_alternativo_in');
-            var div_row_cambio_correo_alternativo = jQuery('#div_row_cambio_correo_alternativo');
-            var row_cambio_correo_alternativo_title = jQuery('#row_cambio_correo_alternativo_title');
-            var perfil_row_pass_correo_alter_cancelar = jQuery('#perfil_row_pass_correo_alter_cancelar');
-
-            div_row_cambio_correo_alternativo.hide();
-            div_row_cambio_correo_alternativo_in.hide();
-            /* Cambio de correo */
-            pefil_adicional_btn_cambiar_email.off('click');
-            pefil_adicional_btn_cambiar_email.on('click', function (evt) {
+            div_row_cambio_direccion.hide();
+            perfil_btn_cambiar_direccion.off('click');
+            perfil_btn_cambiar_direccion.on('click', function (evt) {
                 evt.preventDefault();
-                div_row_cambio_correo_alternativo_in.addClass('row_selected');
-                row_cambio_correo_alternativo_title.hide();
-                pefil_adicional_btn_cambiar_email.hide();
-                div_row_cambio_correo_alternativo.show();
-                div_row_cambio_correo_alternativo_in.show();
+                row_cambio_direccion.hide();
+                div_row_cambio_direccion.show();
             });
 
-            // Cambiar correo alternativo - Boton cancelar
-            perfil_row_pass_correo_alter_cancelar.off('click');
-            perfil_row_pass_correo_alter_cancelar.on('click', function (evt) {
-                div_row_cambio_correo_alternativo_in.removeClass('row_selected');
-                row_cambio_correo_alternativo_title.show();
-                pefil_adicional_btn_cambiar_email.show();
-                div_row_cambio_correo_alternativo.hide();
-                div_row_cambio_correo_alternativo_in.hide();
-            });
-
-            // Cambiar correo alternativo - Boton guardar
-
-            var perfil_row_pass_correo_alter_guardar = jQuery('#perfil_row_pass_correo_alter_guardar');
-
-            perfil_row_pass_correo_alter_guardar.off('click');
-            perfil_row_pass_correo_alter_guardar.on('click', function (evt) {
-
-                var perfil_correo_old = jQuery('#perfil_correo_old');
-                var correo_alternativo = jQuery('#perfil_cambio_correo_alternativo');
-
-                if(perfil_correo_old.val().trim() === correo_alternativo.val().trim()){
-                   jQuery_mensaje('El correo electrónico alternativo debe ser distinto al correo electrónico.');
-                   return false;
-                }
-
+            perfil_row_direccion_guardar.off('click');
+            perfil_row_direccion_guardar.on('click', function (evt) {                
                 bootbox.confirm({
-                    title: '<b>Confirmación</b>',
-                    message: '¿Desea actualizar su correo electrónico alternativo?',
+                    title: _strings.app.confirmacion.titulo,
+                    message: '¿Desea actualizar su direcci&oacute;n?',
                     buttons: {
                         'cancel': {
-                            label: 'No',
+                            label: _strings.app.confirmacion.opc_cancel,
                             className: 'btn-default pull-left'
                         },
                         'confirm': {
-                            label: 'Sí',
+                            label: _strings.app.confirmacion.opc_confirm,
                             className: 'btn-danger pull-right'
                         }
                     },
                     callback: function (result) {
                         if (result) {
+                            perfil_row_direccion_guardar.prop('disabled', true);
 
-                            perfil_row_pass_correo_alter_guardar.prop('disabled', true);
+                            var direccion_old = jQuery('#perfil_direccion_old');
+                            var direccion_pri = jQuery('#perfil_direccion_nuevo');
 
                             var obj = {
-                                correo_alternativo: correo_alternativo.val(),
+                                direccion_old: direccion_old.val(),
+                                direccion_pri: direccion_pri.val()
                             };
 
                             BaseX.post({
-                                url: root + '/usuario/perfil/perfil-cambiar-correo-alternativo',
+                                url: root + '/usuario/perfil/perfil-cambiar-direccion',
                                 data: obj,
                                 success: function (xhr, txtSting) {
                                     var _id = parseInt(xhr.id);
@@ -546,22 +487,212 @@ function load_menu_datos_usuario(ops) {
                                         message: xhr.msg,
                                         success: {
                                             callback: function () {
-                                                perfil_row_pass_correo_alter_guardar.prop('disabled', false);
-                                                  if(_id > 0){
-                                                      load_menu_datos_usuario();
-                                                  }
+                                                perfil_row_direccion_guardar.prop('disabled', false);
+                                                    if(_id > 0){
+                                                        load_menu_datos_usuario();
+                                                    }
                                             }
                                         }
                                     });
-                                    perfil_row_pass_correo_alter_guardar.prop('disabled', false);
+                                    perfil_row_direccion_guardar.prop('disabled', false);
                                 }
                             });
-
                         }
                     }
                 });
-
             });
+
+            perfil_row_direccion_cancelar.off('click');
+            perfil_row_direccion_cancelar.on('click', function (evt) {
+                row_cambio_direccion.show();
+                div_row_cambio_direccion.hide();
+            });
+
+            //***********************************************//
+            //== Cambiar Dirección Usuario ----------- FIN ==//
+            //***********************************************//
+
+            //**************************************************//
+            //== Cambiar Correo Alternativo Usuario -- INICIO ==//
+            //**************************************************//
+            
+            var row_cambio_correo_alt = jQuery('#row_cambio_correo_alternativo');
+            var perfil_btn_cambiar_correo_alt = jQuery('#perfil_btn_cambiar_correo_alternativo');
+            var div_row_cambio_correo_alt = jQuery('#div_row_cambio_correo_alternativo');
+            var perfil_row_correo_alt_cancelar = jQuery('#perfil_row_correo_alternativo_cancelar');
+            var perfil_row_correo_alt_guardar = jQuery('#perfil_row_correo_alternativo_guardar');
+
+            div_row_cambio_correo_alt.hide();
+            perfil_btn_cambiar_correo_alt.off('click');
+            perfil_btn_cambiar_correo_alt.on('click', function (evt) {
+                evt.preventDefault();
+                row_cambio_correo_alt.hide();
+                div_row_cambio_correo_alt.show();
+            });
+
+            perfil_row_correo_alt_guardar.off('click');
+            perfil_row_correo_alt_guardar.on('click', function (evt) {   
+                
+                var perfil_correo_alternativo_old = jQuery('#perfil_correo_alternativo_old');
+                var perfil_correo_alternativo_nuevo = jQuery('#perfil_correo_alternativo_nuevo');
+
+                if(perfil_correo_alternativo_old.val().trim() === perfil_correo_alternativo_nuevo.val().trim()){
+                   jQuery_mensaje('El correo electrónico alternativo debe ser distinto al correo electrónico.');
+                   return false;
+                }
+                
+                bootbox.confirm({
+                    title: _strings.app.confirmacion.titulo,
+                    message: '¿Desea actualizar su correo electr&oacute;nico alternativo?',
+                    buttons: {
+                        'cancel': {
+                            label: _strings.app.confirmacion.opc_cancel,
+                            className: 'btn-default pull-left'
+                        },
+                        'confirm': {
+                            label: _strings.app.confirmacion.opc_confirm,
+                            className: 'btn-danger pull-right'
+                        }
+                    },
+                    callback: function (result) {
+                        if (result) {
+                            perfil_row_correo_alt_guardar.prop('disabled', true);
+
+                            var correo_alt_old = jQuery('#perfil_correo_alternativo_old');
+                            var correo_alt_pri = jQuery('#perfil_correo_alternativo_nuevo');
+
+                            var obj = {
+                                correo_alt_old: correo_alt_old.val(),
+                                correo_alt_pri: correo_alt_pri.val()
+                            };
+
+                            BaseX.post({
+                                url: root + '/usuario/perfil/perfil-cambiar-correo-alt',
+                                data: obj,
+                                success: function (xhr, txtSting) {
+                                    var _id = parseInt(xhr.id);
+                                    BaseX.dialogAceptar({
+                                        message: xhr.msg,
+                                        success: {
+                                            callback: function () {
+                                                perfil_row_correo_alt_guardar.prop('disabled', false);
+                                                    if(_id > 0){
+                                                        load_menu_datos_usuario();
+                                                    }
+                                            }
+                                        }
+                                    });
+                                    perfil_row_correo_alt_guardar.prop('disabled', false);
+                                }
+                            });
+                        }
+                    }
+                });
+            });
+
+            perfil_row_correo_alt_cancelar.off('click');
+            perfil_row_correo_alt_cancelar.on('click', function (evt) {
+                row_cambio_correo_alt.show();
+                div_row_cambio_correo_alt.hide();
+            });
+            
+            
+            
+            /***********************/
+
+//            var pefil_adicional_btn_cambiar_email = jQuery('#pefil_adicional_btn_cambiar_email');
+//
+//            // Cambio de correo
+//            var div_row_cambio_correo_alternativo_in = jQuery('#div_row_cambio_correo_alternativo_in');
+//            var div_row_cambio_correo_alternativo = jQuery('#div_row_cambio_correo_alternativo');
+//            var row_cambio_correo_alternativo_title = jQuery('#row_cambio_correo_alternativo_title');
+//            var perfil_row_pass_correo_alter_cancelar = jQuery('#perfil_row_pass_correo_alter_cancelar');
+//
+//            div_row_cambio_correo_alternativo.hide();
+//            div_row_cambio_correo_alternativo_in.hide();
+//            /* Cambio de correo */
+//            pefil_adicional_btn_cambiar_email.off('click');
+//            pefil_adicional_btn_cambiar_email.on('click', function (evt) {
+//                evt.preventDefault();
+//                div_row_cambio_correo_alternativo_in.addClass('row_selected');
+//                row_cambio_correo_alternativo_title.hide();
+//                pefil_adicional_btn_cambiar_email.hide();
+//                div_row_cambio_correo_alternativo.show();
+//                div_row_cambio_correo_alternativo_in.show();
+//            });
+//
+//            // Cambiar correo alternativo - Boton cancelar
+//            perfil_row_pass_correo_alter_cancelar.off('click');
+//            perfil_row_pass_correo_alter_cancelar.on('click', function (evt) {
+//                div_row_cambio_correo_alternativo_in.removeClass('row_selected');
+//                row_cambio_correo_alternativo_title.show();
+//                pefil_adicional_btn_cambiar_email.show();
+//                div_row_cambio_correo_alternativo.hide();
+//                div_row_cambio_correo_alternativo_in.hide();
+//            });
+//
+//            // Cambiar correo alternativo - Boton guardar
+//
+//            var perfil_row_pass_correo_alter_guardar = jQuery('#perfil_row_pass_correo_alter_guardar');
+//
+//            perfil_row_pass_correo_alter_guardar.off('click');
+//            perfil_row_pass_correo_alter_guardar.on('click', function (evt) {
+//
+//                var perfil_correo_old = jQuery('#perfil_correo_old');
+//                var correo_alternativo = jQuery('#perfil_cambio_correo_alternativo');
+//
+//                if(perfil_correo_old.val().trim() === correo_alternativo.val().trim()){
+//                   jQuery_mensaje('El correo electrónico alternativo debe ser distinto al correo electrónico.');
+//                   return false;
+//                }
+//
+//                bootbox.confirm({
+//                    title: _strings.app.confirmacion.titulo,
+//                    message: '¿Desea actualizar su correo electrónico alternativo?',
+//                    buttons: {
+//                        'cancel': {
+//                            label: _strings.app.confirmacion.opc_cancel,
+//                            className: 'btn-default pull-left'
+//                        },
+//                        'confirm': {
+//                            label: _strings.app.confirmacion.opc_confirm,
+//                            className: 'btn-danger pull-right'
+//                        }
+//                    },
+//                    callback: function (result) {
+//                        if (result) {
+//
+//                            perfil_row_pass_correo_alter_guardar.prop('disabled', true);
+//
+//                            var obj = {
+//                                correo_alternativo: correo_alternativo.val(),
+//                            };
+//
+//                            BaseX.post({
+//                                url: root + '/usuario/perfil/perfil-cambiar-correo-alternativo',
+//                                data: obj,
+//                                success: function (xhr, txtSting) {
+//                                    var _id = parseInt(xhr.id);
+//                                    BaseX.dialogAceptar({
+//                                        message: xhr.msg,
+//                                        success: {
+//                                            callback: function () {
+//                                                perfil_row_pass_correo_alter_guardar.prop('disabled', false);
+//                                                  if(_id > 0){
+//                                                      load_menu_datos_usuario();
+//                                                  }
+//                                            }
+//                                        }
+//                                    });
+//                                    perfil_row_pass_correo_alter_guardar.prop('disabled', false);
+//                                }
+//                            });
+//
+//                        }
+//                    }
+//                });
+//
+//            });
 
             //***********************************************//
             //== Cambiar Correo Alternativo Usuario -- FIN ==//
@@ -614,15 +745,15 @@ function load_menu_datos_usuario(ops) {
             perfil_row_pass_nombre_ref_guardar.on('click', function (evt) {
 
                 bootbox.confirm({
-                    title: '<b>Confirmación</b>',
+                    title: _strings.app.confirmacion.titulo,
                     message: '¿Desea actualizar el nombre de contacto de referencia?',
                     buttons: {
                         'cancel': {
-                            label: 'No',
+                            label: _strings.app.confirmacion.opc_cancel,
                             className: 'btn-default pull-left'
                         },
                         'confirm': {
-                            label: 'Sí',
+                            label: _strings.app.confirmacion.opc_confirm,
                             className: 'btn-danger pull-right'
                         }
                     },
@@ -704,15 +835,15 @@ function load_menu_datos_usuario(ops) {
             perfil_row_pass_celular_ref_guardar.on('click', function (evt) {
 
                 bootbox.confirm({
-                    title: '<b>Confirmación</b>',
+                    title: _strings.app.confirmacion.titulo,
                     message: '¿Desea actualizar el número de celular de referencia?',
                     buttons: {
                         'cancel': {
-                            label: 'No',
+                            label: _strings.app.confirmacion.opc_cancel,
                             className: 'btn-default pull-left'
                         },
                         'confirm': {
-                            label: 'Sí',
+                            label: _strings.app.confirmacion.opc_confirm,
                             className: 'btn-danger pull-right'
                         }
                     },
@@ -806,15 +937,15 @@ function load_menu_datos_usuario(ops) {
                 }
 
                 bootbox.confirm({
-                    title: '<b>Confirmación</b>',
+                    title: _strings.app.confirmacion.titulo,
                     message: '¿Desea actualizar el número de teléfono fijo de referencia?',
                     buttons: {
                         'cancel': {
-                            label: 'No',
+                            label: _strings.app.confirmacion.opc_cancel,
                             className: 'btn-default pull-left'
                         },
                         'confirm': {
-                            label: 'Sí',
+                            label: _strings.app.confirmacion.opc_confirm,
                             className: 'btn-danger pull-right'
                         }
                     },

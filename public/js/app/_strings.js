@@ -10,6 +10,14 @@ var _strings = {
             only_numbers: 'Debe llenar este campo sólo con números.',
             only_letters: 'Debe llenar este campo sólo con letras.',
             required: 'Debe llenar este campo.'
+        },
+        confirmacion: {
+            titulo: '<b>Confirmación</b>',
+            msg_registro: '',
+            msg_actualiza: '',
+            opc_cancel: 'No',
+            opc_confirm: 'Sí'
         }
+        
     }
 }
