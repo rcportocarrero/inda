@@ -435,6 +435,35 @@ function load_menu_datos_usuario(ops) {
             
             //**************************************************//
             //== Cambiar Dirección Usuario ----------- INICIO ==//
+            //**************************************************//<option value="<?php echo $departamento->id; ?>"><?php echo $departamento->descripcion; ?></option>
+
+            //== PROVINCIA ==//    
+            $("#perfil_lista_departamento").change(function () {
+                $.getJSON(root + '/usuario/perfil/cargaprovincia?id_departamento=' + $(this).val(), {format: "json"}, function (md) {
+                    $("#perfil_lista_provincia").html("");
+                    var cmb2 = [];
+                    cmb2.push('<option value="0" selected >--- Seleccione Provincia ---</option>');
+                    $.each(md, function (key, val) {
+                        cmb2.push('<option value="' + val["id"] + '">' + val["descripcion"] + '</option>');
+                    });
+                    $("#perfil_lista_provincia").html(cmb2.join(''));
+                });
+            });
+            
+            //== DISTRITO ==//
+            var departamento = jQuery('#perfil_lista_departamento');
+            $("#perfil_lista_provincia").change(function () {
+                $.getJSON(root + '/usuario/perfil/cargadistrito?id_departamento=' + departamento.val() + '&id_provincia=' + $(this).val(), {format: "json"}, function (md) {
+                    $("#perfil_lista_distrito").html("");
+                    var cmb2 = [];
+                    cmb2.push('<option value="0" selected >--- Seleccione Distrito ---</option>');
+                    $.each(md, function (key, val) {
+                        cmb2.push('<option value="' + val["id"] + '">' + val["descripcion"] + '</option>');
+                    });
+                    $("#perfil_lista_distrito").html(cmb2.join(''));
+                });
+            });
+
             //**************************************************//
 
             var row_cambio_direccion = jQuery('#row_cambio_direccion');
@@ -470,12 +499,18 @@ function load_menu_datos_usuario(ops) {
                         if (result) {
                             perfil_row_direccion_guardar.prop('disabled', true);
 
-                            var direccion_old = jQuery('#perfil_direccion_old');
-                            var direccion_pri = jQuery('#perfil_direccion_nuevo');
+                            var id_departamento = jQuery('#perfil_lista_departamento');
+                            var id_provincia = jQuery('#perfil_lista_provincia');
+                            var id_distrito = jQuery('#perfil_lista_distrito');    
+                            var des_direccion = jQuery('#perfil_direccion_nuevo');
+                            var des_referencia = jQuery('#perfil_referencia_nuevo');
 
                             var obj = {
-                                direccion_old: direccion_old.val(),
-                                direccion_pri: direccion_pri.val()
+                                id_departamento: id_departamento.val(),
+                                id_provincia: id_provincia.val(),
+                                id_distrito: id_distrito.val(),
+                                des_direccion: des_direccion.val(),
+                                des_referencia: des_referencia.val()                                
                             };
 
                             BaseX.post({
