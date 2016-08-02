@@ -205,17 +205,17 @@ a.dropdown-toggle.nav-menu-user {
   margin-bottom: 65px;
 }
 #div_perfil .row_selected {
-  background-color: #428bca;
+  background-color: #098ca6;
   color: #ffffff;
 }
 .died_hr {
-  border-color: #000000;
+  border-color: #777777;
   margin-bottom: 5px;
   margin-top: 5px;
 }
 /* Panel Custom Died */
 .panel-primary .panel-heading {
   background-color: '#ff0000';
-  border-color: '#428bca';
+  border-color: '#098CA6';
   color: '#fff';
 }

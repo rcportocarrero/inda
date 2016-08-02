@@ -118,6 +118,9 @@ $recuperar_config = $this->recuperar_config;
 
                 <input type="hidden" id="hdn_sesion_token" name="hdn_sesion_token" value="<?php echo $this->token_sesion; ?>" />
             </div>-->
+            <div class="col-lg-4 col-md-6 col-sm-12 col-xs-12  text-center">
+                <?php echo utf8_encode($usuario->dias_restantes); ?>
+            </div>
             <div class="col-lg-4 col-md-6 col-sm-12 col-xs-12 text-center">
                 <a id="btn_cerrar_sesion" href="<?php echo $this->url('usuario/sec', array('action' => 'logout')); ?>">Cerrar sesión</a>
             </div>
