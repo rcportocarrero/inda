@@ -21,29 +21,25 @@ function load_menu_datos_usuario(ops) {
             //== Cambiar Contraseña -------- INICIO ==//
             //****************************************//
 
-            var perfil_btn_cambiar_contrasena = jQuery('#perfil_btn_cambiar_contrasena');
-
-            // Cambio de contraseña
-            var div_row_cambio_contrasena = jQuery('#div_row_cambio_contrasena');
+            jQuery('#perfil_pass_clave_old').filter_input({regex:_strings.app.validate.diccionario_clave});
+            jQuery('#perfil_pass_nueva_clave').filter_input({regex:_strings.app.validate.diccionario_clave});
+            jQuery('#perfil_pass_nueva_clave_confir').filter_input({regex:_strings.app.validate.diccionario_clave});
             var row_cambio_contrasena = jQuery('#row_cambio_contrasena');
-            var perfil_row_pass_detail_cancelar = jQuery('#perfil_row_pass_detail_cancelar');
-
+            var perfil_btn_cambiar_contrasena = jQuery('#perfil_btn_cambiar_contrasena');
+            var div_row_cambio_contrasena = jQuery('#div_row_cambio_contrasena');
+            var perfil_row_contrasena_cancelar = jQuery('#perfil_row_pass_cancelar');
+            var perfil_row_contrasena_guardar = jQuery('#perfil_row_pass_guardar');
+            
             div_row_cambio_contrasena.hide();
-            /* Cambio de contraseña */
             perfil_btn_cambiar_contrasena.off('click');
             perfil_btn_cambiar_contrasena.on('click', function (evt) {
                 evt.preventDefault();
-                row_cambio_contrasena.addClass('row_selected');
-                perfil_btn_cambiar_contrasena.hide();
+                row_cambio_contrasena.hide();
                 div_row_cambio_contrasena.show();
             });
-
-            // Cambiar contraseña - Boton guardar
-
-            var perfil_row_pass_detail_guardar = jQuery('#perfil_row_pass_detail_guardar');
-
-            perfil_row_pass_detail_guardar.off('click');
-            perfil_row_pass_detail_guardar.on('click', function (evt) {
+            
+            perfil_row_contrasena_guardar.off('click');
+            perfil_row_contrasena_guardar.on('click', function (evt) {
                 bootbox.confirm({
                     title: _strings.app.confirmacion.titulo,
                     message: '¿Desea actualizar su contraseña?',
@@ -59,7 +55,7 @@ function load_menu_datos_usuario(ops) {
                     },
                     callback: function (result) {
                         if (result) {
-                            perfil_row_pass_detail_guardar.prop('disabled', true);
+                            perfil_row_contrasena_guardar.prop('disabled', true);
 
                             var pass_old = jQuery('#perfil_pass_clave_old');
                             var pass_pri = jQuery('#perfil_pass_nueva_clave');
@@ -70,26 +66,24 @@ function load_menu_datos_usuario(ops) {
                                 password_pri: pass_pri.val(),
                                 password_ver: pass_ver.val(),
                             };
-
+                                                                                    
                             BaseX.post({
                                 url: root + '/usuario/perfil/perfil-cambiar-clave',
                                 data: obj,
                                 success: function (xhr, txtSting) {
-
                                     var _id = parseInt(xhr.id);
-
                                     BaseX.dialogAceptar({
                                         message: xhr.msg,
                                         success: {
                                             callback: function () {
-                                                perfil_row_pass_detail_guardar.prop('disabled', false);
-                                                  if(_id > 0){
-                                                      document.location = _config.url_logout;
-                                                  }
+                                                perfil_row_contrasena_guardar.prop('disabled', false);
+                                                    if(_id > 0){
+                                                        document.location = _config.url_logout;
+                                                    }
                                             }
                                         }
                                     });
-                                    perfil_row_pass_detail_guardar.prop('disabled', false);
+                                    perfil_row_contrasena_guardar.prop('disabled', false);
                                 }
                             });
                         }
@@ -97,14 +91,12 @@ function load_menu_datos_usuario(ops) {
                 });
             });
 
-            // Cambiar contraseña - Boton cancelar
-            perfil_row_pass_detail_cancelar.off('click');
-            perfil_row_pass_detail_cancelar.on('click', function (evt) {
-                perfil_btn_cambiar_contrasena.show();
+            perfil_row_contrasena_cancelar.off('click');
+            perfil_row_contrasena_cancelar.on('click', function (evt) {
+                row_cambio_contrasena.show();
                 div_row_cambio_contrasena.hide();
-                row_cambio_contrasena.removeClass('row_selected');
             });
-            
+                        
             //****************************************//
             //== Cambiar Contraseña ----------- FIN ==//
             //****************************************//
@@ -169,8 +161,7 @@ function load_menu_datos_usuario(ops) {
                                             callback: function () {
                                                 perfil_row_correo_guardar.prop('disabled', false);
                                                     if(_id > 0){
-                                                        load_menu_datos_usuario();
-                                                        document.location.href = root + '/dashboard';
+                                                        load_menu_datos_usuario();                                                        
                                                     }
                                             }
                                         }

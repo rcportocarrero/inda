@@ -28,6 +28,14 @@ body {
   /*content: url(@img_evd);*/
   padding-top: 30px;
 }
+.panel-primary {
+  border-color: #098ca6;
+}
+.panel-primary > .panel-heading {
+  color: #fff;
+  background-color: #098ca6;
+  border-color: #098ca6;
+}
 .img_logo_minedu {
   content: url('../img/logo_ministerio_educacion.gif');
 }
@@ -218,4 +226,11 @@ a.dropdown-toggle.nav-menu-user {
   background-color: '#ff0000';
   border-color: '#098CA6';
   color: '#fff';
+}
+.panel-alert {
+  background-color: #93c5cd;
+  border-color: #93c5cd;
+  color: #ffffff;
+  padding: 10px;
+  border-radius: 5px;
 }
