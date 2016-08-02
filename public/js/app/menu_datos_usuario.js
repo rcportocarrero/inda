@@ -17,20 +17,15 @@ function load_menu_datos_usuario(ops) {
 
             jQuery('#workArea').html(xhr);
 
-            /*
-             * ****************************
-             * Perfil de datos de usuario
-             * ****************************
-             * Datos personales
-             *
-             */
+            //****************************************//
+            //== Cambiar Contraseña -------- INICIO ==//
+            //****************************************//
 
             var perfil_btn_cambiar_contrasena = jQuery('#perfil_btn_cambiar_contrasena');
-            var perfil_adicional_ref_btn_cambiar_num_tel = jQuery('#perfil_adicional_ref_btn_cambiar_num_tel');
 
             // Cambio de contraseña
             var div_row_cambio_contrasena = jQuery('#div_row_cambio_contrasena');
-            var row_cambio_contrasena_title = jQuery('#row_cambio_contrasena_title');
+            var row_cambio_contrasena = jQuery('#row_cambio_contrasena');
             var perfil_row_pass_detail_cancelar = jQuery('#perfil_row_pass_detail_cancelar');
 
             div_row_cambio_contrasena.hide();
@@ -38,7 +33,7 @@ function load_menu_datos_usuario(ops) {
             perfil_btn_cambiar_contrasena.off('click');
             perfil_btn_cambiar_contrasena.on('click', function (evt) {
                 evt.preventDefault();
-                row_cambio_contrasena_title.addClass('row_selected');
+                row_cambio_contrasena.addClass('row_selected');
                 perfil_btn_cambiar_contrasena.hide();
                 div_row_cambio_contrasena.show();
             });
@@ -107,13 +102,16 @@ function load_menu_datos_usuario(ops) {
             perfil_row_pass_detail_cancelar.on('click', function (evt) {
                 perfil_btn_cambiar_contrasena.show();
                 div_row_cambio_contrasena.hide();
-                row_cambio_contrasena_title.removeClass('row_selected');
+                row_cambio_contrasena.removeClass('row_selected');
             });
-            // Fin contraseña Row
+            
+            //****************************************//
+            //== Cambiar Contraseña ----------- FIN ==//
+            //****************************************//
 
-            //**************************************//
-            //--Cambiar Correo Electrónico--INICIO--//
-            //**************************************//
+            //****************************************//
+            //== Cambiar Correo Usuario ---- INICIO ==//
+            //****************************************//
 
             jQuery('#perfil_correo_nuevo').filter_input({regex:_strings.app.validate.diccionario_correo});
             jQuery('#perfil_correo_nuevo_confir').filter_input({regex:_strings.app.validate.diccionario_correo});
