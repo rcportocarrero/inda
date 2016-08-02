@@ -635,7 +635,7 @@ function load_menu_datos_usuario(ops) {
             
             /***********************/
 
-//            var pefil_adicional_btn_cambiar_email = jQuery('#pefil_adicional_btn_cambiar_email');
+//            var perfil_adicional_btn_cambiar_email = jQuery('#perfil_adicional_btn_cambiar_email');
 //
 //            // Cambio de correo
 //            var div_row_cambio_correo_alternativo_in = jQuery('#div_row_cambio_correo_alternativo_in');
@@ -646,12 +646,12 @@ function load_menu_datos_usuario(ops) {
 //            div_row_cambio_correo_alternativo.hide();
 //            div_row_cambio_correo_alternativo_in.hide();
 //            /* Cambio de correo */
-//            pefil_adicional_btn_cambiar_email.off('click');
-//            pefil_adicional_btn_cambiar_email.on('click', function (evt) {
+//            perfil_adicional_btn_cambiar_email.off('click');
+//            perfil_adicional_btn_cambiar_email.on('click', function (evt) {
 //                evt.preventDefault();
 //                div_row_cambio_correo_alternativo_in.addClass('row_selected');
 //                row_cambio_correo_alternativo_title.hide();
-//                pefil_adicional_btn_cambiar_email.hide();
+//                perfil_adicional_btn_cambiar_email.hide();
 //                div_row_cambio_correo_alternativo.show();
 //                div_row_cambio_correo_alternativo_in.show();
 //            });
@@ -661,7 +661,7 @@ function load_menu_datos_usuario(ops) {
 //            perfil_row_pass_correo_alter_cancelar.on('click', function (evt) {
 //                div_row_cambio_correo_alternativo_in.removeClass('row_selected');
 //                row_cambio_correo_alternativo_title.show();
-//                pefil_adicional_btn_cambiar_email.show();
+//                perfil_adicional_btn_cambiar_email.show();
 //                div_row_cambio_correo_alternativo.hide();
 //                div_row_cambio_correo_alternativo_in.hide();
 //            });
@@ -742,7 +742,7 @@ function load_menu_datos_usuario(ops) {
              */
 
             jQuery('#perfil_cambio_nombre_referencia').filter_input({regex:'[a-zA-Z]'});
-            var pefil_adicional_ref_btn_cambiar_nombre = jQuery('#pefil_adicional_ref_btn_cambiar_nombre');
+            var perfil_adicional_ref_btn_cambiar_nombre = jQuery('#perfil_adicional_ref_btn_cambiar_nombre');
 
             // Cambio de nombre
             var div_row_cambio_nombre_referencia_in = jQuery('#div_row_cambio_nombre_referencia_in');
@@ -753,12 +753,12 @@ function load_menu_datos_usuario(ops) {
             div_row_cambio_nombre_referencia.hide();
             div_row_cambio_nombre_referencia_in.hide();
             /* Cambio de nombre */
-            pefil_adicional_ref_btn_cambiar_nombre.off('click');
-            pefil_adicional_ref_btn_cambiar_nombre.on('click', function (evt) {
+            perfil_adicional_ref_btn_cambiar_nombre.off('click');
+            perfil_adicional_ref_btn_cambiar_nombre.on('click', function (evt) {
                 evt.preventDefault();
                 div_row_cambio_nombre_referencia_in.addClass('row_selected');
                 row_cambio_nombre_referencia_title.hide();
-                pefil_adicional_ref_btn_cambiar_nombre.hide();
+                perfil_adicional_ref_btn_cambiar_nombre.hide();
                 div_row_cambio_nombre_referencia.show();
                 div_row_cambio_nombre_referencia_in.show();
             });
@@ -768,7 +768,7 @@ function load_menu_datos_usuario(ops) {
             perfil_row_pass_nombre_ref_cancelar.on('click', function (evt) {
                 div_row_cambio_nombre_referencia_in.removeClass('row_selected');
                 row_cambio_nombre_referencia_title.show();
-                pefil_adicional_ref_btn_cambiar_nombre.show();
+                perfil_adicional_ref_btn_cambiar_nombre.show();
                 div_row_cambio_nombre_referencia.hide();
                 div_row_cambio_nombre_referencia_in.hide();
             });
@@ -831,7 +831,7 @@ function load_menu_datos_usuario(ops) {
 
             /*********************************************************/
             jQuery('#perfil_cambio_celular_referencia').filter_input({regex: '[0-9]'});
-            var pefil_adicional_ref_btn_cambiar_num_cel = jQuery('#pefil_adicional_ref_btn_cambiar_num_cel');
+            var perfil_adicional_ref_btn_cambiar_num_cel = jQuery('#perfil_adicional_ref_btn_cambiar_num_cel');
 
             // Cambio de celular
             var div_row_cambio_celular_referencia_in = jQuery('#div_row_cambio_celular_referencia_in');
@@ -842,12 +842,12 @@ function load_menu_datos_usuario(ops) {
             div_row_cambio_celular_referencia.hide();
             div_row_cambio_celular_referencia_in.hide();
             /* Cambio de celular */
-            pefil_adicional_ref_btn_cambiar_num_cel.off('click');
-            pefil_adicional_ref_btn_cambiar_num_cel.on('click', function (evt) {
+            perfil_adicional_ref_btn_cambiar_num_cel.off('click');
+            perfil_adicional_ref_btn_cambiar_num_cel.on('click', function (evt) {
                 evt.preventDefault();
                 div_row_cambio_celular_referencia_in.addClass('row_selected');
                 row_cambio_celular_referencia_title.hide();
-                pefil_adicional_ref_btn_cambiar_num_cel.hide();
+                perfil_adicional_ref_btn_cambiar_num_cel.hide();
                 div_row_cambio_celular_referencia.show();
                 div_row_cambio_celular_referencia_in.show();
             });
@@ -857,7 +857,7 @@ function load_menu_datos_usuario(ops) {
             perfil_row_pass_celular_ref_cancelar.on('click', function (evt) {
                 div_row_cambio_celular_referencia_in.removeClass('row_selected');
                 row_cambio_celular_referencia_title.show();
-                pefil_adicional_ref_btn_cambiar_num_cel.show();
+                perfil_adicional_ref_btn_cambiar_num_cel.show();
                 div_row_cambio_celular_referencia.hide();
                 div_row_cambio_celular_referencia_in.hide();
             });
@@ -920,7 +920,7 @@ function load_menu_datos_usuario(ops) {
 
             /*********************************************************/
             jQuery('#perfil_cambio_telefono_referencia').filter_input({regex: '[0-9]'});
-            var pefil_adicional_ref_btn_cambiar_num_tel = jQuery('#pefil_adicional_ref_btn_cambiar_num_tel');
+            var perfil_adicional_ref_btn_cambiar_num_tel = jQuery('#perfil_adicional_ref_btn_cambiar_num_tel');
 
             // Cambio de telefono fijo referencia
             var div_row_cambio_telefono_referencia_in = jQuery('#div_row_cambio_telefono_referencia_in');
@@ -931,12 +931,12 @@ function load_menu_datos_usuario(ops) {
             div_row_cambio_telefono_referencia.hide();
             div_row_cambio_telefono_referencia_in.hide();
             /* Cambio de telefono fijo referencia */
-            pefil_adicional_ref_btn_cambiar_num_tel.off('click');
-            pefil_adicional_ref_btn_cambiar_num_tel.on('click', function (evt) {
+            perfil_adicional_ref_btn_cambiar_num_tel.off('click');
+            perfil_adicional_ref_btn_cambiar_num_tel.on('click', function (evt) {
                 evt.preventDefault();
                 div_row_cambio_telefono_referencia_in.addClass('row_selected');
                 row_cambio_telefono_referencia_title.hide();
-                pefil_adicional_ref_btn_cambiar_num_tel.hide();
+                perfil_adicional_ref_btn_cambiar_num_tel.hide();
                 div_row_cambio_telefono_referencia.show();
                 div_row_cambio_telefono_referencia_in.show();
             });
@@ -946,7 +946,7 @@ function load_menu_datos_usuario(ops) {
             perfil_row_pass_telefono_ref_cancelar.on('click', function (evt) {
                 div_row_cambio_telefono_referencia_in.removeClass('row_selected');
                 row_cambio_telefono_referencia_title.show();
-                pefil_adicional_ref_btn_cambiar_num_tel.show();
+                perfil_adicional_ref_btn_cambiar_num_tel.show();
                 div_row_cambio_telefono_referencia.hide();
                 div_row_cambio_telefono_referencia_in.hide();
             });
