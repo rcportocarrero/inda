@@ -115,6 +115,8 @@ function load_menu_datos_usuario(ops) {
             //--Cambiar Correo Electrónico--INICIO--//
             //**************************************//
 
+            jQuery('#perfil_correo_nuevo').filter_input({regex:_strings.app.validate.diccionario_correo});
+            jQuery('#perfil_correo_nuevo_confir').filter_input({regex:_strings.app.validate.diccionario_correo});
             var row_cambio_correo = jQuery('#row_cambio_correo');
             var perfil_btn_cambiar_correo = jQuery('#perfil_btn_cambiar_correo');
             var div_row_cambio_correo = jQuery('#div_row_cambio_correo');
@@ -196,7 +198,7 @@ function load_menu_datos_usuario(ops) {
             //== Cambiar Celular Usuario --- INICIO ==//
             //****************************************//
 
-            jQuery('#perfil_celular_nuevo').filter_input({regex: '[0-9]'});
+            jQuery('#perfil_celular_nuevo').filter_input({regex:_strings.app.validate.diccionario_numeros});
             var row_cambio_celular = jQuery('#row_cambio_celular');
             var perfil_btn_cambiar_celular = jQuery('#perfil_btn_cambiar_celular');            
             var div_row_cambio_celular = jQuery('#div_row_cambio_celular');
@@ -276,7 +278,7 @@ function load_menu_datos_usuario(ops) {
             //== Cambiar Telefono Usuario -- INICIO ==//
             //****************************************//
 
-            jQuery('#perfil_telefono_nuevo').filter_input({regex: '[0-9]'});
+            jQuery('#perfil_telefono_nuevo').filter_input({regex:_strings.app.validate.diccionario_numeros});
             var row_cambio_telefono = jQuery('#row_cambio_telefono');
             var perfil_btn_cambiar_telefono = jQuery('#perfil_btn_cambiar_telefono');
             var div_row_cambio_telefono = jQuery('#div_row_cambio_telefono');
@@ -310,16 +312,14 @@ function load_menu_datos_usuario(ops) {
                         if (result) {
                             perfil_row_telefono_guardar.prop('disabled', true);
 
-                            var telefono_old = jQuery('#perfil_telefono_old');
                             var codigo_telefono = jQuery('#perfil_lista_codigo_ciudad');
-                            var telefono = jQuery('#perfil_telefono_nuevo');            
-                            var telefono_pri = codigo_telefono.val()+telefono.val();
-                            
+                            var telefono = jQuery('#perfil_telefono_nuevo');         
+
                             var obj = {
-                                telefono_old: telefono_old.val(),
-                                telefono_pri: telefono_pri
+                                codigo_telefono: codigo_telefono.val(),
+                                telefono: telefono.val()
                             };
-                            
+
                             BaseX.post({
                                 url: root + '/usuario/perfil/perfil-cambiar-telefono',
                                 data: obj,
@@ -358,7 +358,7 @@ function load_menu_datos_usuario(ops) {
             //== Cambiar Celular Alternativo Usuario - INICIO ==//
             //**************************************************//
 
-            jQuery('#perfil_celular_alternativo_nuevo').filter_input({regex: '[0-9]'});
+            jQuery('#perfil_celular_alternativo_nuevo').filter_input({regex:_strings.app.validate.diccionario_numeros});
             var row_cambio_celular_alt = jQuery('#row_cambio_celular_alternativo');
             var perfil_btn_cambiar_celular_alt = jQuery('#perfil_btn_cambiar_celular_alternativo');
             var div_row_cambio_celular_alt = jQuery('#div_row_cambio_celular_alternativo');
@@ -467,6 +467,8 @@ function load_menu_datos_usuario(ops) {
 
             //**************************************************//
 
+            jQuery('#perfil_direccion_nuevo').filter_input({regex:_strings.app.validate.diccionario_direccion});
+            jQuery('#perfil_referencia_nuevo').filter_input({regex:_strings.app.validate.diccionario_direccion});
             var row_cambio_direccion = jQuery('#row_cambio_direccion');
             var perfil_btn_cambiar_direccion = jQuery('#perfil_btn_cambiar_direccion');
             var div_row_cambio_direccion = jQuery('#div_row_cambio_direccion');
@@ -552,6 +554,7 @@ function load_menu_datos_usuario(ops) {
             //== Cambiar Correo Alternativo Usuario -- INICIO ==//
             //**************************************************//
             
+            jQuery('#perfil_correo_alternativo_nuevo').filter_input({regex:_strings.app.validate.diccionario_correo});
             var row_cambio_correo_alt = jQuery('#row_cambio_correo_alternativo');
             var perfil_btn_cambiar_correo_alt = jQuery('#perfil_btn_cambiar_correo_alternativo');
             var div_row_cambio_correo_alt = jQuery('#div_row_cambio_correo_alternativo');
@@ -640,7 +643,7 @@ function load_menu_datos_usuario(ops) {
             //== Cambiar Nombre Referencia Usuario --- INICIO ==//
             //**************************************************//
             
-            jQuery('#perfil_nombre_referencia_nuevo').filter_input({regex:'[a-zA-Z]'});
+            jQuery('#perfil_nombre_referencia_nuevo').filter_input({regex:_strings.app.validate.diccionario_nombres});
             var row_cambio_nombre_ref = jQuery('#row_cambio_nombre_referencia');
             var perfil_btn_cambiar_nombre_ref = jQuery('#perfil_btn_cambiar_nombre_referencia');
             var div_row_cambio_nombre_ref = jQuery('#div_row_cambio_nombre_referencia');
@@ -718,7 +721,7 @@ function load_menu_datos_usuario(ops) {
             //== Cambiar Celular Referencia Usuario -- INICIO ==//
             //**************************************************//
 
-            jQuery('#perfil_celular_referencia_nuevo').filter_input({regex:'[0-9]'});
+            jQuery('#perfil_celular_referencia_nuevo').filter_input({regex:_strings.app.validate.diccionario_numeros});
             var row_cambio_celular_ref = jQuery('#row_cambio_celular_referencia');
             var perfil_btn_cambiar_celular_ref = jQuery('#perfil_btn_cambiar_celular_referencia');
             var div_row_cambio_celular_ref = jQuery('#div_row_cambio_celular_referencia');
@@ -796,7 +799,7 @@ function load_menu_datos_usuario(ops) {
             //== Cambiar Telefono Referencia Usuario - INICIO ==//
             //**************************************************//
 
-            jQuery('#perfil_telefono_referencia_nuevo').filter_input({regex:'[0-9]'});
+            jQuery('#perfil_telefono_referencia_nuevo').filter_input({regex:_strings.app.validate.diccionario_numeros});
             var row_cambio_telefono_ref = jQuery('#row_cambio_telefono_referencia');
             var perfil_btn_cambiar_telefono_ref = jQuery('#perfil_btn_cambiar_telefono_referencia');
             var div_row_cambio_telefono_ref = jQuery('#div_row_cambio_telefono_referencia');
@@ -832,10 +835,12 @@ function load_menu_datos_usuario(ops) {
 
                             var codigo_telefono_ref = jQuery('#perfil_lista_codigo_ciudad_referencia');
                             var telefono_ref = jQuery('#perfil_telefono_referencia_nuevo');         
-                            var telefono_ref_pri = codigo_telefono_ref.val()+telefono_ref.val();
+                            //var telefono_ref_pri = codigo_telefono_ref.val()+' - '+telefono_ref.val();
 
                             var obj = {
-                                telefono_ref_pri: telefono_ref_pri.val()
+                                codigo_telefono_ref: codigo_telefono_ref.val(),
+                                telefono_ref: telefono_ref.val()
+                                //telefono_ref_pri: telefono_ref_pri
                             };
                             
                             BaseX.post({
@@ -864,6 +869,7 @@ function load_menu_datos_usuario(ops) {
 
             perfil_row_telefono_ref_cancelar.off('click');
             perfil_row_telefono_ref_cancelar.on('click', function (evt) {
+                $("#perfil_telefono_referencia_nuevo").html("");
                 row_cambio_telefono_ref.show();
                 div_row_cambio_telefono_ref.hide();
             });

@@ -55,6 +55,7 @@ return [
             'ultimas_claves' => 1,
             'diccionario_clave' => 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuwxyz1234567890@)(',
             'diccionario_correo' => 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuwxyz1234567890.-_@',
+            'diccionario_numeros' => '0123456789',
             'templates' => [
                 'template_cambio_clave_id' => 12, //  ID del Template de Email
                 'template_cambio_correo_id' => 14, //  ID del Template de Email
