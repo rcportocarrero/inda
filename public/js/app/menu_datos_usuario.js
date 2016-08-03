@@ -191,10 +191,13 @@ function load_menu_datos_usuario(ops) {
             var row_cambio_celular = jQuery('#row_cambio_celular');
             var perfil_btn_cambiar_celular = jQuery('#perfil_btn_cambiar_celular');            
             var div_row_cambio_celular = jQuery('#div_row_cambio_celular');
+            var div_cambio_celular = jQuery('#div_cambio_celular');
+            var div_cambio_celular_confirma = jQuery('#div_cambio_celular_confirma');
             var perfil_row_celular_cancelar = jQuery('#perfil_row_celular_cancelar');
             var perfil_row_celular_guardar = jQuery('#perfil_row_celular_guardar');
             
             div_row_cambio_celular.hide();
+            div_cambio_celular_confirma.hide();
             perfil_btn_cambiar_celular.off('click');
             perfil_btn_cambiar_celular.on('click', function (evt) {
                 evt.preventDefault();
@@ -240,7 +243,9 @@ function load_menu_datos_usuario(ops) {
                                             callback: function () {
                                                 perfil_row_celular_guardar.prop('disabled', false);
                                                     if(_id > 0){
-                                                        load_menu_datos_usuario();
+                                                        //load_menu_datos_usuario();
+                                                        div_cambio_celular.hide();
+                                                        div_cambio_celular_confirma.show();
                                                     }
                                             }
                                         }
@@ -257,6 +262,40 @@ function load_menu_datos_usuario(ops) {
             perfil_row_celular_cancelar.on('click', function (evt) {
                 row_cambio_celular.show();
                 div_row_cambio_celular.hide();
+            });
+            
+            //****************************************//
+            
+            jQuery('#perfil_codigo_valcel').filter_input({regex:_strings.app.validate.diccionario_numeros});
+            var perfil_row_celular_confirmar = jQuery('#perfil_row_celular_confirmar');
+            
+            perfil_row_celular_confirmar.off('click');
+            perfil_row_celular_confirmar.on('click', function (evt) {
+                perfil_row_celular_confirmar.prop('disabled', true);
+
+                var codigo_valcel = jQuery('#perfil_codigo_valcel');
+                var obj = {
+                    codigo_valcel: codigo_valcel.val()
+                };
+                BaseX.post({
+                    url: root + '/usuario/perfil/validar-codigo-celular',
+                    data: obj,
+                    success: function (xhr, txtSting) {
+                        var _id = parseInt(xhr.id);
+                        BaseX.dialogAceptar({
+                            message: xhr.msg,
+                            success: {
+                                callback: function () {
+                                    perfil_row_celular_confirmar.prop('disabled', false);
+                                        if(_id > 0){
+                                            load_menu_datos_usuario();                                            
+                                        }
+                                }
+                            }
+                        });
+                        perfil_row_celular_confirmar.prop('disabled', false);
+                    }
+                });
             });
 
             //****************************************//
