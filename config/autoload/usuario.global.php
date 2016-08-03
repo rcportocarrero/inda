@@ -40,7 +40,7 @@ return [
                 'sms' => true
             ],
             'templates' => [
-                'template_email_id' => 1, //  ID del Template de Emaile App
+                'template_email_id' => 11, //  ID del Template de Emaile App
                 'template_recuperacion_id' => 11, //  ID del Template de Email
                 'template_cambio_clave_id' => 12, //  ID del Template de Email
                 'template_cambio_correo_id' => 14, //  ID del Template de Email
@@ -66,7 +66,8 @@ return [
             'caracteres_min_dni' => 8,
             'caracteres_max_dni' => 12,  
             'caracteres_long_celular' => 9,
-            'caracteres_long_telefono' => 9,
+            'caracteres_min_telefono' => 5,
+            'caracteres_max_telefono' => 7,
             'correo_confirmacion_cclave' => true,
             'correo_confirmacion_ccorreo' => true,
         ]
