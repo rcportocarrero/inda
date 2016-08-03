@@ -66,8 +66,11 @@ return [
             'caracteres_min_dni' => 8,
             'caracteres_max_dni' => 12,  
             'caracteres_long_celular' => 9,
-            'caracteres_min_telefono' => 5,
+            'caracteres_long_valcel' => 6,
+            'caracteres_min_telefono' => 6,
             'caracteres_max_telefono' => 7,
+            'caracteres_max_direccion' => 250,
+            'caracteres_max_nombre' => 250,
             'correo_confirmacion_cclave' => true,
             'correo_confirmacion_ccorreo' => true,
         ]
