@@ -93,6 +93,9 @@ function load_menu_datos_usuario(ops) {
 
             perfil_row_contrasena_cancelar.off('click');
             perfil_row_contrasena_cancelar.on('click', function (evt) {
+                jQuery('#perfil_pass_clave_old').val('');
+                jQuery('#perfil_pass_nueva_clave').val('');
+                jQuery('#perfil_pass_nueva_clave_confir').val('');
                 row_cambio_contrasena.show();
                 div_row_cambio_contrasena.hide();
             });
@@ -176,6 +179,8 @@ function load_menu_datos_usuario(ops) {
 
             perfil_row_correo_cancelar.off('click');
             perfil_row_correo_cancelar.on('click', function (evt) {
+                jQuery('#perfil_correo_nuevo').val('');
+                jQuery('#perfil_correo_nuevo_confir').val('');
                 row_cambio_correo.show();
                 div_row_cambio_correo.hide();
             });
@@ -260,6 +265,7 @@ function load_menu_datos_usuario(ops) {
 
             perfil_row_celular_cancelar.off('click');
             perfil_row_celular_cancelar.on('click', function (evt) {
+                jQuery('#perfil_celular_nuevo').val('');
                 row_cambio_celular.show();
                 div_row_cambio_celular.hide();
             });
@@ -374,6 +380,8 @@ function load_menu_datos_usuario(ops) {
 
             perfil_row_telefono_cancelar.off('click');
             perfil_row_telefono_cancelar.on('click', function (evt) {
+                jQuery('#perfil_lista_codigo_ciudad option').eq(0).prop('selected', true);
+                jQuery('#perfil_telefono_nuevo').val('');
                 row_cambio_telefono.show();
                 div_row_cambio_telefono.hide();
             });
@@ -454,6 +462,7 @@ function load_menu_datos_usuario(ops) {
 
             perfil_row_celular_alt_cancelar.off('click');
             perfil_row_celular_alt_cancelar.on('click', function (evt) {
+                jQuery('#perfil_celular_alternativo_nuevo').val('');
                 row_cambio_celular_alt.show();
                 div_row_cambio_celular_alt.hide();
             });
@@ -570,6 +579,11 @@ function load_menu_datos_usuario(ops) {
 
             perfil_row_direccion_cancelar.off('click');
             perfil_row_direccion_cancelar.on('click', function (evt) {
+                jQuery('#perfil_lista_departamento option').eq(0).prop('selected', true);
+                jQuery('#perfil_lista_provincia option').eq(0).prop('selected', true);
+                jQuery('#perfil_lista_distrito option').eq(0).prop('selected', true);
+                jQuery('#perfil_direccion_nuevo').val('');
+                jQuery('#perfil_referencia_nuevo').val('');
                 row_cambio_direccion.show();
                 div_row_cambio_direccion.hide();
             });
@@ -659,6 +673,7 @@ function load_menu_datos_usuario(ops) {
 
             perfil_row_correo_alt_cancelar.off('click');
             perfil_row_correo_alt_cancelar.on('click', function (evt) {
+                jQuery('#perfil_correo_alternativo_nuevo').val('');
                 row_cambio_correo_alt.show();
                 div_row_cambio_correo_alt.hide();
             });
@@ -737,6 +752,7 @@ function load_menu_datos_usuario(ops) {
 
             perfil_row_nombre_ref_cancelar.off('click');
             perfil_row_nombre_ref_cancelar.on('click', function (evt) {
+                jQuery('#perfil_nombre_referencia_nuevo').val('');
                 row_cambio_nombre_ref.show();
                 div_row_cambio_nombre_ref.hide();
             });
@@ -815,6 +831,7 @@ function load_menu_datos_usuario(ops) {
 
             perfil_row_celular_ref_cancelar.off('click');
             perfil_row_celular_ref_cancelar.on('click', function (evt) {
+                jQuery('#perfil_celular_referencia_nuevo').val('');
                 row_cambio_celular_ref.show();
                 div_row_cambio_celular_ref.hide();
             });
@@ -863,12 +880,10 @@ function load_menu_datos_usuario(ops) {
 
                             var codigo_telefono_ref = jQuery('#perfil_lista_codigo_ciudad_referencia');
                             var telefono_ref = jQuery('#perfil_telefono_referencia_nuevo');         
-                            //var telefono_ref_pri = codigo_telefono_ref.val()+' - '+telefono_ref.val();
 
                             var obj = {
                                 codigo_telefono_ref: codigo_telefono_ref.val(),
                                 telefono_ref: telefono_ref.val()
-                                //telefono_ref_pri: telefono_ref_pri
                             };
                             
                             BaseX.post({
@@ -897,7 +912,8 @@ function load_menu_datos_usuario(ops) {
 
             perfil_row_telefono_ref_cancelar.off('click');
             perfil_row_telefono_ref_cancelar.on('click', function (evt) {
-                $("#perfil_telefono_referencia_nuevo").html("");
+                jQuery('#perfil_lista_codigo_ciudad_referencia option').eq(0).prop('selected', true);
+                jQuery('#perfil_telefono_referencia_nuevo').val('');
                 row_cambio_telefono_ref.show();
                 div_row_cambio_telefono_ref.hide();
             });
