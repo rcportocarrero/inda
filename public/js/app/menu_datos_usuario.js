@@ -617,8 +617,8 @@ function load_menu_datos_usuario(ops) {
                 var perfil_correo_alternativo_old = jQuery('#perfil_correo_alternativo_old');
                 var perfil_correo_alternativo_nuevo = jQuery('#perfil_correo_alternativo_nuevo');
 
-                if(perfil_correo_alternativo_old.val().trim() === perfil_correo_alternativo_nuevo.val().trim()){
-                   jQuery_mensaje('El correo electrónico alternativo debe ser distinto al correo electrónico.');
+                if(perfil_correo_alternativo_old.val() === perfil_correo_alternativo_nuevo.val()){
+                   jQuery_mensaje('El correo electrónico alternativo debe ser distinto al actual.');
                    return false;
                 }
                 
