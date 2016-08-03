@@ -228,9 +228,11 @@ a.dropdown-toggle.nav-menu-user {
   color: '#fff';
 }
 .panel-alert {
-  background-color: #93c5cd;
-  border-color: #93c5cd;
-  color: #ffffff;
+  background-color: #ffffff;
+  border-color: #098ca6;
+  color: #777777;
   padding: 10px;
   border-radius: 5px;
+  border-style: solid;
+  border-width: 2px;
 }
