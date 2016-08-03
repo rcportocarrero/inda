@@ -518,6 +518,32 @@ function load_menu_datos_usuario(ops) {
                 evt.preventDefault();
                 row_cambio_direccion.hide();
                 div_row_cambio_direccion.show();
+                
+                var id_departamento = jQuery('#id_departamento').val();
+                var id_provincia = jQuery('#id_provincia').val();
+                var id_distrito = jQuery('#id_distrito').val();
+            
+                jQuery('#perfil_lista_departamento option').eq(parseInt(id_departamento)).prop('selected', true);
+                $.getJSON(root + '/usuario/perfil/cargaprovincia?id_departamento=' + id_departamento, {format: "json"}, function (md) {
+                    $("#perfil_lista_provincia").html("");
+                    var cmb2 = [];
+                    cmb2.push('<option value="0" >--- Seleccione Provincia ---</option>');
+                    $.each(md, function (key, val) {
+                        cmb2.push('<option value="' + val["id"] + '">' + val["descripcion"] + '</option>');
+                    });
+                    $("#perfil_lista_provincia").html(cmb2.join(''));
+                });
+                jQuery('#perfil_lista_provincia option').eq(parseInt(id_provincia)).prop('selected', true);                
+                $.getJSON(root + '/usuario/perfil/cargadistrito?id_departamento=' + id_departamento + '&id_provincia=' + id_provincia, {format: "json"}, function (md) {
+                    $("#perfil_lista_distrito").html("");
+                    var cmb2 = [];
+                    cmb2.push('<option value="0" >--- Seleccione Distrito ---</option>');
+                    $.each(md, function (key, val) {
+                        cmb2.push('<option value="' + val["id"] + '">' + val["descripcion"] + '</option>');
+                    });
+                    $("#perfil_lista_distrito").html(cmb2.join(''));
+                });
+                jQuery('#perfil_lista_distrito option').eq(parseInt(id_distrito)).prop('selected', true);
             });
 
             perfil_row_direccion_guardar.off('click');
@@ -579,11 +605,11 @@ function load_menu_datos_usuario(ops) {
 
             perfil_row_direccion_cancelar.off('click');
             perfil_row_direccion_cancelar.on('click', function (evt) {
-                jQuery('#perfil_lista_departamento option').eq(0).prop('selected', true);
-                jQuery('#perfil_lista_provincia option').eq(0).prop('selected', true);
-                jQuery('#perfil_lista_distrito option').eq(0).prop('selected', true);
-                jQuery('#perfil_direccion_nuevo').val('');
-                jQuery('#perfil_referencia_nuevo').val('');
+//                jQuery('#perfil_lista_departamento option').eq(0).prop('selected', true);
+//                jQuery('#perfil_lista_provincia option').eq(0).prop('selected', true);
+//                jQuery('#perfil_lista_distrito option').eq(0).prop('selected', true);
+//                jQuery('#perfil_direccion_nuevo').val('');
+//                jQuery('#perfil_referencia_nuevo').val('');
                 row_cambio_direccion.show();
                 div_row_cambio_direccion.hide();
             });
