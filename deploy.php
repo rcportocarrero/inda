@@ -7,8 +7,8 @@ require 'recipe/zend_framework.php';
 define('APP_DIR', '/var/www/html/died/died_base_app');
 define('SERVER', 'diedds.com');
 define('PORT', '22');
-define('USER', 'developer');
-define('PASS', 'D3v3l0p3r$***$M1n3Du2016');
+define('USER', 'www-data');
+define('PASS', 'mayolo777');
 define('APP_REPO', 'git@git.diedds.com:sing88/died_base_app.git');
 
 server('prod', SERVER, PORT)
