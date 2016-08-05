@@ -236,3 +236,9 @@ a.dropdown-toggle.nav-menu-user {
   border-style: solid;
   border-width: 2px;
 }
+.form-horizontal .control-label {
+  text-align: left;
+}
+.form-control {
+  text-transform: uppercase;
+}
