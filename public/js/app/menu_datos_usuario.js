@@ -315,6 +315,7 @@ function load_menu_datos_usuario(ops) {
             jQuery('#perfil_telefono_nuevo').filter_input({regex:_strings.app.validate.diccionario_numeros});
             var row_cambio_telefono = jQuery('#row_cambio_telefono');
             var perfil_btn_cambiar_telefono = jQuery('#perfil_btn_cambiar_telefono');
+            var perfil_btn_eliminar_telefono = jQuery('#perfil_btn_eliminar_telefono');
             var div_row_cambio_telefono = jQuery('#div_row_cambio_telefono');
             var perfil_row_telefono_cancelar = jQuery('#perfil_row_telefono_cancelar');
             var perfil_row_telefono_guardar = jQuery('#perfil_row_telefono_guardar');
@@ -325,6 +326,47 @@ function load_menu_datos_usuario(ops) {
                 evt.preventDefault();
                 row_cambio_telefono.hide();
                 div_row_cambio_telefono.show();
+            });
+            
+            perfil_btn_eliminar_telefono.off('click');
+            perfil_btn_eliminar_telefono.on('click', function (evt) {
+                bootbox.confirm({
+                    title: _strings.app.confirmacion.titulo,
+                    message: '¿Desea eliminar su n&uacute;mero de tel&eacute;fono fijo?',
+                    buttons: {
+                        'cancel': {
+                            label: _strings.app.confirmacion.opc_cancel,
+                            className: 'btn-default pull-left'
+                        },
+                        'confirm': {
+                            label: _strings.app.confirmacion.opc_confirm,
+                            className: 'btn-danger pull-right'
+                        }
+                    },
+                    callback: function (result) {                        
+                        if (result) {
+                            perfil_btn_eliminar_telefono.prop('disabled', true);        
+                            BaseX.post({
+                                url: root + '/usuario/perfil/perfil-eliminar-telefono',
+                                success: function (xhr, txtSting) {
+                                    var _id = parseInt(xhr.id);
+                                    BaseX.dialogAceptar({
+                                        message: xhr.msg,
+                                        success: {
+                                            callback: function () {
+                                                perfil_btn_eliminar_telefono.prop('disabled', false);
+                                                    if(_id > 0){
+                                                        load_menu_datos_usuario();
+                                                    }
+                                            }
+                                        }
+                                    });
+                                    perfil_btn_eliminar_telefono.prop('disabled', false);
+                                }
+                            });
+                        }
+                    }
+                });    
             });
 
             perfil_row_telefono_guardar.off('click');
@@ -377,7 +419,7 @@ function load_menu_datos_usuario(ops) {
                     }
                 });    
             });
-
+          
             perfil_row_telefono_cancelar.off('click');
             perfil_row_telefono_cancelar.on('click', function (evt) {
                 jQuery('#perfil_lista_codigo_ciudad option').eq(0).prop('selected', true);
@@ -397,6 +439,7 @@ function load_menu_datos_usuario(ops) {
             jQuery('#perfil_celular_alternativo_nuevo').filter_input({regex:_strings.app.validate.diccionario_numeros});
             var row_cambio_celular_alt = jQuery('#row_cambio_celular_alternativo');
             var perfil_btn_cambiar_celular_alt = jQuery('#perfil_btn_cambiar_celular_alternativo');
+            var perfil_btn_eliminar_celular_alt = jQuery('#perfil_btn_eliminar_celular_alternativo');
             var div_row_cambio_celular_alt = jQuery('#div_row_cambio_celular_alternativo');
             var perfil_row_celular_alt_cancelar = jQuery('#perfil_row_celular_alternativo_cancelar');
             var perfil_row_celular_alt_guardar = jQuery('#perfil_row_celular_alternativo_guardar');
@@ -407,6 +450,47 @@ function load_menu_datos_usuario(ops) {
                 evt.preventDefault();
                 row_cambio_celular_alt.hide();
                 div_row_cambio_celular_alt.show();
+            });
+            
+            perfil_btn_eliminar_celular_alt.off('click');
+            perfil_btn_eliminar_celular_alt.on('click', function (evt) {
+                bootbox.confirm({
+                    title: _strings.app.confirmacion.titulo,
+                    message: '¿Desea eliminar su n&uacute;mero de celular alternativo?',
+                    buttons: {
+                        'cancel': {
+                            label: _strings.app.confirmacion.opc_cancel,
+                            className: 'btn-default pull-left'
+                        },
+                        'confirm': {
+                            label: _strings.app.confirmacion.opc_confirm,
+                            className: 'btn-danger pull-right'
+                        }
+                    },
+                    callback: function (result) {                        
+                        if (result) {
+                            perfil_btn_eliminar_celular_alt.prop('disabled', true);        
+                            BaseX.post({
+                                url: root + '/usuario/perfil/perfil-eliminar-celular-alt',
+                                success: function (xhr, txtSting) {
+                                    var _id = parseInt(xhr.id);
+                                    BaseX.dialogAceptar({
+                                        message: xhr.msg,
+                                        success: {
+                                            callback: function () {
+                                                perfil_btn_eliminar_celular_alt.prop('disabled', false);
+                                                    if(_id > 0){
+                                                        load_menu_datos_usuario();
+                                                    }
+                                            }
+                                        }
+                                    });
+                                    perfil_btn_eliminar_celular_alt.prop('disabled', false);
+                                }
+                            });
+                        }
+                    }
+                });    
             });
 
             perfil_row_celular_alt_guardar.off('click');
@@ -508,6 +592,7 @@ function load_menu_datos_usuario(ops) {
             jQuery('#perfil_referencia_nuevo').filter_input({regex:_strings.app.validate.diccionario_direccion});
             var row_cambio_direccion = jQuery('#row_cambio_direccion');
             var perfil_btn_cambiar_direccion = jQuery('#perfil_btn_cambiar_direccion');
+            var perfil_btn_eliminar_direccion = jQuery('#perfil_btn_eliminar_direccion');
             var div_row_cambio_direccion = jQuery('#div_row_cambio_direccion');
             var perfil_row_direccion_cancelar = jQuery('#perfil_row_direccion_cancelar');
             var perfil_row_direccion_guardar = jQuery('#perfil_row_direccion_guardar');
@@ -544,6 +629,47 @@ function load_menu_datos_usuario(ops) {
                     $("#perfil_lista_distrito").html(cmb2.join(''));
                 });
                 jQuery('#perfil_lista_distrito option').eq(parseInt(id_distrito)).prop('selected', true);
+            });
+            
+            perfil_btn_eliminar_direccion.off('click');
+            perfil_btn_eliminar_direccion.on('click', function (evt) {
+                bootbox.confirm({
+                    title: _strings.app.confirmacion.titulo,
+                    message: '¿Desea eliminar su direcci&oacute;n?',
+                    buttons: {
+                        'cancel': {
+                            label: _strings.app.confirmacion.opc_cancel,
+                            className: 'btn-default pull-left'
+                        },
+                        'confirm': {
+                            label: _strings.app.confirmacion.opc_confirm,
+                            className: 'btn-danger pull-right'
+                        }
+                    },
+                    callback: function (result) {                        
+                        if (result) {
+                            perfil_btn_eliminar_direccion.prop('disabled', true);        
+                            BaseX.post({
+                                url: root + '/usuario/perfil/perfil-eliminar-direccion',
+                                success: function (xhr, txtSting) {
+                                    var _id = parseInt(xhr.id);
+                                    BaseX.dialogAceptar({
+                                        message: xhr.msg,
+                                        success: {
+                                            callback: function () {
+                                                perfil_btn_eliminar_direccion.prop('disabled', false);
+                                                    if(_id > 0){
+                                                        load_menu_datos_usuario();
+                                                    }
+                                            }
+                                        }
+                                    });
+                                    perfil_btn_eliminar_direccion.prop('disabled', false);
+                                }
+                            });
+                        }
+                    }
+                });    
             });
 
             perfil_row_direccion_guardar.off('click');
@@ -625,6 +751,7 @@ function load_menu_datos_usuario(ops) {
             jQuery('#perfil_correo_alternativo_nuevo').filter_input({regex:_strings.app.validate.diccionario_correo});
             var row_cambio_correo_alt = jQuery('#row_cambio_correo_alternativo');
             var perfil_btn_cambiar_correo_alt = jQuery('#perfil_btn_cambiar_correo_alternativo');
+            var perfil_btn_eliminar_correo_alt = jQuery('#perfil_btn_eliminar_correo_alternativo');
             var div_row_cambio_correo_alt = jQuery('#div_row_cambio_correo_alternativo');
             var perfil_row_correo_alt_cancelar = jQuery('#perfil_row_correo_alternativo_cancelar');
             var perfil_row_correo_alt_guardar = jQuery('#perfil_row_correo_alternativo_guardar');
@@ -635,6 +762,47 @@ function load_menu_datos_usuario(ops) {
                 evt.preventDefault();
                 row_cambio_correo_alt.hide();
                 div_row_cambio_correo_alt.show();
+            });
+            
+            perfil_btn_eliminar_correo_alt.off('click');
+            perfil_btn_eliminar_correo_alt.on('click', function (evt) {
+                bootbox.confirm({
+                    title: _strings.app.confirmacion.titulo,
+                    message: '¿Desea eliminar su correo electr&oacute;nico alternativo?',
+                    buttons: {
+                        'cancel': {
+                            label: _strings.app.confirmacion.opc_cancel,
+                            className: 'btn-default pull-left'
+                        },
+                        'confirm': {
+                            label: _strings.app.confirmacion.opc_confirm,
+                            className: 'btn-danger pull-right'
+                        }
+                    },
+                    callback: function (result) {                        
+                        if (result) {
+                            perfil_btn_eliminar_correo_alt.prop('disabled', true);        
+                            BaseX.post({
+                                url: root + '/usuario/perfil/perfil-eliminar-correo-alt',
+                                success: function (xhr, txtSting) {
+                                    var _id = parseInt(xhr.id);
+                                    BaseX.dialogAceptar({
+                                        message: xhr.msg,
+                                        success: {
+                                            callback: function () {
+                                                perfil_btn_eliminar_correo_alt.prop('disabled', false);
+                                                    if(_id > 0){
+                                                        load_menu_datos_usuario();
+                                                    }
+                                            }
+                                        }
+                                    });
+                                    perfil_btn_eliminar_correo_alt.prop('disabled', false);
+                                }
+                            });
+                        }
+                    }
+                });    
             });
 
             perfil_row_correo_alt_guardar.off('click');
@@ -717,6 +885,7 @@ function load_menu_datos_usuario(ops) {
             jQuery('#perfil_telefono_referencia_nuevo').filter_input({regex:_strings.app.validate.diccionario_numeros});
             var row_cambio_contacto_ref = jQuery('#row_cambio_contacto_referencia');
             var perfil_btn_cambiar_contacto_ref = jQuery('#perfil_btn_cambiar_contacto_referencia');
+            var perfil_btn_eliminar_contacto_ref = jQuery('#perfil_btn_eliminar_contacto_referencia');
             var div_row_cambio_contacto_ref = jQuery('#div_row_cambio_contacto_referencia');
             var perfil_row_contacto_ref_cancelar = jQuery('#perfil_row_contacto_referencia_cancelar');
             var perfil_row_contacto_ref_guardar = jQuery('#perfil_row_contacto_referencia_guardar');
@@ -727,6 +896,47 @@ function load_menu_datos_usuario(ops) {
                 evt.preventDefault();
                 row_cambio_contacto_ref.hide();
                 div_row_cambio_contacto_ref.show();
+            });
+            
+            perfil_btn_eliminar_contacto_ref.off('click');
+            perfil_btn_eliminar_contacto_ref.on('click', function (evt) {
+                bootbox.confirm({
+                    title: _strings.app.confirmacion.titulo,
+                    message: '¿Desea eliminar los datos del contacto de referencia?',
+                    buttons: {
+                        'cancel': {
+                            label: _strings.app.confirmacion.opc_cancel,
+                            className: 'btn-default pull-left'
+                        },
+                        'confirm': {
+                            label: _strings.app.confirmacion.opc_confirm,
+                            className: 'btn-danger pull-right'
+                        }
+                    },
+                    callback: function (result) {                        
+                        if (result) {
+                            perfil_btn_eliminar_contacto_ref.prop('disabled', true);        
+                            BaseX.post({
+                                url: root + '/usuario/perfil/perfil-eliminar-contacto-ref',
+                                success: function (xhr, txtSting) {
+                                    var _id = parseInt(xhr.id);
+                                    BaseX.dialogAceptar({
+                                        message: xhr.msg,
+                                        success: {
+                                            callback: function () {
+                                                perfil_btn_eliminar_contacto_ref.prop('disabled', false);
+                                                    if(_id > 0){
+                                                        load_menu_datos_usuario();
+                                                    }
+                                            }
+                                        }
+                                    });
+                                    perfil_btn_eliminar_contacto_ref.prop('disabled', false);
+                                }
+                            });
+                        }
+                    }
+                });    
             });
 
             perfil_row_contacto_ref_guardar.off('click');
