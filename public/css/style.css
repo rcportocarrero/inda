@@ -97,6 +97,9 @@ a:hover {
   border-color: #098ca6;
   color: #fff;
 }
+.boton-ico {
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
 .banner_top_black {
   background-color: #94C5CC;
   color: white;
