@@ -709,29 +709,31 @@ function load_menu_datos_usuario(ops) {
             //**************************************************//
             
             //**************************************************//
-            //== Cambiar Nombre Referencia Usuario --- INICIO ==//
+            //== Cambiar Contacto Referencia Usuario - INICIO ==//
             //**************************************************//
             
             jQuery('#perfil_nombre_referencia_nuevo').filter_input({regex:_strings.app.validate.diccionario_nombres});
-            var row_cambio_nombre_ref = jQuery('#row_cambio_nombre_referencia');
-            var perfil_btn_cambiar_nombre_ref = jQuery('#perfil_btn_cambiar_nombre_referencia');
-            var div_row_cambio_nombre_ref = jQuery('#div_row_cambio_nombre_referencia');
-            var perfil_row_nombre_ref_cancelar = jQuery('#perfil_row_nombre_referencia_cancelar');
-            var perfil_row_nombre_ref_guardar = jQuery('#perfil_row_nombre_referencia_guardar');
+            jQuery('#perfil_celular_referencia_nuevo').filter_input({regex:_strings.app.validate.diccionario_numeros});
+            jQuery('#perfil_telefono_referencia_nuevo').filter_input({regex:_strings.app.validate.diccionario_numeros});
+            var row_cambio_contacto_ref = jQuery('#row_cambio_contacto_referencia');
+            var perfil_btn_cambiar_contacto_ref = jQuery('#perfil_btn_cambiar_contacto_referencia');
+            var div_row_cambio_contacto_ref = jQuery('#div_row_cambio_contacto_referencia');
+            var perfil_row_contacto_ref_cancelar = jQuery('#perfil_row_contacto_referencia_cancelar');
+            var perfil_row_contacto_ref_guardar = jQuery('#perfil_row_contacto_referencia_guardar');
 
-            div_row_cambio_nombre_ref.hide();
-            perfil_btn_cambiar_nombre_ref.off('click');
-            perfil_btn_cambiar_nombre_ref.on('click', function (evt) {
+            div_row_cambio_contacto_ref.hide();
+            perfil_btn_cambiar_contacto_ref.off('click');
+            perfil_btn_cambiar_contacto_ref.on('click', function (evt) {
                 evt.preventDefault();
-                row_cambio_nombre_ref.hide();
-                div_row_cambio_nombre_ref.show();
+                row_cambio_contacto_ref.hide();
+                div_row_cambio_contacto_ref.show();
             });
 
-            perfil_row_nombre_ref_guardar.off('click');
-            perfil_row_nombre_ref_guardar.on('click', function (evt) {                   
+            perfil_row_contacto_ref_guardar.off('click');
+            perfil_row_contacto_ref_guardar.on('click', function (evt) {                   
                 bootbox.confirm({
                     title: _strings.app.confirmacion.titulo,
-                    message: '¿Desea actualizar el nombre de contacto de referencia?',
+                    message: '¿Desea actualizar los datos del contacto de referencia?',
                     buttons: {
                         'cancel': {
                             label: _strings.app.confirmacion.opc_cancel,
@@ -744,16 +746,22 @@ function load_menu_datos_usuario(ops) {
                     },
                     callback: function (result) {
                         if (result) {
-                            perfil_row_nombre_ref_guardar.prop('disabled', true);
+                            perfil_row_contacto_ref_guardar.prop('disabled', true);
 
                             var nombre_ref_pri = jQuery('#perfil_nombre_referencia_nuevo');
-
+                            var celular_ref_pri = jQuery('#perfil_celular_referencia_nuevo');
+                            var codigo_telefono_ref = jQuery('#perfil_lista_codigo_ciudad_referencia');
+                            var telefono_ref = jQuery('#perfil_telefono_referencia_nuevo'); 
+                            
                             var obj = {
-                                nombre_ref_pri: nombre_ref_pri.val()
+                                nombre_ref_pri: nombre_ref_pri.val(),
+                                celular_ref_pri: celular_ref_pri.val(),
+                                codigo_telefono_ref: codigo_telefono_ref.val(),
+                                telefono_ref: telefono_ref.val()                                
                             };
-
+                            
                             BaseX.post({
-                                url: root + '/usuario/perfil/perfil-cambiar-nombre-ref',
+                                url: root + '/usuario/perfil/perfil-cambiar-contacto-ref',
                                 data: obj,
                                 success: function (xhr, txtSting) {
                                     var _id = parseInt(xhr.id);
@@ -761,14 +769,14 @@ function load_menu_datos_usuario(ops) {
                                         message: xhr.msg,
                                         success: {
                                             callback: function () {
-                                                perfil_row_nombre_ref_guardar.prop('disabled', false);
+                                                perfil_row_contacto_ref_guardar.prop('disabled', false);
                                                     if(_id > 0){
                                                         load_menu_datos_usuario();
                                                     }
                                             }
                                         }
                                     });
-                                    perfil_row_nombre_ref_guardar.prop('disabled', false);
+                                    perfil_row_contacto_ref_guardar.prop('disabled', false);
                                 }
                             });
                         }
@@ -776,176 +784,18 @@ function load_menu_datos_usuario(ops) {
                 });
             });
 
-            perfil_row_nombre_ref_cancelar.off('click');
-            perfil_row_nombre_ref_cancelar.on('click', function (evt) {
-                jQuery('#perfil_nombre_referencia_nuevo').val('');
-                row_cambio_nombre_ref.show();
-                div_row_cambio_nombre_ref.hide();
+            perfil_row_contacto_ref_cancelar.off('click');
+            perfil_row_contacto_ref_cancelar.on('click', function (evt) {
+//                jQuery('#perfil_nombre_referencia_nuevo').val('');
+//                jQuery('#perfil_celular_referencia_nuevo').val('');
+//                jQuery('#perfil_lista_codigo_ciudad_referencia option').eq(0).prop('selected', true);
+//                jQuery('#perfil_telefono_referencia_nuevo').val('');
+                row_cambio_contacto_ref.show();
+                div_row_cambio_contacto_ref.hide();
             });
 
             //**************************************************//
             //== Cambiar Nombre Referencia Usuario ------ FIN ==//
-            //**************************************************//
-
-            //**************************************************//
-            //== Cambiar Celular Referencia Usuario -- INICIO ==//
-            //**************************************************//
-
-            jQuery('#perfil_celular_referencia_nuevo').filter_input({regex:_strings.app.validate.diccionario_numeros});
-            var row_cambio_celular_ref = jQuery('#row_cambio_celular_referencia');
-            var perfil_btn_cambiar_celular_ref = jQuery('#perfil_btn_cambiar_celular_referencia');
-            var div_row_cambio_celular_ref = jQuery('#div_row_cambio_celular_referencia');
-            var perfil_row_celular_ref_cancelar = jQuery('#perfil_row_celular_referencia_cancelar');
-            var perfil_row_celular_ref_guardar = jQuery('#perfil_row_celular_referencia_guardar');
-
-            div_row_cambio_celular_ref.hide();
-            perfil_btn_cambiar_celular_ref.off('click');
-            perfil_btn_cambiar_celular_ref.on('click', function (evt) {
-                evt.preventDefault();
-                row_cambio_celular_ref.hide();
-                div_row_cambio_celular_ref.show();
-            });
-
-            perfil_row_celular_ref_guardar.off('click');
-            perfil_row_celular_ref_guardar.on('click', function (evt) {                   
-                bootbox.confirm({
-                    title: _strings.app.confirmacion.titulo,
-                    message: '¿Desea actualizar el celular de contacto de referencia?',
-                    buttons: {
-                        'cancel': {
-                            label: _strings.app.confirmacion.opc_cancel,
-                            className: 'btn-default pull-left'
-                        },
-                        'confirm': {
-                            label: _strings.app.confirmacion.opc_confirm,
-                            className: 'btn-danger pull-right'
-                        }
-                    },
-                    callback: function (result) {
-                        if (result) {
-                            perfil_row_celular_ref_guardar.prop('disabled', true);
-
-                            var celular_ref_pri = jQuery('#perfil_celular_referencia_nuevo');
-
-                            var obj = {
-                                celular_ref_pri: celular_ref_pri.val()
-                            };
-
-                            BaseX.post({
-                                url: root + '/usuario/perfil/perfil-cambiar-celular-ref',
-                                data: obj,
-                                success: function (xhr, txtSting) {
-                                    var _id = parseInt(xhr.id);
-                                    BaseX.dialogAceptar({
-                                        message: xhr.msg,
-                                        success: {
-                                            callback: function () {
-                                                perfil_row_celular_ref_guardar.prop('disabled', false);
-                                                    if(_id > 0){
-                                                        load_menu_datos_usuario();
-                                                    }
-                                            }
-                                        }
-                                    });
-                                    perfil_row_celular_ref_guardar.prop('disabled', false);
-                                }
-                            });
-                        }
-                    }
-                });
-            });
-
-            perfil_row_celular_ref_cancelar.off('click');
-            perfil_row_celular_ref_cancelar.on('click', function (evt) {
-                jQuery('#perfil_celular_referencia_nuevo').val('');
-                row_cambio_celular_ref.show();
-                div_row_cambio_celular_ref.hide();
-            });
-                        
-            //**************************************************//
-            //== Cambiar Celular Referencia Usuario ----- FIN ==//
-            //**************************************************//
-            
-            //**************************************************//
-            //== Cambiar Telefono Referencia Usuario - INICIO ==//
-            //**************************************************//
-
-            jQuery('#perfil_telefono_referencia_nuevo').filter_input({regex:_strings.app.validate.diccionario_numeros});
-            var row_cambio_telefono_ref = jQuery('#row_cambio_telefono_referencia');
-            var perfil_btn_cambiar_telefono_ref = jQuery('#perfil_btn_cambiar_telefono_referencia');
-            var div_row_cambio_telefono_ref = jQuery('#div_row_cambio_telefono_referencia');
-            var perfil_row_telefono_ref_cancelar = jQuery('#perfil_row_telefono_referencia_cancelar');
-            var perfil_row_telefono_ref_guardar = jQuery('#perfil_row_telefono_referencia_guardar');
-
-            div_row_cambio_telefono_ref.hide();
-            perfil_btn_cambiar_telefono_ref.off('click');
-            perfil_btn_cambiar_telefono_ref.on('click', function (evt) {
-                evt.preventDefault();
-                row_cambio_telefono_ref.hide();
-                div_row_cambio_telefono_ref.show();
-            });
-
-            perfil_row_telefono_ref_guardar.off('click');
-            perfil_row_telefono_ref_guardar.on('click', function (evt) {                   
-                bootbox.confirm({
-                    title: _strings.app.confirmacion.titulo,
-                    message: '¿Desea actualizar el telefono de contacto de referencia?',
-                    buttons: {
-                        'cancel': {
-                            label: _strings.app.confirmacion.opc_cancel,
-                            className: 'btn-default pull-left'
-                        },
-                        'confirm': {
-                            label: _strings.app.confirmacion.opc_confirm,
-                            className: 'btn-danger pull-right'
-                        }
-                    },
-                    callback: function (result) {
-                        if (result) {
-                            perfil_row_telefono_ref_guardar.prop('disabled', true);
-
-                            var codigo_telefono_ref = jQuery('#perfil_lista_codigo_ciudad_referencia');
-                            var telefono_ref = jQuery('#perfil_telefono_referencia_nuevo');         
-
-                            var obj = {
-                                codigo_telefono_ref: codigo_telefono_ref.val(),
-                                telefono_ref: telefono_ref.val()
-                            };
-                            
-                            BaseX.post({
-                                url: root + '/usuario/perfil/perfil-cambiar-telefono-ref',
-                                data: obj,
-                                success: function (xhr, txtSting) {
-                                    var _id = parseInt(xhr.id);
-                                    BaseX.dialogAceptar({
-                                        message: xhr.msg,
-                                        success: {
-                                            callback: function () {
-                                                perfil_row_telefono_ref_guardar.prop('disabled', false);
-                                                    if(_id > 0){
-                                                        load_menu_datos_usuario();
-                                                    }
-                                            }
-                                        }
-                                    });
-                                    perfil_row_telefono_ref_guardar.prop('disabled', false);
-                                }
-                            });
-                        }
-                    }
-                });
-            });
-
-            perfil_row_telefono_ref_cancelar.off('click');
-            perfil_row_telefono_ref_cancelar.on('click', function (evt) {
-                jQuery('#perfil_lista_codigo_ciudad_referencia option').eq(0).prop('selected', true);
-                jQuery('#perfil_telefono_referencia_nuevo').val('');
-                row_cambio_telefono_ref.show();
-                div_row_cambio_telefono_ref.hide();
-            });
-            
-            //**************************************************//
-            //== Cambiar Telefono Referencia Usuario ---- FIN ==//
             //**************************************************//
 
         }
