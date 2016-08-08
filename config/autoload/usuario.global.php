@@ -70,6 +70,7 @@ return [
             'caracteres_min_telefono' => 6,
             'caracteres_max_telefono' => 7,
             'caracteres_max_direccion' => 250,
+            'caracteres_min_nombre' => 5,
             'caracteres_max_nombre' => 250,
             'correo_confirmacion_cclave' => true,
             'correo_confirmacion_ccorreo' => true,
