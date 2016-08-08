@@ -2,16 +2,11 @@
 echo $this->doctype();
 $base_url = $this->basePath();
 $apps_var = $this->apps_var;
-//var_dump($apps_var);
 $usuario = $this->users_acl->rows;
-//$usuario = $usuario->rows;
-//var_dump($usuario);
-$recuperar_config = $this->recuperar_config;
+$cambio_config = $this->cambio_config;
 ?>
 
 <html lang="en">
-
-
     <head>
         <meta charset="utf-8">
 
@@ -32,11 +27,11 @@ $recuperar_config = $this->recuperar_config;
         <script type="text/javascript">
             var root = "<?php echo $base_url; ?>";
 
-            var min_clave = <?php echo $recuperar_config['caracteres_min_clave']; ?>;
-            var max_clave = <?php echo $recuperar_config['caracteres_max_clave']; ?>;
-            var min_dni = <?php echo $recuperar_config['caracteres_min_dni']; ?>;
-            var max_dni = <?php echo $recuperar_config['caracteres_max_dni']; ?>;
-            var max_correo = <?php echo $recuperar_config['caracteres_max_correo']; ?>;
+            var min_clave = <?php echo $cambio_config['caracteres_min_clave']; ?>;
+            var max_clave = <?php echo $cambio_config['caracteres_max_clave']; ?>;
+            var min_dni = <?php echo $cambio_config['caracteres_min_dni']; ?>;
+            var max_dni = <?php echo $cambio_config['caracteres_max_dni']; ?>;
+            var max_correo = <?php echo $cambio_config['caracteres_max_correo']; ?>;
 
         </script>
         <!-- Scripts -->
@@ -59,94 +54,49 @@ $recuperar_config = $this->recuperar_config;
                 ->prependFile($this->basePath('js/html5shiv.min.js'), 'text/javascript', array('conditional' => 'lt IE 9',))
         ;
         ?>
-
-
     </head>
-
-
-    <body>
-
-<!--        <nav class="navbar navbar-inverse banner_top">
-            <div class="container-fluid">
-                <div class="navbar-header">
-                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
-                        <span class="sr-only">Toggle navigation</span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                    </button>
-                </div>
-            </div>
-        </nav>-->
+    <body class="body_bg">
         <div class="row row-fluid">
             <div class="col-md-12 banner_top_titulo">
                 <div class="col-md-6 col-sm-6 col-xs-12">
-                    <a class="text-center" href="http://evaluaciondocente.perueduca.pe" target="_blank">
-                        <img class=" img-responsive center-block " style="max-height: 80px;" src="<?php echo $base_url; ?>/img/logo-sistema.png">
-                    </a>
+                    <img class="img-responsive center-block img_logo_evdocente" src="<?php echo $base_url; ?>/img/etiqueta-ev.jpg"/>
                 </div>
                 <div class="col-md-6 col-sm-6 col-xs-12">
-                    <a class="text-center" href="http://www.minedu.gob.pe/" target="_blank">
-                        <img class="img-responsive center-block" src="<?php echo $base_url; ?>/img/logo_ministerio_educacion.gif">
+                    <a target="_blank" href="http://www.minedu.gob.pe/" class="text-center">
+                        <img class="img-responsive center-block" src="<?php echo $base_url; ?>/img/logo_ministerio_educacion.gif"/>
                     </a>
                 </div>
             </div>
         </div>
         <div class="row dashboard_barra_top">
-
-            <div class="col-lg-4 col-md-6 col-sm-12 col-xs-12 text-center">
+            <div class="col-lg-3 col-md-6 col-sm-12 col-xs-12 text-center">
                 Bienvenido(a): <?php echo $usuario->first_name . ' ' . $usuario->last_name; ?>
-                <div>
-                    Último acceso: <?php
-                    if (utf8_encode($usuario->fec_ultimo_acceso) === '') {
-                        echo date("Y-m-d H:i:s");
-                    } else {
-                        echo $usuario->fec_ultimo_acceso;
-                    };
-                    ?>
-                    <input type="hidden" id="hdn_sesion_token" name="hdn_sesion_token" value="<?php echo $this->token_sesion; ?>" />
-                </div>
             </div>
-<!--            <div class="col-lg-4 col-md-6 col-sm-12 col-xs-12  text-center">
+            <div class="col-lg-3 col-md-6 col-sm-12 col-xs-12  text-center">
                 Último acceso: <?php
                 if (utf8_encode($usuario->fec_ultimo_acceso) === '') {
                     echo date("Y-m-d H:i:s");
                 } else {
                     echo $usuario->fec_ultimo_acceso;
-                };
-                ?>
-
+                } ?>
                 <input type="hidden" id="hdn_sesion_token" name="hdn_sesion_token" value="<?php echo $this->token_sesion; ?>" />
-            </div>-->
-            <div class="col-lg-4 col-md-6 col-sm-12 col-xs-12  text-center">
-                <?php echo utf8_encode($usuario->dias_restantes); ?>
             </div>
-            <div class="col-lg-4 col-md-6 col-sm-12 col-xs-12 text-center">
+            <div class="col-lg-3 col-md-6 col-sm-12 col-xs-12  text-center">
+                <?php 
+                if ( $dashboard_config["opc_msje_app"] === true) {
+                    echo utf8_encode($usuario->dias_restantes);
+                } ?>                
+            </div>
+            <div class="col-lg-3 col-md-6 col-sm-12 col-xs-12 text-center">
                 <a id="btn_cerrar_sesion" href="<?php echo $this->url('usuario/sec', array('action' => 'logout')); ?>">Cerrar sesión</a>
             </div>
         </div>
-        <!--        <nav class="navbar navbar-inverse banner_top">
-                    <div class="container-fluid">
-                        <div class="navbar-header">
-                            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
-                                <span class="sr-only">Toggle navigation</span>
-                                <span class="icon-bar"></span>
-                                <span class="icon-bar"></span>
-                                <span class="icon-bar"></span>
-                            </button>
-                        </div>
-                    </div>
-
-                </nav>-->
         <div class="container-fluid">
-
             <?php
 //            echo $this->partial('_menu.phtml', []);
             ?>
             <?php echo $this->content; ?>
             <hr>
-
-
 
             <footer class="footer">
                 <div class="container">

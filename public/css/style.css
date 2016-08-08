@@ -171,12 +171,13 @@ a:hover {
   /*height: 40px;*/
 }
 .dashboard_barra_top {
-  background-color: #444242;
+  background-color: #93c5cd;
   color: white;
   padding: 8px;
+  font-weight: bold;
 }
 #btn_cerrar_sesion {
-  color: #f36b45;
+  color: #ffffff;
 }
 a.dropdown-toggle.nav-menu-user {
   padding-left: 0px !important;

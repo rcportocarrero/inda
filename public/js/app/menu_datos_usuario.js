@@ -184,6 +184,15 @@ function load_menu_datos_usuario(ops) {
                 row_cambio_correo.show();
                 div_row_cambio_correo.hide();
             });
+            
+            //****************************************//
+            
+            var perfil_correo_refrescar = jQuery('#perfil_correo_refrescar');
+            perfil_correo_refrescar.off('click');
+            perfil_correo_refrescar.on('click', function (evt) {
+                load_menu_datos_usuario();                                                        
+            });
+            
             //****************************************//
             //== Cambiar Correo Electrónico --- FIN ==//
             //****************************************//
@@ -197,9 +206,10 @@ function load_menu_datos_usuario(ops) {
             var perfil_btn_cambiar_celular = jQuery('#perfil_btn_cambiar_celular');            
             var div_row_cambio_celular = jQuery('#div_row_cambio_celular');
             var div_cambio_celular = jQuery('#div_cambio_celular');
-            var div_cambio_celular_confirma = jQuery('#div_cambio_celular_confirma');
             var perfil_row_celular_cancelar = jQuery('#perfil_row_celular_cancelar');
             var perfil_row_celular_guardar = jQuery('#perfil_row_celular_guardar');
+            var perfil_row_celular_ccancelar = jQuery('#perfil_row_celular_ccancelar');
+            var div_cambio_celular_confirma = jQuery('#div_cambio_celular_confirma');
             
             div_row_cambio_celular.hide();
             div_cambio_celular_confirma.hide();
@@ -302,6 +312,13 @@ function load_menu_datos_usuario(ops) {
                         perfil_row_celular_confirmar.prop('disabled', false);
                     }
                 });
+            });
+            
+            perfil_row_celular_ccancelar.off('click');
+            perfil_row_celular_ccancelar.on('click', function (evt) {
+                jQuery('#perfil_codigo_valcel').val('');
+                row_cambio_celular.show();
+                div_row_cambio_celular.hide();
             });
 
             //****************************************//
@@ -569,6 +586,10 @@ function load_menu_datos_usuario(ops) {
                         cmb2.push('<option value="' + val["id"] + '">' + val["descripcion"] + '</option>');
                     });
                     $("#perfil_lista_provincia").html(cmb2.join(''));
+                    //
+                    var cmb3 = [];
+                    cmb3.push('<option value="0" >--- Seleccione Distrito ---</option>');
+                    $("#perfil_lista_distrito").html(cmb3.join(''));
                 });
             });
             

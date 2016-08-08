@@ -27,6 +27,9 @@ return [
                 'caracteres_max_correo' => 150
             ]
         ],
+        'dashboard' => [
+            'opc_msje_app' => true
+        ],
         'perfil' => [
             'num_celular' => 9,
             'telefono_fijo' => 10,

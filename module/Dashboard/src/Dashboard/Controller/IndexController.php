@@ -16,7 +16,8 @@ class IndexController extends \BaseX\Controller\BaseController {
 //        var_dump($this->getSessionStorage()->get('users_acl'));
         $config = $this->getConfig();
         $app_config = $config['app'];
-        $usuario_recuperar = $config['usuario']['cambio'];
+        $usuario_dashboard = $config['usuario']['dashboard'];
+        $usuario_cambio = $config['usuario']['cambio'];        
         $users_acl = json_decode($this->getSessionStorage()->get('users_acl'));
         $username = $this->getSessionStorage()->get('user');
         $token_sesion = sha1($username . time());
@@ -24,7 +25,8 @@ class IndexController extends \BaseX\Controller\BaseController {
 
         $this->layout()->apps_var = $app_config;
         $this->layout()->users_acl = $users_acl;
-        $this->layout()->recuperar_config = $usuario_recuperar;
+        $this->layout()->dashboard_config = $usuario_dashboard;
+        $this->layout()->cambio_config = $usuario_cambio;        
         $this->layout()->token_sesion = $this->Session()->token_sesion;
 
 //        var_dump($users_acl);
@@ -33,7 +35,8 @@ class IndexController extends \BaseX\Controller\BaseController {
         $params_view = [
             'apps_var' => $app_config,
             'users_acl' => $users_acl,
-            'recuperar_config' => $usuario_recuperar,
+            'dashboard_config' => $usuario_dashboard,
+            'cambio_config' => $usuario_cambio,
         ];
 
         $view = new ViewModel($params_view);
