@@ -37,7 +37,7 @@ return [
             'ultimas_claves' => 1,
             'diccionario_clave' => 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuwxyz1234567890@)(',
             'opciones_recuperar' => [
-                'sms' => false
+                'sms' => true
             ],
             'templates' => [
                 'template_email_id' => 11, //  ID del Template de Emaile App
