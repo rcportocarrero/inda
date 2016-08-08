@@ -84,7 +84,7 @@ $cambio_config = $this->cambio_config;
             <div class="col-lg-3 col-md-6 col-sm-12 col-xs-12  text-center">
                 <?php 
                 if ( $dashboard_config["opc_msje_app"] === true) {
-                    echo utf8_encode($usuario->dias_restantes);
+                    echo $usuario->dias_restantes;
                 } ?>                
             </div>
             <div class="col-lg-3 col-md-6 col-sm-12 col-xs-12 text-center">
@@ -96,29 +96,27 @@ $cambio_config = $this->cambio_config;
 //            echo $this->partial('_menu.phtml', []);
             ?>
             <?php echo $this->content; ?>
-            <hr>
-
-            <footer class="footer">
-                <div class="container">
-                    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 text-center">
-                        <br />
-                        <p class="text-muted footer_color">
-                            Línea de atención al comité de evaluación<br />
-                            <?php echo $apps_var['number_support1']; ?><br>
-                        </p>
-                        <!--<a href="mailto:evaluaciondocente.cpm@perueduca.pe">evaluaciondocente.cpm@perueduca.pe</a>-->
-                    </div>
-                    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 text-center">
-                        <br />
-                        <p class="text-muted footer_color">
-                            <?php echo date('Y'); ?> &copy; Todos los derechos reservados
-                        </p>
-                    </div>
-                    <!--<div class="clearfix"></div>-->
-                </div>
-            </footer>
-
+            <!--<hr>-->
         </div> <!-- /container -->
+        <footer class="footer">
+            <div class="container">
+                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 text-center">
+                    <br />
+                    <p class="text-muted footer_color">
+                        Línea de atención al comité de evaluación<br />
+                        <?php echo $apps_var['number_support1']; ?><br>
+                    </p>
+                    <!--<a href="mailto:evaluaciondocente.cpm@perueduca.pe">evaluaciondocente.cpm@perueduca.pe</a>-->
+                </div>
+                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 text-center">
+                    <br />
+                    <p class="text-muted footer_color">
+                        <?php echo date('Y'); ?> &copy; Todos los derechos reservados
+                    </p>
+                </div>
+                <!--<div class="clearfix"></div>-->
+            </div>
+        </footer>
         <?php echo $this->inlineScript() ?>
     </body>
 </html>
