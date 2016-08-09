@@ -939,7 +939,7 @@ function load_menu_datos_usuario(ops) {
                 
                 var cod_nro_telefono = jQuery('#cod_nro_telefono').val();
                 var nro_telefono = jQuery('#nro_telefono').val();
-                jQuery('#perfil_lista_codigo_ciudad_referencia').val(cod_nro_telefono);
+                jQuery('#perfil_lista_codigo_ciudad_referencia').val(parseInt(cod_nro_telefono));
                 jQuery('#perfil_telefono_referencia_nuevo').val(nro_telefono);
             });
             
