@@ -611,7 +611,19 @@ function load_menu_datos_usuario(ops) {
             //**************************************************//
 
             jQuery('#perfil_direccion_nuevo').filter_input({regex:_strings.app.validate.diccionario_direccion});
+            jQuery('#perfil_direccion_nuevo').on('keypress', function (evt) {
+                if (evt.altKey === true) {
+                    evt.stopImmediatePropagation();
+                    return false;
+                }
+            });
             jQuery('#perfil_referencia_nuevo').filter_input({regex:_strings.app.validate.diccionario_direccion});
+            jQuery('#perfil_referencia_nuevo').on('keypress', function (evt) {
+                if (evt.altKey === true) {
+                    evt.stopImmediatePropagation();
+                    return false;
+                }
+            });
             var row_cambio_direccion = jQuery('#row_cambio_direccion');
             var perfil_btn_cambiar_direccion = jQuery('#perfil_btn_cambiar_direccion');
             var perfil_btn_eliminar_direccion = jQuery('#perfil_btn_eliminar_direccion');
