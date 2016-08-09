@@ -9,7 +9,7 @@ var _strings = {
         validate: {
             diccionario_clave: '[a-zA-Z0-9@)(',
             diccionario_correo: '[a-zA-Z0-9._@-]',
-            diccionario_direccion: '[a-zA-Zá-úÁ-Ú0ä-üÄ-Ü-90-9,°#().¨/ -]',
+            diccionario_direccion: '[a-zA-Zá-úÁ-Úä-üÄ-Ü0-9°#().¨/ ,-]',
             diccionario_nombres: '[a-zA-Zá-úÁ-Ú ]',
             diccionario_numeros: '[0-9]',
             only_numbers: 'Debe llenar este campo sólo con números.',

@@ -244,6 +244,42 @@ a.dropdown-toggle.nav-menu-user {
 .form-horizontal .control-label {
   text-align: left;
 }
+.form-horizontal .control-label-login {
+  text-align: right;
+}
 .form-control {
   text-transform: uppercase;
+}
+.p_opciones {
+  padding-left: 30px;
+  font-size: 13px;
+}
+/* Tooltip */
+.msgflotante + .tooltip > .tooltip-inner {
+  background-color: #098ca6;
+  color: #ffffff;
+  border-radius: 6px;
+  padding: 0 5px;
+  font-size: 12px;
+  max-width: 400px;
+  min-height: 40px;
+}
+/* Tooltip on top */
+.msgflotante + .tooltip.top > .tooltip-arrow {
+  border-top: 5px solid black;
+}
+/* Tooltip on bottom */
+.msgflotante + .tooltip.bottom > .tooltip-arrow {
+  border-bottom: 5px solid black;
+}
+/* Tooltip on left */
+.msgflotante + .tooltip.left > .tooltip-arrow {
+  border-left: 5px solid black;
+}
+/* Tooltip on right */
+.msgflotante + .tooltip.right > .tooltip-arrow {
+  border-right: 5px solid black;
+}
+.lbl-alert {
+  color: #af0d15;
 }

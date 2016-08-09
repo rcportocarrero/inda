@@ -29,9 +29,6 @@ class IndexController extends \BaseX\Controller\BaseController {
         $this->layout()->cambio_config = $usuario_cambio;        
         $this->layout()->token_sesion = $this->Session()->token_sesion;
 
-//        var_dump($users_acl);
-//        var_dump($token_sesion);
-
         $params_view = [
             'apps_var' => $app_config,
             'users_acl' => $users_acl,
