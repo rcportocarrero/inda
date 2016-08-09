@@ -765,11 +765,17 @@ function load_menu_datos_usuario(ops) {
 
             perfil_row_direccion_cancelar.off('click');
             perfil_row_direccion_cancelar.on('click', function (evt) {
-//                jQuery('#perfil_lista_departamento option').eq(0).prop('selected', true);
-//                jQuery('#perfil_lista_provincia option').eq(0).prop('selected', true);
-//                jQuery('#perfil_lista_distrito option').eq(0).prop('selected', true);
-//                jQuery('#perfil_direccion_nuevo').val('');
-//                jQuery('#perfil_referencia_nuevo').val('');
+                var id_departamento = jQuery('#id_departamento').val();
+                if(isNaN(parseInt(id_departamento))){
+                    id_departamento = 0;
+                }
+                if( parseInt(id_departamento) === 0 ){
+                    jQuery('#perfil_lista_departamento option').eq(0).prop('selected', true);
+                    jQuery('#perfil_lista_provincia option').eq(0).prop('selected', true);
+                    jQuery('#perfil_lista_distrito option').eq(0).prop('selected', true);
+                    jQuery('#perfil_direccion_nuevo').val('');
+                    jQuery('#perfil_referencia_nuevo').val('');
+                }
                 row_cambio_direccion.show();
                 div_row_cambio_direccion.hide();
             });
@@ -930,6 +936,13 @@ function load_menu_datos_usuario(ops) {
                 evt.preventDefault();
                 row_cambio_contacto_ref.hide();
                 div_row_cambio_contacto_ref.show();
+                
+                var cod_nro_telefono = jQuery('#cod_nro_telefono').val();
+                var nro_telefono = jQuery('#nro_telefono').val();
+                alert(parseInt(cod_nro_telefono));
+                alert(nro_telefono);
+                jQuery('#perfil_lista_codigo_ciudad_referencia option').eq(parseInt(cod_nro_telefono)).prop('selected', true);
+                jQuery('#perfil_telefono_referencia_nuevo').html(nro_telefono.val());
             });
             
             perfil_btn_eliminar_contacto_ref.off('click');
@@ -1030,10 +1043,16 @@ function load_menu_datos_usuario(ops) {
 
             perfil_row_contacto_ref_cancelar.off('click');
             perfil_row_contacto_ref_cancelar.on('click', function (evt) {
-//                jQuery('#perfil_nombre_referencia_nuevo').val('');
-//                jQuery('#perfil_celular_referencia_nuevo').val('');
-//                jQuery('#perfil_lista_codigo_ciudad_referencia option').eq(0).prop('selected', true);
-//                jQuery('#perfil_telefono_referencia_nuevo').val('');
+                var id_contacto_nombre = jQuery('#id_contacto_nombre').val();
+                if(isNaN(parseInt(id_contacto_nombre))){
+                    id_contacto_nombre = 0;
+                }
+                if( parseInt(id_contacto_nombre) === 0 ){
+                    jQuery('#perfil_nombre_referencia_nuevo').val('');
+                    jQuery('#perfil_celular_referencia_nuevo').val('');
+                    jQuery('#perfil_lista_codigo_ciudad_referencia option').eq(0).prop('selected', true);
+                    jQuery('#perfil_telefono_referencia_nuevo').val('');
+                }
                 row_cambio_contacto_ref.show();
                 div_row_cambio_contacto_ref.hide();
             });
