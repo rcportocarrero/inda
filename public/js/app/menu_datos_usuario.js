@@ -206,18 +206,18 @@ function load_menu_datos_usuario(ops) {
             var perfil_btn_cambiar_celular = jQuery('#perfil_btn_cambiar_celular');            
             var div_row_cambio_celular = jQuery('#div_row_cambio_celular');
             var div_cambio_celular = jQuery('#div_cambio_celular');
+            var div_cambio_celular_confirma = jQuery('#div_cambio_celular_confirma');
             var perfil_row_celular_cancelar = jQuery('#perfil_row_celular_cancelar');
             var perfil_row_celular_guardar = jQuery('#perfil_row_celular_guardar');
             var perfil_row_celular_ccancelar = jQuery('#perfil_row_celular_ccancelar');
-            var div_cambio_celular_confirma = jQuery('#div_cambio_celular_confirma');
-            
+                        
             div_row_cambio_celular.hide();
-            div_cambio_celular_confirma.hide();
             perfil_btn_cambiar_celular.off('click');
             perfil_btn_cambiar_celular.on('click', function (evt) {
                 evt.preventDefault();
                 row_cambio_celular.hide();
                 div_row_cambio_celular.show();
+                div_cambio_celular.show();
                 div_cambio_celular_confirma.hide();
             });
 
@@ -259,7 +259,6 @@ function load_menu_datos_usuario(ops) {
                                             callback: function () {
                                                 perfil_row_celular_guardar.prop('disabled', false);
                                                     if(_id > 0){
-                                                        //load_menu_datos_usuario();
                                                         div_cambio_celular.hide();
                                                         div_cambio_celular_confirma.show();
                                                     }
@@ -317,6 +316,7 @@ function load_menu_datos_usuario(ops) {
             
             perfil_row_celular_ccancelar.off('click');
             perfil_row_celular_ccancelar.on('click', function (evt) {
+                jQuery('#perfil_celular_nuevo').val('');
                 jQuery('#perfil_codigo_valcel').val('');
                 row_cambio_celular.show();
                 div_row_cambio_celular.hide();
