@@ -939,10 +939,10 @@ function load_menu_datos_usuario(ops) {
                 
                 var cod_nro_telefono = jQuery('#cod_nro_telefono').val();
                 var nro_telefono = jQuery('#nro_telefono').val();
-                alert(parseInt(cod_nro_telefono));
-                alert(nro_telefono);
+//                alert(parseInt(cod_nro_telefono));
+//                alert(nro_telefono);
                 jQuery('#perfil_lista_codigo_ciudad_referencia option').eq(parseInt(cod_nro_telefono)).prop('selected', true);
-                jQuery('#perfil_telefono_referencia_nuevo').html(nro_telefono.val());
+                jQuery('#perfil_telefono_referencia_nuevo').html(nro_telefono);
             });
             
             perfil_btn_eliminar_contacto_ref.off('click');
