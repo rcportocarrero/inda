@@ -218,6 +218,7 @@ function load_menu_datos_usuario(ops) {
                 evt.preventDefault();
                 row_cambio_celular.hide();
                 div_row_cambio_celular.show();
+                div_cambio_celular_confirma.hide();
             });
 
             perfil_row_celular_guardar.off('click');
