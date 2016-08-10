@@ -28,7 +28,7 @@ return [
             ]
         ],
         'dashboard' => [
-            'opc_msje_app' => false
+            'opc_msje_app' => true
         ],
         'perfil' => [
             'num_celular' => 9,

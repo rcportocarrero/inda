@@ -69,10 +69,10 @@ $cambio_config = $this->cambio_config;
             </div>
         </div>
         <div class="row dashboard_barra_top">
-            <div class="col-lg-3 col-md-6 col-sm-12 col-xs-12 text-center">
-                Bienvenido(a): <?php echo $usuario->first_name . ' ' . $usuario->last_name; ?>
+            <div class="col-lg-4 col-md-6 col-sm-12 col-xs-12 text-center">
+                Bienvenido(a): <?php echo $usuario->display_name; ?>
             </div>
-            <div class="col-lg-3 col-md-6 col-sm-12 col-xs-12  text-center">
+            <div class="col-lg-2 col-md-6 col-sm-12 col-xs-12  text-center">
                 Último acceso: <?php
                 if (utf8_encode($usuario->fec_ultimo_acceso) === '') {
                     echo date("Y-m-d H:i:s");
@@ -81,13 +81,13 @@ $cambio_config = $this->cambio_config;
                 } ?>
                 <input type="hidden" id="hdn_sesion_token" name="hdn_sesion_token" value="<?php echo $this->token_sesion; ?>" />
             </div>
-            <div class="col-lg-3 col-md-6 col-sm-12 col-xs-12  text-center">
+            <div class="col-lg-4 col-md-6 col-sm-12 col-xs-12  text-center">
                 <?php 
                 if ( $dashboard_config["opc_msje_app"] === true) {
                     echo $usuario->dias_restantes;
                 } ?>                
             </div>
-            <div class="col-lg-3 col-md-6 col-sm-12 col-xs-12 text-center">
+            <div class="col-lg-2 col-md-6 col-sm-12 col-xs-12 text-center">
                 <a id="btn_cerrar_sesion" href="<?php echo $this->url('usuario/sec', array('action' => 'logout')); ?>">Cerrar sesión</a>
             </div>
         </div>
