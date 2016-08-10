@@ -474,7 +474,7 @@ function load_menu_datos_usuario(ops) {
             perfil_btn_eliminar_celular_alt.on('click', function (evt) {
                 bootbox.confirm({
                     title: _strings.app.confirmacion.titulo,
-                    message: '¿Desea eliminar su n&uacute;mero de celular alternativo?',
+                    message: '¿Desea eliminar su otro n&uacute;mero de celular?',
                     buttons: {
                         'cancel': {
                             label: _strings.app.confirmacion.opc_cancel,
@@ -515,7 +515,7 @@ function load_menu_datos_usuario(ops) {
             perfil_row_celular_alt_guardar.on('click', function (evt) {                
                 bootbox.confirm({
                     title: _strings.app.confirmacion.titulo,
-                    message: '¿Desea actualizar su n&uacute;mero de celular alternativo?',
+                    message: '¿Desea actualizar su otro n&uacute;mero de celular?',
                     buttons: {
                         'cancel': {
                             label: _strings.app.confirmacion.opc_cancel,
@@ -808,7 +808,7 @@ function load_menu_datos_usuario(ops) {
             perfil_btn_eliminar_correo_alt.on('click', function (evt) {
                 bootbox.confirm({
                     title: _strings.app.confirmacion.titulo,
-                    message: '¿Desea eliminar su correo electr&oacute;nico alternativo?',
+                    message: '¿Desea eliminar su otro correo electr&oacute;nico?',
                     buttons: {
                         'cancel': {
                             label: _strings.app.confirmacion.opc_cancel,
@@ -852,13 +852,13 @@ function load_menu_datos_usuario(ops) {
                 var perfil_correo_alternativo_nuevo = jQuery('#perfil_correo_alternativo_nuevo');
 
                 if(perfil_correo_alternativo_old.val() === perfil_correo_alternativo_nuevo.val()){
-                   jQuery_mensaje('El correo electrónico alternativo debe ser distinto al actual.');
+                   jQuery_mensaje('El correo electrónico debe ser distinto al actual.');
                    return false;
                 }
                 
                 bootbox.confirm({
                     title: _strings.app.confirmacion.titulo,
-                    message: '¿Desea actualizar su correo electr&oacute;nico alternativo?',
+                    message: '¿Desea actualizar su otro correo electr&oacute;nico?',
                     buttons: {
                         'cancel': {
                             label: _strings.app.confirmacion.opc_cancel,
