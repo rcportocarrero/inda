@@ -1070,7 +1070,7 @@ function jQuery_mensaje(mensaje) {
         buttons: {
             success: {
                 label: "Aceptar",
-                className: "btn-naranja",
+                className: "btn-aceptar",
             }
         }
     });

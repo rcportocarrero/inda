@@ -31,7 +31,7 @@ function valida_sesion() {
                     buttons: {
                         success: {
                             label: "Aceptar",
-                            className: "btn-naranja",
+                            className: "btn-aceptar",
                             callback: function () {
                                 document.location = _config.url_logout;
                             }
@@ -50,7 +50,7 @@ function valida_sesion() {
                             buttons: {
                                 success: {
                                     label: "Aceptar",
-                                    className: "btn-naranja",
+                                    className: "btn-aceptar",
                                     callback: function () {
                                         document.location = _config.url_logout;
                                     }
@@ -68,7 +68,7 @@ function valida_sesion() {
                         buttons: {
                             success: {
                                 label: "Aceptar",
-                                className: "btn-naranja",
+                                className: "btn-aceptar",
                                 callback: function () {
                                     document.location = _config.url_logout;
                                 }
