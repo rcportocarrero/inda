@@ -178,7 +178,7 @@ function load_menu_datos_usuario(ops) {
                                 password_pri: pass_pri.val(),
                                 password_ver: pass_ver.val(),
                             };
-                                                                                    
+                            
                             BaseX.post({
                                 url: root + '/usuario/perfil/perfil-cambiar-clave',
                                 data: obj,

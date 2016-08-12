@@ -319,32 +319,32 @@ a.dropdown-toggle.nav-menu-user {
   border-top: 1px solid #e5e5e5;
 }
 .btn-default {
-  color: #098ca6;
-  background-color: #ffffff;
-  border-color: #098ca6;
+  color: #098ca6 !important;
+  background-color: #ffffff !important;
+  border-color: #098ca6 !important;
 }
 .btn-default:hover {
-  color: #098ca6;
-  background-color: #93c5cd;
-  border-color: #098ca6;
+  color: #098ca6 !important;
+  background-color: #93c5cd !important;
+  border-color: #098ca6 !important;
 }
 .btn-danger {
-  color: #ffffff;
-  background-color: #098ca6;
-  border-color: #098ca6;
+  color: #ffffff !important;
+  background-color: #098ca6 !important;
+  border-color: #098ca6 !important;
 }
 .btn-danger:hover {
-  color: #ffffff;
-  background-color: #93c5cd;
-  border-color: #098ca6;
+  color: #ffffff !important;
+  background-color: #93c5cd !important;
+  border-color: #098ca6 !important;
 }
 .btn-aceptar {
-  color: #ffffff;
-  background-color: #098ca6;
-  border-color: #098ca6;
+  color: #ffffff !important;
+  background-color: #098ca6 !important;
+  border-color: #098ca6 !important;
 }
 .btn-aceptar:hover {
-  color: #ffffff;
-  background-color: #93c5cd;
-  border-color: #098ca6;
+  color: #ffffff !important;
+  background-color: #93c5cd !important;
+  border-color: #098ca6 !important;
 }
