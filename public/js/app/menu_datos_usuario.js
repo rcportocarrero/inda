@@ -1,5 +1,116 @@
 function menu_datos_usuario() {
     load_menu_datos_usuario();
+    jQuery('.left_menu li').removeClass('clicked');
+    jQuery('#mnuPerfilUsuario').addClass('clicked');
+}
+
+function limpia_carga(opc_campo){
+    
+    //Contraseña
+    if(opc_campo === 1 || opc_campo === 0){
+        var row_cambio_contrasena = jQuery('#row_cambio_contrasena');
+        var div_row_cambio_contrasena = jQuery('#div_row_cambio_contrasena');
+        jQuery('#perfil_pass_clave_old').val('');
+        jQuery('#perfil_pass_nueva_clave').val('');
+        jQuery('#perfil_pass_nueva_clave_confir').val('');
+        row_cambio_contrasena.show();
+        div_row_cambio_contrasena.hide();
+    }
+    
+    //Correo
+    if(opc_campo === 2 || opc_campo === 0){
+        var row_cambio_correo = jQuery('#row_cambio_correo');
+        var div_row_cambio_correo = jQuery('#div_row_cambio_correo');
+        jQuery('#perfil_correo_nuevo').val('');
+        jQuery('#perfil_correo_nuevo_confir').val('');
+        row_cambio_correo.show();
+        div_row_cambio_correo.hide();
+    }
+    
+    //Celular
+    if(opc_campo === 3 || opc_campo === 0){
+        var row_cambio_celular = jQuery('#row_cambio_celular');
+        var div_row_cambio_celular = jQuery('#div_row_cambio_celular');
+        jQuery('#perfil_celular_nuevo').val('');
+        row_cambio_celular.show();
+        div_row_cambio_celular.hide();
+    }
+    
+    //Celular Confirmación
+    if(opc_campo === 4 || opc_campo === 0){
+        var row_cambio_celular = jQuery('#row_cambio_celular');
+        var div_row_cambio_celular = jQuery('#div_row_cambio_celular');
+        jQuery('#perfil_celular_nuevo').val('');
+        jQuery('#perfil_codigo_valcel').val('');
+        row_cambio_celular.show();
+        div_row_cambio_celular.hide();
+    }
+    
+    //Telefono
+    if(opc_campo === 5 || opc_campo === 0){
+        var row_cambio_telefono = jQuery('#row_cambio_telefono');
+        var div_row_cambio_telefono = jQuery('#div_row_cambio_telefono');
+        jQuery('#perfil_lista_codigo_ciudad option').eq(0).prop('selected', true);
+        jQuery('#perfil_telefono_nuevo').val('');
+        row_cambio_telefono.show();
+        div_row_cambio_telefono.hide();
+    }
+    
+    //Direccion
+    if(opc_campo === 6 || opc_campo === 0){
+        var row_cambio_direccion = jQuery('#row_cambio_direccion');
+        var div_row_cambio_direccion = jQuery('#div_row_cambio_direccion');
+        var id_departamento = jQuery('#id_departamento').val();
+        if(isNaN(parseInt(id_departamento))){
+            id_departamento = 0;
+        }
+        if( parseInt(id_departamento) === 0 ){
+            jQuery('#perfil_lista_departamento option').eq(0).prop('selected', true);
+            jQuery('#perfil_lista_provincia option').eq(0).prop('selected', true);
+            jQuery('#perfil_lista_distrito option').eq(0).prop('selected', true);
+            jQuery('#perfil_direccion_nuevo').val('');
+            jQuery('#perfil_referencia_nuevo').val('');
+        }
+        row_cambio_direccion.show();
+        div_row_cambio_direccion.hide();
+    }
+    
+    //Celular Adicional
+    if(opc_campo === 7 || opc_campo === 0){
+        var row_cambio_celular_alt = jQuery('#row_cambio_celular_alternativo');
+        var div_row_cambio_celular_alt = jQuery('#div_row_cambio_celular_alternativo');
+        jQuery('#perfil_celular_alternativo_nuevo').val('');
+        row_cambio_celular_alt.show();
+        div_row_cambio_celular_alt.hide();
+    }
+    
+    //Correo Adicional
+    if(opc_campo === 8 || opc_campo === 0){
+        var row_cambio_correo_alt = jQuery('#row_cambio_correo_alternativo');
+        var div_row_cambio_correo_alt = jQuery('#div_row_cambio_correo_alternativo');
+        jQuery('#perfil_correo_alternativo_nuevo').val('');
+        row_cambio_correo_alt.show();
+        div_row_cambio_correo_alt.hide();
+    }
+    
+    //Contacto Referencia
+    if(opc_campo === 9 || opc_campo === 0){
+        var row_cambio_contacto_ref = jQuery('#row_cambio_contacto_referencia');
+        var div_row_cambio_contacto_ref = jQuery('#div_row_cambio_contacto_referencia');
+        var id_contacto_nombre = jQuery('#id_contacto_nombre').val();
+        if(isNaN(parseInt(id_contacto_nombre))){
+            id_contacto_nombre = 0;
+        }
+        if( parseInt(id_contacto_nombre) === 0 ){
+            jQuery('#perfil_nombre_referencia_nuevo').val('');
+            jQuery('#perfil_celular_referencia_nuevo').val('');
+            jQuery('#perfil_lista_codigo_ciudad_referencia option').eq(0).prop('selected', true);
+            jQuery('#perfil_telefono_referencia_nuevo').val('');
+        }
+        row_cambio_contacto_ref.show();
+        div_row_cambio_contacto_ref.hide();
+    }
+    
 }
 
 function load_menu_datos_usuario(ops) {
@@ -34,6 +145,7 @@ function load_menu_datos_usuario(ops) {
             perfil_btn_cambiar_contrasena.off('click');
             perfil_btn_cambiar_contrasena.on('click', function (evt) {
                 evt.preventDefault();
+                limpia_carga(0);
                 row_cambio_contrasena.hide();
                 div_row_cambio_contrasena.show();
             });
@@ -93,11 +205,12 @@ function load_menu_datos_usuario(ops) {
 
             perfil_row_contrasena_cancelar.off('click');
             perfil_row_contrasena_cancelar.on('click', function (evt) {
-                jQuery('#perfil_pass_clave_old').val('');
-                jQuery('#perfil_pass_nueva_clave').val('');
-                jQuery('#perfil_pass_nueva_clave_confir').val('');
-                row_cambio_contrasena.show();
-                div_row_cambio_contrasena.hide();
+//                jQuery('#perfil_pass_clave_old').val('');
+//                jQuery('#perfil_pass_nueva_clave').val('');
+//                jQuery('#perfil_pass_nueva_clave_confir').val('');
+//                row_cambio_contrasena.show();
+//                div_row_cambio_contrasena.hide();
+                limpia_carga(1);
             });
                         
             //****************************************//
@@ -120,6 +233,7 @@ function load_menu_datos_usuario(ops) {
             perfil_btn_cambiar_correo.off('click');
             perfil_btn_cambiar_correo.on('click', function (evt) {
                 evt.preventDefault();
+                limpia_carga(0);
                 row_cambio_correo.hide();
                 div_row_cambio_correo.show();
             });
@@ -179,10 +293,11 @@ function load_menu_datos_usuario(ops) {
 
             perfil_row_correo_cancelar.off('click');
             perfil_row_correo_cancelar.on('click', function (evt) {
-                jQuery('#perfil_correo_nuevo').val('');
-                jQuery('#perfil_correo_nuevo_confir').val('');
-                row_cambio_correo.show();
-                div_row_cambio_correo.hide();
+//                jQuery('#perfil_correo_nuevo').val('');
+//                jQuery('#perfil_correo_nuevo_confir').val('');
+//                row_cambio_correo.show();
+//                div_row_cambio_correo.hide();
+                limpia_carga(2);
             });
             
             //****************************************//
@@ -215,6 +330,7 @@ function load_menu_datos_usuario(ops) {
             perfil_btn_cambiar_celular.off('click');
             perfil_btn_cambiar_celular.on('click', function (evt) {
                 evt.preventDefault();
+                limpia_carga(0);
                 row_cambio_celular.hide();
                 div_row_cambio_celular.show();
                 div_cambio_celular.show();
@@ -275,9 +391,10 @@ function load_menu_datos_usuario(ops) {
 
             perfil_row_celular_cancelar.off('click');
             perfil_row_celular_cancelar.on('click', function (evt) {
-                jQuery('#perfil_celular_nuevo').val('');
-                row_cambio_celular.show();
-                div_row_cambio_celular.hide();
+//                jQuery('#perfil_celular_nuevo').val('');
+//                row_cambio_celular.show();
+//                div_row_cambio_celular.hide();
+                limpia_carga(3);
             });
             
             //****************************************//
@@ -316,10 +433,11 @@ function load_menu_datos_usuario(ops) {
             
             perfil_row_celular_ccancelar.off('click');
             perfil_row_celular_ccancelar.on('click', function (evt) {
-                jQuery('#perfil_celular_nuevo').val('');
-                jQuery('#perfil_codigo_valcel').val('');
-                row_cambio_celular.show();
-                div_row_cambio_celular.hide();
+//                jQuery('#perfil_celular_nuevo').val('');
+//                jQuery('#perfil_codigo_valcel').val('');
+//                row_cambio_celular.show();
+//                div_row_cambio_celular.hide();
+                limpia_carga(4);
             });
 
             //****************************************//
@@ -342,6 +460,7 @@ function load_menu_datos_usuario(ops) {
             perfil_btn_cambiar_telefono.off('click');
             perfil_btn_cambiar_telefono.on('click', function (evt) {
                 evt.preventDefault();
+                limpia_carga(0);
                 row_cambio_telefono.hide();
                 div_row_cambio_telefono.show();
             });
@@ -440,142 +559,20 @@ function load_menu_datos_usuario(ops) {
           
             perfil_row_telefono_cancelar.off('click');
             perfil_row_telefono_cancelar.on('click', function (evt) {
-                jQuery('#perfil_lista_codigo_ciudad option').eq(0).prop('selected', true);
-                jQuery('#perfil_telefono_nuevo').val('');
-                row_cambio_telefono.show();
-                div_row_cambio_telefono.hide();
+//                jQuery('#perfil_lista_codigo_ciudad option').eq(0).prop('selected', true);
+//                jQuery('#perfil_telefono_nuevo').val('');
+//                row_cambio_telefono.show();
+//                div_row_cambio_telefono.hide();
+                limpia_carga(5);
             });
 
             //****************************************//
             //== Cambiar Telefono Usuario ----- FIN ==//
             //****************************************//
-
-            //**************************************************//
-            //== Cambiar Celular Alternativo Usuario - INICIO ==//
-            //**************************************************//
-
-            jQuery('#perfil_celular_alternativo_nuevo').filter_input({regex:_strings.app.validate.diccionario_numeros});
-            var row_cambio_celular_alt = jQuery('#row_cambio_celular_alternativo');
-            var perfil_btn_cambiar_celular_alt = jQuery('#perfil_btn_cambiar_celular_alternativo');
-            var perfil_btn_eliminar_celular_alt = jQuery('#perfil_btn_eliminar_celular_alternativo');
-            var div_row_cambio_celular_alt = jQuery('#div_row_cambio_celular_alternativo');
-            var perfil_row_celular_alt_cancelar = jQuery('#perfil_row_celular_alternativo_cancelar');
-            var perfil_row_celular_alt_guardar = jQuery('#perfil_row_celular_alternativo_guardar');
-
-            div_row_cambio_celular_alt.hide();
-            perfil_btn_cambiar_celular_alt.off('click');
-            perfil_btn_cambiar_celular_alt.on('click', function (evt) {
-                evt.preventDefault();
-                row_cambio_celular_alt.hide();
-                div_row_cambio_celular_alt.show();
-            });
-            
-            perfil_btn_eliminar_celular_alt.off('click');
-            perfil_btn_eliminar_celular_alt.on('click', function (evt) {
-                bootbox.confirm({
-                    title: _strings.app.confirmacion.titulo,
-                    message: '¿Desea eliminar su otro n&uacute;mero de celular?',
-                    buttons: {
-                        'cancel': {
-                            label: _strings.app.confirmacion.opc_cancel,
-                            className: 'btn-default pull-left'
-                        },
-                        'confirm': {
-                            label: _strings.app.confirmacion.opc_confirm,
-                            className: 'btn-danger pull-right'
-                        }
-                    },
-                    callback: function (result) {                        
-                        if (result) {
-                            perfil_btn_eliminar_celular_alt.prop('disabled', true);        
-                            BaseX.post({
-                                url: root + '/usuario/perfil/perfil-eliminar-celular-alt',
-                                success: function (xhr, txtSting) {
-                                    var _id = parseInt(xhr.id);
-                                    BaseX.dialogAceptar({
-                                        message: xhr.msg,
-                                        success: {
-                                            callback: function () {
-                                                perfil_btn_eliminar_celular_alt.prop('disabled', false);
-                                                    if(_id > 0){
-                                                        load_menu_datos_usuario();
-                                                    }
-                                            }
-                                        }
-                                    });
-                                    perfil_btn_eliminar_celular_alt.prop('disabled', false);
-                                }
-                            });
-                        }
-                    }
-                });    
-            });
-
-            perfil_row_celular_alt_guardar.off('click');
-            perfil_row_celular_alt_guardar.on('click', function (evt) {                
-                bootbox.confirm({
-                    title: _strings.app.confirmacion.titulo,
-                    message: '¿Desea actualizar su otro n&uacute;mero de celular?',
-                    buttons: {
-                        'cancel': {
-                            label: _strings.app.confirmacion.opc_cancel,
-                            className: 'btn-default pull-left'
-                        },
-                        'confirm': {
-                            label: _strings.app.confirmacion.opc_confirm,
-                            className: 'btn-danger pull-right'
-                        }
-                    },
-                    callback: function (result) {
-                        if (result) {
-                            perfil_row_celular_alt_guardar.prop('disabled', true);
-
-                            var celular_alt_old = jQuery('#perfil_celular_alternativo_old');
-                            var celular_alt_pri = jQuery('#perfil_celular_alternativo_nuevo');
-
-                            var obj = {
-                                celular_alt_old: celular_alt_old.val(),
-                                celular_alt_pri: celular_alt_pri.val()
-                            };
-
-                            BaseX.post({
-                                url: root + '/usuario/perfil/perfil-cambiar-celular-alt',
-                                data: obj,
-                                success: function (xhr, txtSting) {
-                                    var _id = parseInt(xhr.id);
-                                    BaseX.dialogAceptar({
-                                        message: xhr.msg,
-                                        success: {
-                                            callback: function () {
-                                                perfil_row_celular_alt_guardar.prop('disabled', false);
-                                                    if(_id > 0){
-                                                        load_menu_datos_usuario();
-                                                    }
-                                            }
-                                        }
-                                    });
-                                    perfil_row_celular_alt_guardar.prop('disabled', false);
-                                }
-                            });
-                        }
-                    }
-                });
-            });
-
-            perfil_row_celular_alt_cancelar.off('click');
-            perfil_row_celular_alt_cancelar.on('click', function (evt) {
-                jQuery('#perfil_celular_alternativo_nuevo').val('');
-                row_cambio_celular_alt.show();
-                div_row_cambio_celular_alt.hide();
-            });
-
-            //***********************************************//
-            //== Cambiar Celular Alternativo Usuario - FIN ==//
-            //***********************************************//
             
             //**************************************************//
             //== Cambiar Dirección Usuario ----------- INICIO ==//
-            //**************************************************//<option value="<?php echo $departamento->id; ?>"><?php echo $departamento->descripcion; ?></option>
+            //**************************************************//
 
             //== PROVINCIA ==//    
             $("#perfil_lista_departamento").change(function () {
@@ -635,6 +632,7 @@ function load_menu_datos_usuario(ops) {
             perfil_btn_cambiar_direccion.off('click');
             perfil_btn_cambiar_direccion.on('click', function (evt) {
                 evt.preventDefault();
+                limpia_carga(0);
                 row_cambio_direccion.hide();
                 div_row_cambio_direccion.show();
                 
@@ -765,25 +763,151 @@ function load_menu_datos_usuario(ops) {
 
             perfil_row_direccion_cancelar.off('click');
             perfil_row_direccion_cancelar.on('click', function (evt) {
-                var id_departamento = jQuery('#id_departamento').val();
-                if(isNaN(parseInt(id_departamento))){
-                    id_departamento = 0;
-                }
-                if( parseInt(id_departamento) === 0 ){
-                    jQuery('#perfil_lista_departamento option').eq(0).prop('selected', true);
-                    jQuery('#perfil_lista_provincia option').eq(0).prop('selected', true);
-                    jQuery('#perfil_lista_distrito option').eq(0).prop('selected', true);
-                    jQuery('#perfil_direccion_nuevo').val('');
-                    jQuery('#perfil_referencia_nuevo').val('');
-                }
-                row_cambio_direccion.show();
-                div_row_cambio_direccion.hide();
+//                var id_departamento = jQuery('#id_departamento').val();
+//                if(isNaN(parseInt(id_departamento))){
+//                    id_departamento = 0;
+//                }
+//                if( parseInt(id_departamento) === 0 ){
+//                    jQuery('#perfil_lista_departamento option').eq(0).prop('selected', true);
+//                    jQuery('#perfil_lista_provincia option').eq(0).prop('selected', true);
+//                    jQuery('#perfil_lista_distrito option').eq(0).prop('selected', true);
+//                    jQuery('#perfil_direccion_nuevo').val('');
+//                    jQuery('#perfil_referencia_nuevo').val('');
+//                }
+//                row_cambio_direccion.show();
+//                div_row_cambio_direccion.hide();
+                limpia_carga(6);
             });
 
             //***********************************************//
             //== Cambiar Dirección Usuario ----------- FIN ==//
             //***********************************************//
 
+            //**************************************************//
+            //== Cambiar Celular Alternativo Usuario - INICIO ==//
+            //**************************************************//
+
+            jQuery('#perfil_celular_alternativo_nuevo').filter_input({regex:_strings.app.validate.diccionario_numeros});
+            var row_cambio_celular_alt = jQuery('#row_cambio_celular_alternativo');
+            var perfil_btn_cambiar_celular_alt = jQuery('#perfil_btn_cambiar_celular_alternativo');
+            var perfil_btn_eliminar_celular_alt = jQuery('#perfil_btn_eliminar_celular_alternativo');
+            var div_row_cambio_celular_alt = jQuery('#div_row_cambio_celular_alternativo');
+            var perfil_row_celular_alt_cancelar = jQuery('#perfil_row_celular_alternativo_cancelar');
+            var perfil_row_celular_alt_guardar = jQuery('#perfil_row_celular_alternativo_guardar');
+
+            div_row_cambio_celular_alt.hide();
+            perfil_btn_cambiar_celular_alt.off('click');
+            perfil_btn_cambiar_celular_alt.on('click', function (evt) {
+                evt.preventDefault();
+                limpia_carga(0);
+                row_cambio_celular_alt.hide();
+                div_row_cambio_celular_alt.show();
+            });
+            
+            perfil_btn_eliminar_celular_alt.off('click');
+            perfil_btn_eliminar_celular_alt.on('click', function (evt) {
+                bootbox.confirm({
+                    title: _strings.app.confirmacion.titulo,
+                    message: '¿Desea eliminar su otro n&uacute;mero de celular?',
+                    buttons: {
+                        'cancel': {
+                            label: _strings.app.confirmacion.opc_cancel,
+                            className: 'btn-default pull-left'
+                        },
+                        'confirm': {
+                            label: _strings.app.confirmacion.opc_confirm,
+                            className: 'btn-danger pull-right'
+                        }
+                    },
+                    callback: function (result) {                        
+                        if (result) {
+                            perfil_btn_eliminar_celular_alt.prop('disabled', true);        
+                            BaseX.post({
+                                url: root + '/usuario/perfil/perfil-eliminar-celular-alt',
+                                success: function (xhr, txtSting) {
+                                    var _id = parseInt(xhr.id);
+                                    BaseX.dialogAceptar({
+                                        message: xhr.msg,
+                                        success: {
+                                            callback: function () {
+                                                perfil_btn_eliminar_celular_alt.prop('disabled', false);
+                                                    if(_id > 0){
+                                                        load_menu_datos_usuario();
+                                                    }
+                                            }
+                                        }
+                                    });
+                                    perfil_btn_eliminar_celular_alt.prop('disabled', false);
+                                }
+                            });
+                        }
+                    }
+                });    
+            });
+
+            perfil_row_celular_alt_guardar.off('click');
+            perfil_row_celular_alt_guardar.on('click', function (evt) {                
+                bootbox.confirm({
+                    title: _strings.app.confirmacion.titulo,
+                    message: '¿Desea actualizar su otro n&uacute;mero de celular?',
+                    buttons: {
+                        'cancel': {
+                            label: _strings.app.confirmacion.opc_cancel,
+                            className: 'btn-default pull-left'
+                        },
+                        'confirm': {
+                            label: _strings.app.confirmacion.opc_confirm,
+                            className: 'btn-danger pull-right'
+                        }
+                    },
+                    callback: function (result) {
+                        if (result) {
+                            perfil_row_celular_alt_guardar.prop('disabled', true);
+
+                            var celular_alt_old = jQuery('#perfil_celular_alternativo_old');
+                            var celular_alt_pri = jQuery('#perfil_celular_alternativo_nuevo');
+
+                            var obj = {
+                                celular_alt_old: celular_alt_old.val(),
+                                celular_alt_pri: celular_alt_pri.val()
+                            };
+
+                            BaseX.post({
+                                url: root + '/usuario/perfil/perfil-cambiar-celular-alt',
+                                data: obj,
+                                success: function (xhr, txtSting) {
+                                    var _id = parseInt(xhr.id);
+                                    BaseX.dialogAceptar({
+                                        message: xhr.msg,
+                                        success: {
+                                            callback: function () {
+                                                perfil_row_celular_alt_guardar.prop('disabled', false);
+                                                    if(_id > 0){
+                                                        load_menu_datos_usuario();
+                                                    }
+                                            }
+                                        }
+                                    });
+                                    perfil_row_celular_alt_guardar.prop('disabled', false);
+                                }
+                            });
+                        }
+                    }
+                });
+            });
+
+            perfil_row_celular_alt_cancelar.off('click');
+            perfil_row_celular_alt_cancelar.on('click', function (evt) {
+//                jQuery('#perfil_celular_alternativo_nuevo').val('');
+//                row_cambio_celular_alt.show();
+//                div_row_cambio_celular_alt.hide();
+                limpia_carga(7);
+            });
+
+            //***********************************************//
+            //== Cambiar Celular Alternativo Usuario - FIN ==//
+            //***********************************************//
+            
             //**************************************************//
             //== Cambiar Correo Alternativo Usuario -- INICIO ==//
             //**************************************************//
@@ -800,6 +924,7 @@ function load_menu_datos_usuario(ops) {
             perfil_btn_cambiar_correo_alt.off('click');
             perfil_btn_cambiar_correo_alt.on('click', function (evt) {
                 evt.preventDefault();
+                limpia_carga(0);
                 row_cambio_correo_alt.hide();
                 div_row_cambio_correo_alt.show();
             });
@@ -907,9 +1032,10 @@ function load_menu_datos_usuario(ops) {
 
             perfil_row_correo_alt_cancelar.off('click');
             perfil_row_correo_alt_cancelar.on('click', function (evt) {
-                jQuery('#perfil_correo_alternativo_nuevo').val('');
-                row_cambio_correo_alt.show();
-                div_row_cambio_correo_alt.hide();
+//                jQuery('#perfil_correo_alternativo_nuevo').val('');
+//                row_cambio_correo_alt.show();
+//                div_row_cambio_correo_alt.hide();
+                limpia_carga(8);
             });
             
             //**************************************************//
@@ -934,6 +1060,7 @@ function load_menu_datos_usuario(ops) {
             perfil_btn_cambiar_contacto_ref.off('click');
             perfil_btn_cambiar_contacto_ref.on('click', function (evt) {
                 evt.preventDefault();
+                limpia_carga(0);
                 row_cambio_contacto_ref.hide();
                 div_row_cambio_contacto_ref.show();
                 
@@ -1041,18 +1168,19 @@ function load_menu_datos_usuario(ops) {
 
             perfil_row_contacto_ref_cancelar.off('click');
             perfil_row_contacto_ref_cancelar.on('click', function (evt) {
-                var id_contacto_nombre = jQuery('#id_contacto_nombre').val();
-                if(isNaN(parseInt(id_contacto_nombre))){
-                    id_contacto_nombre = 0;
-                }
-                if( parseInt(id_contacto_nombre) === 0 ){
-                    jQuery('#perfil_nombre_referencia_nuevo').val('');
-                    jQuery('#perfil_celular_referencia_nuevo').val('');
-                    jQuery('#perfil_lista_codigo_ciudad_referencia option').eq(0).prop('selected', true);
-                    jQuery('#perfil_telefono_referencia_nuevo').val('');
-                }
-                row_cambio_contacto_ref.show();
-                div_row_cambio_contacto_ref.hide();
+//                var id_contacto_nombre = jQuery('#id_contacto_nombre').val();
+//                if(isNaN(parseInt(id_contacto_nombre))){
+//                    id_contacto_nombre = 0;
+//                }
+//                if( parseInt(id_contacto_nombre) === 0 ){
+//                    jQuery('#perfil_nombre_referencia_nuevo').val('');
+//                    jQuery('#perfil_celular_referencia_nuevo').val('');
+//                    jQuery('#perfil_lista_codigo_ciudad_referencia option').eq(0).prop('selected', true);
+//                    jQuery('#perfil_telefono_referencia_nuevo').val('');
+//                }
+//                row_cambio_contacto_ref.show();
+//                div_row_cambio_contacto_ref.hide();
+                limpia_carga(9);
             });
 
             //**************************************************//

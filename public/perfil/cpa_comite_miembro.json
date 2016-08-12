@@ -7,7 +7,7 @@
                 "titulo": "Material de ayuda"
             },
             {
-                "id": "mnuComiteEvaluaciónActa",
+                "id": "mnuPerfilUsuario",
                 "metodo": "menu_datos_usuario",
                 "titulo": "Perfil de usuario"
             }

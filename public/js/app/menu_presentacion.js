@@ -1,6 +1,7 @@
 function menu_presentacion() {
-
     load_menu_presentacion();
+    jQuery('.left_menu li').removeClass('clicked');
+    jQuery('#mnuPresentacion').addClass('clicked');
 }
 
 function load_menu_presentacion(ops) {
