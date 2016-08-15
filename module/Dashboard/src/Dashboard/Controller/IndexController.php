@@ -10,10 +10,6 @@ class IndexController extends \BaseX\Controller\BaseController {
     protected $_need_auth = true;
 
     public function indexAction() {
-
-//        var_dump($this->getSessionStorage()->isAuthenticate());
-//        var_dump($this->getSessionStorage()->get('user'));
-//        var_dump($this->getSessionStorage()->get('users_acl'));
         $config = $this->getConfig();
         $app_config = $config['app'];
         $usuario_dashboard = $config['usuario']['dashboard'];

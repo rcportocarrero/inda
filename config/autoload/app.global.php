@@ -4,7 +4,7 @@ return [
     'app' => [
         'app_title' => 'Intranet del postulante',
         'name_concurso' => 'Concurso de Prueba 12345',
-        'name_app' => 'App de Prueba para .....',
+        'name_app' => 'Inscripción de postulantes',
         'email_support1' => 'prueba1@pruebas.com',
         'email_support2' => 'prueba2@pruebas.com',
         'email_support3' => 'prueba3@pruebas.com',

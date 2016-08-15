@@ -23,11 +23,6 @@ return [
 //            'auth_url' => 'auth',
         ],
     ],
-    'captcha' => [
-        'enabled' => true,
-        'diccionario' => 'ABCDEFGHIJKLMNOPQRSTUVWXYZ',
-        'tamano_codigo' => 5
-    ],
     'auth' => [
         'mode' => 'oauth', // oauth => 'Apigility' -/- local => 'en su propia bd'
         'app_id' => 99,

@@ -30,12 +30,6 @@ return [
         'dashboard' => [
             'opc_msje_app' => true
         ],
-        'perfil' => [
-            'num_celular' => 9,
-            'telefono_fijo' => 10,
-            'email_alterno' => 150,
-            'contacto_nombres' => 150,
-        ],
         'recuperacion' => [
             'ultimas_claves' => 1,
             'diccionario_clave' => 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuwxyz1234567890@)(',
