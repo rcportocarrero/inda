@@ -1047,6 +1047,12 @@ function load_menu_datos_usuario(ops) {
             //**************************************************//
             
             jQuery('#perfil_nombre_referencia_nuevo').filter_input({regex:_strings.app.validate.diccionario_nombres});
+            jQuery('#perfil_nombre_referencia_nuevo').on('keypress', function (evt) {
+                if (evt.altKey === true) {
+                    evt.stopImmediatePropagation();
+                    return false;
+                }
+            });
             jQuery('#perfil_celular_referencia_nuevo').filter_input({regex:_strings.app.validate.diccionario_numeros});
             jQuery('#perfil_telefono_referencia_nuevo').filter_input({regex:_strings.app.validate.diccionario_numeros});
             var row_cambio_contacto_ref = jQuery('#row_cambio_contacto_referencia');
