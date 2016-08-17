@@ -133,8 +133,26 @@ function load_menu_datos_usuario(ops) {
             //****************************************//
 
             jQuery('#perfil_pass_clave_old').filter_input({regex:_strings.app.validate.diccionario_clave});
+            jQuery('#perfil_pass_clave_old').on('keypress', function (evt) {
+                if (evt.altKey === true) {
+                    evt.stopImmediatePropagation();
+                    return false;
+                }
+            });
             jQuery('#perfil_pass_nueva_clave').filter_input({regex:_strings.app.validate.diccionario_clave});
+            jQuery('#perfil_pass_nueva_clave').on('keypress', function (evt) {
+                if (evt.altKey === true) {
+                    evt.stopImmediatePropagation();
+                    return false;
+                }
+            });
             jQuery('#perfil_pass_nueva_clave_confir').filter_input({regex:_strings.app.validate.diccionario_clave});
+            jQuery('#perfil_pass_nueva_clave_confir').on('keypress', function (evt) {
+                if (evt.altKey === true) {
+                    evt.stopImmediatePropagation();
+                    return false;
+                }
+            });
             var row_cambio_contrasena = jQuery('#row_cambio_contrasena');
             var perfil_btn_cambiar_contrasena = jQuery('#perfil_btn_cambiar_contrasena');
             var div_row_cambio_contrasena = jQuery('#div_row_cambio_contrasena');
@@ -222,7 +240,19 @@ function load_menu_datos_usuario(ops) {
             //****************************************//
 
             jQuery('#perfil_correo_nuevo').filter_input({regex:_strings.app.validate.diccionario_correo});
+            jQuery('#perfil_correo_nuevo').on('keypress', function (evt) {
+                if (evt.altKey === true) {
+                    evt.stopImmediatePropagation();
+                    return false;
+                }
+            });
             jQuery('#perfil_correo_nuevo_confir').filter_input({regex:_strings.app.validate.diccionario_correo});
+            jQuery('#perfil_correo_nuevo_confir').on('keypress', function (evt) {
+                if (evt.altKey === true) {
+                    evt.stopImmediatePropagation();
+                    return false;
+                }
+            });
             var row_cambio_correo = jQuery('#row_cambio_correo');
             var perfil_btn_cambiar_correo = jQuery('#perfil_btn_cambiar_correo');
             var div_row_cambio_correo = jQuery('#div_row_cambio_correo');
