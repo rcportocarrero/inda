@@ -15,7 +15,7 @@ return [
     'usuario' => [
         'captcha' => [
             'enabled' => true,
-            'diccionario' => 'A', //'ABCDEFGHIJKLMNOPQRSTUVWXYZ',
+            'diccionario' => 'A', //'ABCDEFGHIJKLMNPQRSTUVWXYZ',
             'tamano_codigo' => 1 //5
         ],
         'login' => [
@@ -30,30 +30,25 @@ return [
         'dashboard' => [
             'opc_msje_app' => true
         ],
-        'recuperacion' => [
+        'general' => [
             'ultimas_claves' => 1,
-            'diccionario_clave' => 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuwxyz1234567890@)(',
+            'diccionario_clave' => 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuwxyz1234567890',
+            'diccionario_correo' => 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuwxyz1234567890.-_@',
+            'templates' => [
+                'template_recuperacion_id' => 11, //  ID del Template de Recuperar Contraseña por Correo (envia link)
+                'template_cambio_clave_id' => 12, //  ID del Template de Confirmacion de Cambio de Contraseña
+                'template_cambio_correo_id' => 14, //  ID del Template de Cambio de Correo
+            ],
+        ],        
+        'recuperacion' => [
             'opciones_recuperar' => [
+                'correo' => true,
                 'sms' => true
             ],
-            'templates' => [
-                'template_email_id' => 11, //  ID del Template de Emaile App
-                'template_recuperacion_id' => 11, //  ID del Template de Email
-            ],
-            'correo_confirmacion_cclave' => true,
-            'correo_confirmacion_ccorreo' => true,
             'token_min_clave' => 6,
             'token_max_clave' => 6,
         ],
         'cambio' => [
-            'ultimas_claves' => 1,
-            'diccionario_clave' => 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuwxyz1234567890@)(',
-            'diccionario_correo' => 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuwxyz1234567890.-_@',
-            'diccionario_numeros' => '0123456789',
-            'templates' => [
-                'template_cambio_clave_id' => 12, //  ID del Template de Email
-                'template_cambio_correo_id' => 14, //  ID del Template de Email
-            ],
             'caracteres_min_clave' => 8,
             'caracteres_max_clave' => 15,
             'caracteres_max_correo' => 150,
@@ -67,7 +62,7 @@ return [
             'caracteres_min_nombre' => 5,
             'caracteres_max_nombre' => 250,
             'correo_confirmacion_cclave' => true,
-            'correo_confirmacion_ccorreo' => true,
+            //'correo_confirmacion_ccorreo' => true,
         ]
     ]
 ];

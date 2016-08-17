@@ -7,7 +7,7 @@ var _strings = {
         msg_sistema: 'Mensaje del sistema',
         msg_sistema_termino_sesion: 'Su sesión ha expirado, por favor cierre sesión e inicie sesión nuevamente.',
         validate: {
-            diccionario_clave: '[a-zA-Z0-9@)(]',
+            diccionario_clave: '[a-zA-Z0-9]',
             diccionario_correo: '[a-zA-Z0-9._@-]',
             diccionario_direccion: '[a-zA-Zá-úÁ-Úä-üÄ-Ü0-9°#().¨/ ,-]',
             diccionario_nombres: '[a-zA-Zá-úÁ-Ú ]',
