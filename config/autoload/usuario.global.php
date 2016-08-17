@@ -31,7 +31,7 @@ return [
             'opc_msje_app' => true
         ],
         'general' => [
-            'ultimas_claves' => 1,
+            'ultimas_claves' => 3,
             'diccionario_clave' => 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuwxyz1234567890',
             'diccionario_correo' => 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuwxyz1234567890.-_@',
             'templates' => [
