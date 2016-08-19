@@ -669,7 +669,7 @@ function load_menu_datos_usuario(ops) {
                 var id_departamento = jQuery('#id_departamento').val();
                 var id_provincia = jQuery('#id_provincia').val();
                 var id_distrito = jQuery('#id_distrito').val();
-            
+                
                 jQuery('#perfil_lista_departamento option').eq(parseInt(id_departamento)).prop('selected', true);
                 $.getJSON(root + '/usuario/perfil/cargaprovincia?id_departamento=' + id_departamento, {format: "json"}, function (md) {
                     $("#perfil_lista_provincia").html("");
