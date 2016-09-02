@@ -241,16 +241,23 @@ function load_menu_datos_usuario(ops) {
 
             jQuery('#perfil_correo_nuevo').filter_input({regex:_strings.app.validate.diccionario_correo});
             jQuery('#perfil_correo_nuevo').on('keypress', function (evt) {
+                var code = evt.keyCode || evt.which; 
+                //alert(code);
                 if (evt.altKey === true) {
-                    evt.stopImmediatePropagation();
-                    return false;
+                    if(code !== 64) { 
+                        evt.stopImmediatePropagation();
+                        return false;
+                    }                    
                 }
             });
             jQuery('#perfil_correo_nuevo_confir').filter_input({regex:_strings.app.validate.diccionario_correo});
             jQuery('#perfil_correo_nuevo_confir').on('keypress', function (evt) {
+                var code = evt.keyCode || evt.which; 
                 if (evt.altKey === true) {
-                    evt.stopImmediatePropagation();
-                    return false;
+                    if(code !== 64) { 
+                        evt.stopImmediatePropagation();
+                        return false;
+                    }                    
                 }
             });
             var row_cambio_correo = jQuery('#row_cambio_correo');
@@ -944,9 +951,12 @@ function load_menu_datos_usuario(ops) {
             
             jQuery('#perfil_correo_alternativo_nuevo').filter_input({regex:_strings.app.validate.diccionario_correo});
             jQuery('#perfil_correo_alternativo_nuevo').on('keypress', function (evt) {
+                var code = evt.keyCode || evt.which; 
                 if (evt.altKey === true) {
-                    evt.stopImmediatePropagation();
-                    return false;
+                    if(code !== 64) { 
+                        evt.stopImmediatePropagation();
+                        return false;
+                    }                    
                 }
             });
             var row_cambio_correo_alt = jQuery('#row_cambio_correo_alternativo');
