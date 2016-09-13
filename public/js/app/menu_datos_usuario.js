@@ -118,9 +118,9 @@ function load_menu_datos_usuario(ops) {
         ops = 0;
     }
 
-    if (valida_sesion() === false) {
-        return;
-    }
+//    if (valida_sesion() === false) {
+//        return;
+//    }
 
     BaseX.load_html(root + '/usuario/perfil/index', {
         data: ops,
