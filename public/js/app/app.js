@@ -9,7 +9,7 @@ jQuery(document).on('ready', function () {
     menu();    
 });
 
-function valida_sesion() {
+function valida_sesion(vfs) {
     var rp = true;
     jQuery.ajaxSetup({
         cache: false,
@@ -19,6 +19,7 @@ function valida_sesion() {
         url: _config.url_valida_sesion,
         data: {
             neko: jQuery('#hdn_sesion_token').val(),
+            vfs: vfs,
         },
         method: 'post',
         success: function (xhr, txt) {
@@ -39,12 +40,32 @@ function valida_sesion() {
                     }
                 });
             }
+            
+            if (vfs === 1){
+                alert(vfs);
+                if (rp === true) {
+                    if (xhr.ini === true) {
+                        if (xhr.fin === true) {
+                            bootbox.dialog({
+                                message: _strings.app.msg_fin_proceso,
+                                title: "Mensaje del sistema",
+                                closeButton: false,
+                                buttons: {
+                                    success: {
+                                        label: "Aceptar",
+                                        className: "btn-aceptar",
+                                        callback: function () {
+                                            document.location = _config.url_logout;
+                                        }
+                                    }
+                                }
+                            });
+                            return false;
+                        }
+                    } else {
 
-            if (rp === true) {
-                if (xhr.ini === true) {
-                    if (xhr.fin === true) {
                         bootbox.dialog({
-                            message: _strings.app.msg_fin_proceso,
+                            message: _strings.app.msg_no_ini_proceso,
                             title: "Mensaje del sistema",
                             closeButton: false,
                             buttons: {
@@ -59,25 +80,9 @@ function valida_sesion() {
                         });
                         return false;
                     }
-                } else {
-
-                    bootbox.dialog({
-                        message: _strings.app.msg_no_ini_proceso,
-                        title: "Mensaje del sistema",
-                        closeButton: false,
-                        buttons: {
-                            success: {
-                                label: "Aceptar",
-                                className: "btn-aceptar",
-                                callback: function () {
-                                    document.location = _config.url_logout;
-                                }
-                            }
-                        }
-                    });
-                    return false;
-                }
+                }                
             }
+
         }
     });
 
