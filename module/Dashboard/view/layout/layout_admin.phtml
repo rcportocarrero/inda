@@ -81,10 +81,20 @@ $cambio_config = $this->cambio_config;
                 } ?>
                 <input type="hidden" id="hdn_sesion_token" name="hdn_sesion_token" value="<?php echo $this->token_sesion; ?>" />
             </div>
-            <div class="col-lg-4 col-md-6 col-sm-12 col-xs-12  text-center">
+            <?php
+               $fecha_i = date($usuario->fec_ini_proceso);
+               $fecha_i = date("Y-m-d", strtotime($fecha_i));
+               $fecha_f = date('Y-m-d');
+               $datetime1 = date_create($fecha_i);
+               $datetime2 = date_create($fecha_f);
+               $interval = date_diff($datetime2, $datetime1);
+            ?>
+            <div class="col-lg-4 col-md-6 col-sm-12 col-xs-12  text-center" style="color:#CE141F;font-size: 16px;font-weight: bold;">
                 <?php 
                 if ( $dashboard_config["opc_msje_app"] === true) {
-                    echo $usuario->dias_restantes;
+                    if ($interval->format('%R%a') <= 0) {
+                        echo $usuario->dias_restantes;
+                    }
                 } ?>                
             </div>
             <div class="col-lg-2 col-md-6 col-sm-12 col-xs-12 text-center">
