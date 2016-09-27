@@ -1,6 +1,3 @@
-[submodule "public/js/lib/UsuarioJS"]
-	path = public/js/lib/UsuarioJS
-	url = https://git.diedds.com/sing88/BaseAppUsuarioJS.git
 [submodule "module/BaseX"]
 	path = module/BaseX
 	url = ssh://git@git.died:2203/sing88/BaseX.git
