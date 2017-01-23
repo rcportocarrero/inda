@@ -14,7 +14,7 @@ return array(
         'Usuario',
 //        'Admin',
         'Dashboard',
-        'ZendDeveloperTools',
+        
 //        'AistGitTools',
     ),
     // These are various options for the listeners attached to the ModuleManager
