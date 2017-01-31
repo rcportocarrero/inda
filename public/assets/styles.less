@@ -49,7 +49,7 @@ body {
 
 .barra_top{
     background-color: #94C5CC;
-    border-color: #93C5CD;
+    border-color: @color_secundario_concurso;
     height: 40px;
 }
 /*BODY*/
@@ -131,7 +131,7 @@ a:hover{
 .banner_2_login{
     background-color: #ebeff2;
     /*#ebeff2 none repeat scroll 0 0*/
-    border-color: #93C5CD;
+    border-color: @color_secundario_concurso;
     color: #333;
 }
 .linea{
@@ -142,6 +142,10 @@ a:hover{
 
 /* Dashboard  */
 
+.menu_recupera{
+    background-color: @dashboard_menu_recupera;
+    color: white;
+}
 
 /*.menu_1{
 
@@ -254,6 +258,7 @@ a.dropdown-toggle.nav-menu-user{
 
 .died_hr{
     border-color: @died_hr_color;
+    border-width: 2px;
     margin-bottom: 5px;
     margin-top: 5px;
 }
@@ -364,6 +369,12 @@ a.dropdown-toggle.nav-menu-user{
     color: @died_alert_btn_df_color !important;
     background-color: @died_alert_btn_df_bg_color !important;
     border-color: @died_alert_btn_df_border_color !important;
+    
+    &.active{
+        background-color: @died_alert_ttl_bg_color  !important;
+        border-color: @died_alert_btn_df_border_color !important;
+        color: @died_alert_btn_df_color!important;
+    }
 }
 .btn-default:hover {
     color: @died_alert_btn_df_color !important;
@@ -390,3 +401,174 @@ a.dropdown-toggle.nav-menu-user{
     background-color: @died_alert_ttl_bg_color !important;
     border-color: @died_alert_btn_dg_border_color !important;
 }
+
+/**--Titulo Principal--**/
+
+.titulo_principal{
+    background-color: @died_perfil_row_selected_bg_color;
+    color: @died_perfil_row_selected_color;
+    font-weight: bold; 
+    font-size: 20px;
+    padding: 5px;
+    margin: 20px 25px 0px 0px;
+}
+
+.titulo_sec{
+    color: @died_perfil_row_selected_color;
+    font-weight: bold; 
+    font-size: 20px;
+    margin: 20px 25px 25px 0px;
+}
+
+.titulo_recupera{
+    padding: 10px; 
+    background-color: @dashboard_menu_recupera; 
+    color: white; 
+    font-weight: bold;
+}
+
+/**--Tablas--**/
+
+.tbl_minedu{
+    border-collapse: collapse;
+    margin-left: 25px;
+}
+
+.tbl_minedu thead {
+    /*background-color: #3782BD;*/
+    background-color: @color_principal_concurso;
+    color: @died_perfil_row_selected_color;
+
+}
+.tbl_minedu thead tr th{
+    border-color: black;
+    border-width: 1px;
+    border-style: solid;
+    padding: 5px;
+    font-weight: bold;
+    text-align: center;
+    width: 100px;
+}
+.tbl_minedu tbody tr td{
+    border-color: black;
+    border-width: 1px;
+    border-style: solid;
+    padding: 5px;
+}
+
+.tbl_minedu_tbody_center{
+    text-align: center;
+}
+
+/*Opciones Respuestas*/
+
+#circle {
+    border-height:9px;
+    width:19px;
+    -moz-border-radius:9px;
+    -webkit-border-radius:9px;
+    border-radius: 9px 9px 9px 9px;
+    padding:4px;
+    text-align:center;
+    color:white;
+    font-size: 8px;
+    font-family: arial;
+    float: left;    
+}
+.fondo_opcion{
+    background:rgb(206, 194, 194);
+}
+.fondo_marcado_c{
+    background:#3782BD;
+}
+.fondo_marcado_e{
+    background:red;
+}
+.fondo_marcado_mala{
+    background:black;
+}
+
+//**TABS**//
+
+.nav-tabs {
+    border-bottom: 1px solid #fff /*@color_principal_concurso*/ !important;
+}
+.nav > li > a {
+    padding: 10px !important;
+    font-weight: bold;
+    font-size: 16px;
+    background-color: @died_tab_abgcolor;
+    border-color: @died_tab_border_color !important;
+}
+.nav > li > a:focus {
+    background-color: @died_tab_abgcolor_active !important;
+    color: @died_tab_acolor !important;
+    text-decoration: underline;
+    padding: 5px;
+}
+.nav > .active > a {
+    background-color: @died_tab_abgcolor_active !important;
+    color: @died_tab_acolor !important;
+    text-decoration: underline;
+    padding: 5px;
+}
+.nav > .active > a:hover {
+    background-color: @died_tab_ahover_bgcolor !important;
+    color: @died_tab_acolor !important;
+    padding: 5px;
+}
+.nav > li > a:hover {
+    background-color: @died_tab_ahover_bgcolor !important;
+    color: @died_tab_ahover_color !important;
+}
+.fade {
+    /*    border: solid 1px @died_tab_border_color !important;
+        border-bottom-left-radius: 5px !important;
+        border-bottom-right-radius: 5px !important;*/
+    padding: 5px !important;
+}
+
+/*
+*/
+
+.modal-lg2 {
+    width: 1110px;
+}
+
+.modal-body-scroll {
+    max-height: calc(100vh - 210px);
+    overflow-y: auto;
+}
+
+/*Jqgrid*/
+.ui-jqgrid {
+    max-width: 100% !important;
+    width: auto !important;
+}
+.ui-jqgrid-view,
+.ui-jqgrid-hdiv,
+.ui-jqgrid-bdiv {
+    width: auto !important;
+}
+.ui-jqgrid-pager{
+    max-width: 100% !important;
+    width: auto !important;
+}
+.ui-jqgrid-labels{
+    background-color: @color_principal_concurso;
+    color: #fff;
+}
+.table > thead > tr > td.active,
+.table > tfoot > tr > td.active,
+.table > thead > tr > th.active,
+.table > tbody > tr > th.active,
+.table > tfoot > tr > th.active,
+.table > thead > tr.active > td,
+.table > tfoot > tr.active > td,
+.table > thead > tr.active > th,
+.table > tbody > tr.active > th,
+.table > tfoot > tr.active > th {
+ background-color: @color_principal_concurso !important;
+ color: #fff !important;
+}
+

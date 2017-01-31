@@ -2,6 +2,6 @@
 
 return [
     'session' => [
-        'name' => 'sesion_x_smart_sbn',
+        'name' => 'sesion_died_base_app',
     ]
 ];

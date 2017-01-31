@@ -14,7 +14,11 @@ return array(
         'Usuario',
 //        'Admin',
         'Dashboard',
-        
+        'AssetManager',
+        'ZendDeveloperTools',
+//        'StefanoDbProfiler',
+//        'SanSessionToolbar',
+//        'BjyProfiler',
 //        'AistGitTools',
     ),
     // These are various options for the listeners attached to the ModuleManager

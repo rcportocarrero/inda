@@ -15,6 +15,5 @@ file_put_contents('../css/style.css', $css);
 <pre>
 <?php
 echo $css;
-
 ?>
 </pre>

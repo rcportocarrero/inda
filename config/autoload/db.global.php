@@ -1,18 +1,17 @@
 <?php
 
-//'dsn' => 'mysql:host=db.piscolabs.com;dbname=caro_auth',
 return [
     'db' => array(
         'adapters' => array(
-            'db1' => array(
+            'db_maestro' => array(
                 'charset' => 'utf8',
-                'database' => 'zf2_apigility',
+                'database' => 'db_died_maestro',
                 'driver' => 'PDO_Mysql',
-                'hostname' => 'dev.redzrii.com',
-//                'hostname' => 'cloud.piscolabs.com',
-                'username' => 'root',
-                'password' => 'carlossing88',
-                'port' => '3306',
+                'hostname' => '11.35.100.48',
+                'username' => 'developer',
+                'password' => 'developerdied2016**//peru',
+                'port' => '33061',
+                'profiler' => true, 
             ),
         ),
     ),

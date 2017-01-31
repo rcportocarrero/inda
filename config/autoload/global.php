@@ -14,8 +14,7 @@
 return [
     'apigility' => [
         'config' => [
-            //'url' => 'http://diedds.com/ws/died_ws5/public/',
-            'url' => 'http://93.104.214.103/ws/died_ws5/public/',
+            'url' => 'http://11.35.100.48:8001/apps/ws/died_wsv5/public/',
             'grant_type' => 'password',
             'client_id' => 'testclient',
             'client_secret' => 'testpass',

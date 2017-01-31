@@ -1,9 +1,7 @@
 var _config = {
-    url_valida_sesion:root + '/usuario/sesion/valida',
+    url_valida_sesion: root + '/usuario/sesion/valida',
     url_logout: root + '/usuario/sec/logout'
 };
-
-//document.location = root + '/usuario/sec/logout';
 
 jQuery(document).on('ready', function () {
     menu();    
@@ -42,43 +40,17 @@ function valida_sesion(vfs) {
             }
             
             if (vfs === 1){
-                alert(vfs);
                 if (rp === true) {
                     if (xhr.ini === true) {
                         if (xhr.fin === true) {
-                            bootbox.dialog({
-                                message: _strings.app.msg_fin_proceso,
-                                title: "Mensaje del sistema",
-                                closeButton: false,
-                                buttons: {
-                                    success: {
-                                        label: "Aceptar",
-                                        className: "btn-aceptar",
-                                        callback: function () {
-                                            document.location = _config.url_logout;
-                                        }
-                                    }
-                                }
-                            });
-                            return false;
+                            load_procfin();
+                            rp = false;
+                            return rp;
                         }
                     } else {
-
-                        bootbox.dialog({
-                            message: _strings.app.msg_no_ini_proceso,
-                            title: "Mensaje del sistema",
-                            closeButton: false,
-                            buttons: {
-                                success: {
-                                    label: "Aceptar",
-                                    className: "btn-aceptar",
-                                    callback: function () {
-                                        document.location = _config.url_logout;
-                                    }
-                                }
-                            }
-                        });
-                        return false;
+                        load_procini();
+                        rp = false;
+                        return rp;
                     }
                 }                
             }
@@ -87,4 +59,30 @@ function valida_sesion(vfs) {
     });
 
     return rp;
+}
+
+function load_procini(ops) {
+    if (ops === undefined) {
+        ops = 0;
+    }
+
+    BaseX.load_html(root + '/dashboard/index/procini', {
+        data: ops,
+        success: function (xhr) {
+            jQuery('#workArea').html(xhr);
+        }
+    });
+}
+
+function load_procfin(ops) {
+    if (ops === undefined) {
+        ops = 0;
+    }
+
+    BaseX.load_html(root + '/dashboard/index/procfin', {
+        data: ops,
+        success: function (xhr) {
+            jQuery('#workArea').html(xhr);
+        }
+    });
 }

@@ -457,7 +457,7 @@ function load_menu_datos_usuario(ops) {
                             success: {
                                 callback: function () {
                                     perfil_row_celular_confirmar.prop('disabled', false);
-                                        if(_id > 0){
+                                        if(_id > 0 || _id === parseInt(-200)){	
                                             load_menu_datos_usuario();                                            
                                         }
                                 }

@@ -12,6 +12,7 @@ var _strings = {
             diccionario_direccion: '[a-zA-Zá-úÁ-Úä-üÄ-Ü0-9°#().¨/ ,-]',
             diccionario_nombres: '[a-zA-Zá-úÁ-Ú ]',
             diccionario_numeros: '[0-9]',
+            diccionario_alfanumerico: '[a-zA-Z0-9 ]',
             only_numbers: 'Debe llenar este campo sólo con números.',
             only_letters: 'Debe llenar este campo sólo con letras.',
             required: 'Debe llenar este campo.'

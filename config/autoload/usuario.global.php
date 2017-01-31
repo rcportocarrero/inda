@@ -32,14 +32,28 @@ return [
         ],
         'general' => [
             'ultimas_claves' => 3,
-            'diccionario_clave' => 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuwxyz1234567890',
-            'diccionario_correo' => 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuwxyz1234567890.-_@',
+            'nro_intentos_codval_cel' => 2,
+            'diccionario_clave' => 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz1234567890',
+            'diccionario_correo' => 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz1234567890.-_@',
             'templates' => [
                 'template_recuperacion_id' => 11, //  ID del Template de Recuperar Contraseña por Correo (envia link)
                 'template_cambio_clave_id' => 12, //  ID del Template de Confirmacion de Cambio de Contraseña
                 'template_cambio_correo_id' => 14, //  ID del Template de Cambio de Correo
             ],
-        ],        
+            'concurso' => array(
+                'id_concurso' => 8, // Concurso
+                'id_etapa_actividad' => 14, //  Etapa de Actividad 
+            ),        
+        ],     
+        'path_files' => [            
+            'pdf' => getcwd() . '/public/pdf', // enlace simbólico    
+            'pdf_diresp_fichas' => getcwd() . '/public/pdf_nmcd_fichas', // enlace simbólico            
+            'pdf_reclamos' => getcwd() . '/public/pdf_nmcd_reclamos', // enlace simbólico
+            'pdf_resp_reclamos' => getcwd() . '/public/pdf_nmcd_respuesta_reclamos', // enlace simbólico
+            'pdf_verifica' => getcwd() . '/public/pdf_nmcd_cartilla', // enlace simbólico            
+            'pdf_informe' => getcwd() . '/public/pdf_nmcd_informes', // enlace simbólico  
+            'date_format' => 'YmdHis',
+        ],
         'recuperacion' => [
             'opciones_recuperar' => [
                 'correo' => true,
@@ -62,7 +76,6 @@ return [
             'caracteres_min_nombre' => 5,
             'caracteres_max_nombre' => 250,
             'correo_confirmacion_cclave' => true,
-            //'correo_confirmacion_ccorreo' => true,
         ]
     ]
 ];
