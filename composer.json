@@ -13,8 +13,13 @@
         "doctrine/doctrine-orm-module": "0.8.*",
         "guzzlehttp/guzzle": "~6.0",
         "zendframework/zend-developer-tools": "0.*",
-        "bjyoungblood/bjy-profiler": "^1.1",
+        "bjyoungblood/bjy-profiler": "^1.1",		        
+        "stefano/stefano-db-profiler": "*",
         "oyejorge/less.php": "~1.7.0.9",
-        "zfcampus/zf-development-mode": "^3.1"
+        "rwoverdijk/assetmanager": "1.6.0",
+        "linkorb/jsmin-php": "^1.0",
+        "jdorn/sql-formatter": "^1.2",
+        "mpdf/mpdf": "^6.1",
+        "gkralik/php-uglifyjs": "^1.0"
     }
 }
