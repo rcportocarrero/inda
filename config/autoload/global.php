@@ -32,7 +32,7 @@ return [
         ],
     ],
     'auth' => [
-        'mode' => 'oauth', // oauth => 'Apigility' -/- local => 'en su propia bd'
+        'mode' => 'local', // oauth => 'Apigility' -/- local => 'en su propia bd'
         'app_id' => 99,
         'acl_id' => 0,
         'multirole' => 0,
