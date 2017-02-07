@@ -22,6 +22,15 @@ return [
 //            'auth_url' => 'auth',
         ],
     ],
+    'soap' => [
+        'config' => [
+            'url' => 'http://192.168.210.187:8080/prjMINEDUPP/ReniecWS?wsdl',
+            'username' => 'USRDIEDDES',
+            'password' => '3aad29b8',
+            'ip' => '192.168.210.103',
+            'debug' => false
+        ],
+    ],
     'auth' => [
         'mode' => 'oauth', // oauth => 'Apigility' -/- local => 'en su propia bd'
         'app_id' => 99,

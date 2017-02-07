@@ -27,11 +27,15 @@ return [
                 'caracteres_max_correo' => 150
             ]
         ],
+        'registro' => [
+            'enabled' => true, //Activar link de registro de usuarios
+            'modal' => true, //Activar modal de ayuda
+        ],
         'dashboard' => [
             'opc_msje_app' => true
         ],
         'general' => [
-            'ultimas_claves' => 3,
+            'ultimas_claves' => 1,
             'nro_intentos_codval_cel' => 2,
             'diccionario_clave' => 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz1234567890',
             'diccionario_correo' => 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz1234567890.-_@',
@@ -43,9 +47,9 @@ return [
             'concurso' => array(
                 'id_concurso' => 8, // Concurso
                 'id_etapa_actividad' => 14, //  Etapa de Actividad 
-            ),        
-        ],     
-        'path_files' => [            
+            ),
+        ],
+        'path_files' => [
             'pdf' => getcwd() . '/public/pdf', // enlace simbólico    
             'pdf_diresp_fichas' => getcwd() . '/public/pdf_nmcd_fichas', // enlace simbólico            
             'pdf_reclamos' => getcwd() . '/public/pdf_nmcd_reclamos', // enlace simbólico
@@ -59,6 +63,11 @@ return [
                 'correo' => true,
                 'sms' => true
             ],
+            'tamanio' => [
+                'caracteres_min_documento' => 8,
+                'caracteres_max_documento' => 12,
+                'caracteres_max_correo' => 150
+            ],
             'token_min_clave' => 6,
             'token_max_clave' => 6,
         ],
@@ -67,7 +76,7 @@ return [
             'caracteres_max_clave' => 15,
             'caracteres_max_correo' => 150,
             'caracteres_min_dni' => 8,
-            'caracteres_max_dni' => 12,  
+            'caracteres_max_dni' => 12,
             'caracteres_long_celular' => 9,
             'caracteres_long_valcel' => 6,
             'caracteres_min_telefono' => 6,
