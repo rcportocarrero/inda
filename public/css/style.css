@@ -217,6 +217,17 @@ a.dropdown-toggle.nav-menu-user {
   background-color: #bfc39c !important;
   color: #ffffff;
 }
+.left_menu_recupera {
+  font-weight: bold;
+}
+.left_menu_recupera li {
+  background-color: #98aa3a;
+  color: #ffffff;
+  padding: 10px;
+}
+.left_menu_recupera li a {
+  color: #777777;
+}
 /* Pefil */
 #div_perfil {
   /*overflow-y: scroll;*/
@@ -366,6 +377,7 @@ a.dropdown-toggle.nav-menu-user {
   font-weight: bold;
   font-size: 20px;
   padding: 5px;
+  padding-left: 15px;
   margin: 20px 25px 0px 0px;
 }
 .titulo_sec {
