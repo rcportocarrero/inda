@@ -51,9 +51,49 @@ class IndexController extends \BaseX\Controller\BaseController {
     }
 
     public function presentacionAction() {
-        $view = new ViewModel();
+        $config = $this->getConfig();
+        $app_config = $config['app'];
+        
+        $params_view = [
+            'apps_var' => $app_config        
+        ];
+        $view = new ViewModel($params_view);
         $view->setTerminal(true);
         return $view;
     }
-
+    
+    public function prociniAction() {
+        $config = $this->getConfig();
+        $app_config = $config['app']; 
+        $users_acl = json_decode($this->getSessionStorage()->get('users_acl'));
+        $fec_ini_proc = $users_acl->rows->fec_ini_proceso;
+        $fec_fin_proc = $users_acl->rows->fec_fin_proceso;
+        
+        $params_view = [
+            'apps_var' => $app_config,
+            'fec_ini_proc' => $fec_ini_proc,
+            'fec_fin_proc' => $fec_fin_proc,
+        ];
+        
+        $view = new ViewModel($params_view);
+        $view->setTerminal(true);
+        return $view;
+    }
+    
+    public function procfinAction() {
+        $config = $this->getConfig();
+        $app_config = $config['app']; 
+        $users_acl = json_decode($this->getSessionStorage()->get('users_acl'));
+        $fec_fin_proc = $users_acl->rows->fec_fin_proceso;
+        
+        $params_view = [
+            'apps_var' => $app_config,
+            'fec_fin_proc' => $fec_fin_proc,
+        ];
+        
+        $view = new ViewModel($params_view);
+        $view->setTerminal(true);
+        return $view;
+    }
+    
 }
