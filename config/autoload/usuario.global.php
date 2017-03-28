@@ -13,29 +13,15 @@
  */
 return [
     'usuario' => [
-        'captcha' => [
-            'enabled' => true,
-            'diccionario' => 'A', //'ABCDEFGHIJKLMNPQRSTUVWXYZ',
-            'tamano_codigo' => 1 //5
-        ],
-        'login' => [
-            'tamanio' => [
-                'caracteres_min_clave' => 8,
-                'caracteres_max_clave' => 15,
-                'caracteres_min_dni' => 8,
-                'caracteres_max_dni' => 12,
-                'caracteres_max_correo' => 150
-            ]
-        ],
         'registro' => [
-            'enabled' => true, //Activar link de registro de usuarios
-            'modal' => true, //Activar modal de ayuda
+            'enabled' => false, //Activar link de registro de usuarios
+            'modal' => false, //Activar modal de ayuda
         ],
         'dashboard' => [
             'opc_msje_app' => true
         ],
         'general' => [
-            'ultimas_claves' => 1,
+            'ultimas_claves' => 3,
             'nro_intentos_codval_cel' => 2,
             'diccionario_clave' => 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz1234567890',
             'diccionario_correo' => 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz1234567890.-_@',
@@ -50,41 +36,70 @@ return [
             ),
         ],
         'path_files' => [
-            'pdf' => getcwd() . '/public/pdf', // enlace simbólico    
-            'pdf_diresp_fichas' => getcwd() . '/public/pdf_nmcd_fichas', // enlace simbólico            
-            'pdf_reclamos' => getcwd() . '/public/pdf_nmcd_reclamos', // enlace simbólico
-            'pdf_resp_reclamos' => getcwd() . '/public/pdf_nmcd_respuesta_reclamos', // enlace simbólico
-            'pdf_verifica' => getcwd() . '/public/pdf_nmcd_cartilla', // enlace simbólico            
-            'pdf_informe' => getcwd() . '/public/pdf_nmcd_informes', // enlace simbólico  
-            'date_format' => 'YmdHis',
+            'pdf'                   => getcwd() . '/public/pdf', // enlace simbólico    
+            'pdf_diresp_fichas'     => getcwd() . '/public/pdf_nmcd_fichas', // enlace simbólico            
+            'pdf_reclamos'          => getcwd() . '/public/pdf_nmcd_reclamos', // enlace simbólico
+            'pdf_resp_reclamos'     => getcwd() . '/public/pdf_nmcd_respuesta_reclamos', // enlace simbólico
+            'pdf_verifica'          => getcwd() . '/public/pdf_nmcd_cartilla', // enlace simbólico            
+            'pdf_informe'           => getcwd() . '/public/pdf_nmcd_informes', // enlace simbólico  
+            'date_format'           => 'YmdHis',
         ],
         'recuperacion' => [
             'opciones_recuperar' => [
                 'correo' => true,
                 'sms' => true
             ],
-            'tamanio' => [
-                'caracteres_min_documento' => 8,
-                'caracteres_max_documento' => 12,
-                'caracteres_max_correo' => 150
+        ],        
+        'menu_perfil' => [
+            'datos_personales'      =>  [
+                'cambio_correo'         =>  true,       //Permite visualizar el botón de Cambio de correo eletrónico
+                'cambio_contrasenia'    =>  true,       //Permite visualizar el botón de Cambio de contraseña
+                'cambio_celular'        =>  true,       //Permite visualizar el botón de Cambio de número de celular
+                'cambio_num_fijo'       =>  true,       //Permite visualizar el botón de Cambio de número de teléfono fijo
             ],
-            'token_min_clave' => 6,
-            'token_max_clave' => 6,
+            'info_adicional'        =>  [
+                'cambio_direccion'      =>  true,       //Permite visualizar el botón opción de Cambio de dirección para Información Adicional
+                'cambio_otro_celular'   =>  true,       //Permite visualizar el botón de Cambio de otro celular para Información Adicional
+                'cambio_otro_correo'    =>  true,       //Permite visualizar el botón de Cambio de correo electrónico para Información Adicional
+            ],
+            'contacto_referencia'   =>  true,           //Permite visualizar el botón de Cambio de datos para el Contacto de referencia
+            'flags_ws'              =>  [
+                'correo_conf_cambio_clave'    => true,  //Permite enviar mediante el servicio web un correo de confirmación de cambio de contraseña
+            ]
         ],
-        'cambio' => [
-            'caracteres_min_clave' => 8,
-            'caracteres_max_clave' => 15,
-            'caracteres_max_correo' => 150,
-            'caracteres_min_dni' => 8,
-            'caracteres_max_dni' => 12,
-            'caracteres_long_celular' => 9,
-            'caracteres_long_valcel' => 6,
-            'caracteres_min_telefono' => 6,
-            'caracteres_max_telefono' => 7,
-            'caracteres_max_direccion' => 250,
-            'caracteres_min_nombre' => 5,
-            'caracteres_max_nombre' => 250,
-            'correo_confirmacion_cclave' => true,
+        'num_caracteres'    => [
+            'captcha' => [
+                    'enabled'       =>  true,
+                    'diccionario'   =>  'ABX',             //Letras permitidas en el captcha 'ABCDEFGHIJKLMNPQRSTUVWXYZ',
+                    'tamano_codigo' =>  3                //Número de caracteres permitidos para el captcha
+            ],
+            'documento_identidad'       =>  [
+                    'min'                   =>  8,      //Número mínimo de caracteres permitidos para el documento de identidad
+                    'max'                    =>  13,     //Número máximo de caracteres permitidos para el documento de identidad
+            ],
+            'contrasenias'          =>      [
+                    'min'                   =>  9,      //Número mínimo de caracteres permitidos para una contraseña
+                    'max'                   =>  10,     //Número máximo de caracteres permitidos para una contraseña
+            ],
+            'general'                       =>  [
+                    'nombre_contacto'       =>   [
+                            'min'   =>  2,              //Número mínimo de caracteres para el nombre y apellidos de contacto
+                            'max'   =>  150,            //Número máximo de caracteres para el nombre y apellidos de contacto
+                    ],
+                    'correo'                =>  150,    //Número de caracteres para un correo electrónico
+                    'celular'               =>  9,      //Número de caracteres para un número de celular
+                    'telefono_fijo'         =>  [
+                            'min'   =>  6,              //Número de caracteres mínimo para un teléfono fijo
+                            'max'   =>  7,              //Número de caracteres máximo para un teléfono fijo
+                    ],
+                    'direccion_domicilio'   =>  [
+                            'min'   =>  5,              //Número de caracteres mínimo para una dirección de domicilio
+                            'max'   =>  250,              //Número de caracteres máximo para una dirección de domicilio
+                    ],
+                    'token_sms'             =>  6       //Número de caracteres para códigos de validación por SMS
+            ],            
         ]
-    ]
+    ],
+
+   
 ];

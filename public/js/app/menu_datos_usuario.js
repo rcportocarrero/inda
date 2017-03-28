@@ -172,6 +172,7 @@ function load_menu_datos_usuario(ops) {
             perfil_row_contrasena_guardar.on('click', function (evt) {
                 bootbox.confirm({
                     title: _strings.app.confirmacion.titulo,
+                    closeButton: false,
                     message: '¿Desea actualizar su contraseña?',
                     buttons: {
                         'cancel': {
@@ -279,6 +280,7 @@ function load_menu_datos_usuario(ops) {
             perfil_row_correo_guardar.on('click', function (evt) {
                 bootbox.confirm({
                     title: _strings.app.confirmacion.titulo,
+                    closeButton: false,
                     message: '¿Desea actualizar su correo electr&oacute;nico?',
                     buttons: {
                         'cancel': {
@@ -378,6 +380,7 @@ function load_menu_datos_usuario(ops) {
             perfil_row_celular_guardar.on('click', function (evt) {
                 bootbox.confirm({
                     title: _strings.app.confirmacion.titulo,
+                    closeButton:false,
                     message: '¿Desea actualizar su n&uacute;mero de celular?',
                     buttons: {
                         'cancel': {
@@ -547,6 +550,7 @@ function load_menu_datos_usuario(ops) {
             perfil_row_telefono_guardar.on('click', function (evt) {
                 bootbox.confirm({
                     title: _strings.app.confirmacion.titulo,
+                    closeButton:false,
                     message: '¿Desea actualizar su n&uacute;mero de tel&eacute;fono fijo?',
                     buttons: {
                         'cancel': {
@@ -613,6 +617,7 @@ function load_menu_datos_usuario(ops) {
 
             //== PROVINCIA ==//    
             $("#perfil_lista_departamento").change(function () {
+
                 $.getJSON(root + '/usuario/perfil/cargaprovincia?id_departamento=' + $(this).val(), {format: "json"}, function (md) {
                     $("#perfil_lista_provincia").html("");
                     var cmb2 = [];
@@ -658,6 +663,18 @@ function load_menu_datos_usuario(ops) {
                     return false;
                 }
             });
+            
+             jQuery("#perfil_direccion_nuevo").on("change paste keyup", function () {
+                if ($(this).val().charAt(0) === ' ') {
+                    $(this).val("");
+                }
+            });
+             jQuery("#perfil_referencia_nuevo").on("change paste keyup", function () {
+                if ($(this).val().charAt(0) === ' ') {
+                    $(this).val("");
+                }
+            });
+            
             var row_cambio_direccion = jQuery('#row_cambio_direccion');
             var perfil_btn_cambiar_direccion = jQuery('#perfil_btn_cambiar_direccion');
             var perfil_btn_eliminar_direccion = jQuery('#perfil_btn_eliminar_direccion');
@@ -704,6 +721,7 @@ function load_menu_datos_usuario(ops) {
             perfil_btn_eliminar_direccion.on('click', function (evt) {
                 bootbox.confirm({
                     title: _strings.app.confirmacion.titulo,
+                    closeButton: false,
                     message: '¿Desea eliminar su direcci&oacute;n?',
                     buttons: {
                         'cancel': {
@@ -719,6 +737,7 @@ function load_menu_datos_usuario(ops) {
                         if (result) {
                             perfil_btn_eliminar_direccion.prop('disabled', true);        
                             BaseX.post({
+                                closeButton: false,
                                 url: root + '/usuario/perfil/perfil-eliminar-direccion',
                                 success: function (xhr, txtSting) {
                                     var _id = parseInt(xhr.id);
@@ -745,6 +764,7 @@ function load_menu_datos_usuario(ops) {
             perfil_row_direccion_guardar.on('click', function (evt) {                
                 bootbox.confirm({
                     title: _strings.app.confirmacion.titulo,
+                    closeButton:false,
                     message: '¿Desea actualizar su direcci&oacute;n?',
                     buttons: {
                         'cancel': {
@@ -886,6 +906,7 @@ function load_menu_datos_usuario(ops) {
             perfil_row_celular_alt_guardar.on('click', function (evt) {                
                 bootbox.confirm({
                     title: _strings.app.confirmacion.titulo,
+                    closeButton:false,
                     message: '¿Desea actualizar su otro n&uacute;mero de celular?',
                     buttons: {
                         'cancel': {
@@ -1029,6 +1050,7 @@ function load_menu_datos_usuario(ops) {
                 
                 bootbox.confirm({
                     title: _strings.app.confirmacion.titulo,
+                    closeButton:false,
                     message: '¿Desea actualizar su otro correo electr&oacute;nico?',
                     buttons: {
                         'cancel': {
@@ -1167,6 +1189,7 @@ function load_menu_datos_usuario(ops) {
             perfil_row_contacto_ref_guardar.on('click', function (evt) {                   
                 bootbox.confirm({
                     title: _strings.app.confirmacion.titulo,
+                    closeButton:false,
                     message: '¿Desea actualizar los datos del contacto de referencia?',
                     buttons: {
                         'cancel': {

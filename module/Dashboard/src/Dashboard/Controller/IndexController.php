@@ -13,12 +13,13 @@ class IndexController extends \BaseX\Controller\BaseController {
         $config = $this->getConfig();
         $app_config = $config['app'];
         $usuario_dashboard = $config['usuario']['dashboard'];
-        $usuario_cambio = $config['usuario']['cambio'];        
+        $usuario_cambio = $config['usuario']['num_caracteres'];        
         $users_acl = json_decode($this->getSessionStorage()->get('users_acl'));
         $username = $this->getSessionStorage()->get('user');
         $token_sesion = sha1($username . time());
         $this->Session()->token_sesion = $token_sesion;
-
+        
+        $this->layout()->apps_config_caracteres = $usuario_cambio;
         $this->layout()->apps_var = $app_config;
         $this->layout()->users_acl = $users_acl;
         $this->layout()->dashboard_config = $usuario_dashboard;
@@ -26,28 +27,13 @@ class IndexController extends \BaseX\Controller\BaseController {
         $this->layout()->token_sesion = $this->Session()->token_sesion;
 
         $params_view = [
-            'apps_var' => $app_config,
-            'users_acl' => $users_acl,
-            'dashboard_config' => $usuario_dashboard,
-            'cambio_config' => $usuario_cambio,
+            'apps_var'          => $app_config,
+            'users_acl'         => $users_acl,
+            'dashboard_config'  => $usuario_dashboard,
         ];
 
         $view = new ViewModel($params_view);
         return $view;
-
-//        $writer = new \Zend\Log\Writer\Stream('log/app.log');
-//        $logger = new \Zend\Log\Logger();
-//        $logger->addWriter($writer);
-//
-//        $logger->info('Informational message XD1 ');
-//        $logger->log(\Zend\Log\Logger::INFO, 'Informational message XD2');
-//
-//        $logger->log(\Zend\Log\Logger::INFO, 'Informational message');
-//        $logger->info('Informational message 3');
-//
-//        $logger->log(\Zend\Log\Logger::EMERG, 'Emergency message');
-//        $logger->emerg('Emergency message 4');
-//    
     }
 
     public function presentacionAction() {

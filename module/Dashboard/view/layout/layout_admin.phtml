@@ -3,6 +3,7 @@ echo $this->doctype();
 $base_url = $this->basePath();
 $apps_var = $this->apps_var;
 $usuario = $this->users_acl->rows;
+$apps_var_usuario = $this->apps_config_caracteres;
 $cambio_config = $this->cambio_config;
 ?>
 
@@ -25,15 +26,16 @@ $cambio_config = $this->cambio_config;
                 ->prependStylesheet($this->basePath('css/style.css'))
                 ->prependStylesheet($this->basePath('css/bootstrap.min.css'))
         ?>
+
         <script type="text/javascript">
-            var root = "<?php echo $base_url; ?>";
-
-            var min_clave = <?php echo $cambio_config['caracteres_min_clave']; ?>;
-            var max_clave = <?php echo $cambio_config['caracteres_max_clave']; ?>;
-            var min_dni = <?php echo $cambio_config['caracteres_min_dni']; ?>;
-            var max_dni = <?php echo $cambio_config['caracteres_max_dni']; ?>;
-            var max_correo = <?php echo $cambio_config['caracteres_max_correo']; ?>;
-
+            var root            = '<?php echo $base_url; ?>';
+            var min_clave       = <?php echo $apps_var_usuario['contrasenias']['min']; ?>;
+            var max_clave       = <?php echo $apps_var_usuario['contrasenias']['max']; ?>;
+            var tam_captcha     = <?php echo $apps_var_usuario['captcha']['tamano_codigo']; ?>;
+            var min_dni         = <?php echo $apps_var_usuario['documento_identidad']['min']; ?>;
+            var max_dni         = <?php echo $apps_var_usuario['documento_identidad']['max']; ?>;
+            var max_correo      = <?php echo $apps_var_usuario['general']['correo']; ?>;
+            var token_sms       = <?php echo $apps_var_usuario['general']['token_sms']; ?>;
         </script>
         <!-- Scripts -->
         <?php

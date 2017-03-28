@@ -15,7 +15,7 @@ return array(
 //        'Admin',
         'Dashboard',
         'AssetManager',
-        'ZendDeveloperTools',
+//        'ZendDeveloperTools',
 //        'StefanoDbProfiler',
 //        'SanSessionToolbar',
 //        'BjyProfiler',
