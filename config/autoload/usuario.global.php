@@ -21,7 +21,7 @@ return [
             'opc_msje_app' => true
         ],
         'general' => [
-            'ultimas_claves' => 3,
+            'ultimas_claves' => 1,
             'nro_intentos_codval_cel' => 2,
             'diccionario_clave' => 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz1234567890',
             'diccionario_correo' => 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz1234567890.-_@',
