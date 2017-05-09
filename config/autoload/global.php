@@ -33,8 +33,8 @@ return [
     ],
     'auth' => [
         'mode' => 'oauth', // oauth => 'Apigility' -/- local => 'en su propia bd'
-        'app_id' => 24,
-        'acl_id' => 52,
+        'app_id' => 2,
+        'acl_id' => 21,
         'multirole' => 0,
     ],
     'module_layouts' => [

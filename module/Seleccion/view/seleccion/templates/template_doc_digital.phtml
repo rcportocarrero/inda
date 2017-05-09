@@ -1,0 +1,296 @@
+<?php
+$base_url = $this->basePath();
+?>
+<style type="text/css">
+    #wrap_formato{
+        background-color: #FFF;
+        overflow: hidden;
+        margin-bottom: 150px;
+        border: 1px solid #c3c3c3;
+        width: 1050px;
+        font-family: tahoma;
+    }
+
+    #wrap_formato h1{
+        font-size: 16px;
+        text-align: center;
+        margin: 15px 20px;
+    }
+
+    #wrap_formato #tbl_header{
+        width: 95%;
+        margin: 5px 20px 20px 20px;
+    }
+    #wrap_formato #tbl_header2{
+        width: 80%;
+        margin: 20px auto;
+        border: 1px solid #c3c3c3;
+    }
+
+    #wrap_formato #table {
+        display: table;
+        width: 98%;
+        background: #fff;
+        margin: 0 auto;
+        box-sizing: border-box;
+        border-spacing: 0;
+        border-collapse: separate;
+    }
+
+    #wrap_formato #table th{
+        background: rgb(205,206,211);
+        color: #333;
+        font-weight: bold;
+        font-size: 12px;
+    }
+
+    #wrap_formato #table td{
+        background: rgb(243,243,245);
+        color: rgb(66,66,66);
+        font-size: 12px;
+    }
+    #cuadro{
+        border: 1px solid;
+        padding: 2px;
+        text-align: center;
+        font-weight: bold;
+        font-size: 18px;
+
+    }
+
+    #wrap_formato #table th,
+    #wrap_formato #table td{
+        border: 1px solid #c3c3c3;
+        padding: 2px 4px;
+    }
+    #wrap_formato #table th.blank,
+    #wrap_formato #table td.blank{
+        border: 0;
+        background: none;
+    }
+
+    #wrap_formato #table th.blank_head,
+    #wrap_formato #table td.blank_head{
+        border-bottom: 0;
+    }
+</style>
+
+<div id="wrap_formato">
+    <table style="width: 95%;">
+        <tbody>
+            <tr>
+                <td style="width:50%;text-align:center;">
+                    <img src="<?php echo $base_url; ?>/img/logo-minedu1.png"/>
+                </td>
+                <td style="width:50%;text-align:center;">
+                    <img src="<?php echo $base_url; ?>/img/logo-banco-nacion.png" />
+                </td>
+            </tr>
+        </tbody>
+    </table>
+
+    <table style="margin: 5px 10px 0px 10px; width: 95%;">
+        <tbody>
+            <tr>
+                <td style="text-align: center;"><b><?php echo $this->name_concurso; ?></b>               
+                </td>
+            </tr>
+            <tr>
+                <td style="text-align: center;"><b><?php echo $this->rsg_norma_acta;?></b>
+                </td>
+            </tr>
+            <tr>
+                <td style="text-align: center;"><b>FORMATO DE INSCRIPCIÓN</b>         
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table id="tbl_header">
+        <tbody>
+            <tr>
+                <td width="100%" colspan="4">
+                    <h5 style="text-align: left; font-size: 15px;">
+                        <b>Datos del postulante</b>
+                    </h5>
+                </td>
+            </tr>
+            <tr>
+                <td width="20%"><b>Tipo de documento:</b></td>
+                <td width="30%"><?php echo $data['documento_tipo']; ?></td>
+                <td width="20%"><b>Correo electrónico:</b></td>
+                <td width="30%"><?php echo $data['correo']; ?></td>
+            </tr>
+            <tr>
+                <td width="20%"><b>Número de documento:</b></td>
+                <td width="30%"><?php echo $data['cod_documento']; ?></td>
+                <td width="20%"><b>Teléfono fijo:</b></td>
+                <td width="30%"><?php echo $data['telefono']; ?></td>
+            </tr>
+            <tr>
+                <td width="20%"><b>Apellido paterno:</b></td>
+                <td width="30%"><?php echo $data['apellido_paterno']; ?></td>
+                <td width="20%"><b>Celular:</b></td>
+                <td width="30%"><?php echo $data['celular']; ?></td>
+            </tr>            
+              <tr>
+                    <td width="20%"><b>Apellido materno:</b></td>
+                    <td width="30%"><?php echo $data['apellido_materno']; ?></td>
+                    <td width="20%" rowspan="3" valign="top"><b>Discapacidad:</b></td>
+                    <td width="30%" rowspan="3" valign="top"><?php echo $data['disc_desc']; ?></td>
+                </tr>
+                <tr>
+                    <td width="20%" valign="top"><b>Nombres:</b></td>
+                    <td width="30%" valign="top"><?php echo $data['nombres']; ?></td>
+                </tr>
+                
+            <tr>
+                <td width="100%" colspan="4">
+                    <h5 style="text-align: left; font-size: 15px;">
+                        <b>Datos de postulación</b>
+                    </h5>
+                </td>
+            </tr>        
+            <tr>
+                <td width="30%"><b>Región:</b></td>
+                <td width="70%" colspan="3"><?php echo $data['des_region']; ?></td>              
+            </tr>
+            <tr>
+                <td width="30%"><b>Dependencia:</b></td>
+                <td width="70%" colspan="3"><?php echo $data['desc_dre_ugel']; ?></td>              
+            </tr>
+            <tr>
+                <td width="30%"><b>Escala magisterial:</b></td>
+                <td width="70%" colspan="3"><?php echo $data['des_escala']; ?></td>              
+            </tr>
+            <tr>
+                <td width="25%"><b>Grupo de competencia:</b></td>
+                <td width="25%"><?php echo $data['desc_nivel']; ?></td>
+                <td width="25%"><b>Grupo de inscripción:</b></td>
+                <td width="25%"><?php echo $data['desc_grupo']; ?></td>
+
+            </tr>
+            <tr>
+                <td width="30%" colspan="2"><b>Sede donde rendirá la Prueba Única Nacional:</b></td>
+                <td width="70%" colspan="2"><?php echo $data['sede']; ?></td>
+            </tr>
+            <tr>
+                <td width="30%" colspan="2"><b>Fecha y hora de registro de inscripción:</b></td>
+                <td width="70%" colspan="2"><?php echo $data['fecha_registro']; ?></td>
+            </tr>
+        </tbody>
+    </table>
+    <table id="tbl_header">
+        <tbody>
+            <tr>
+                <td width="20%"><b>NÚMERO DE DOCUMENTO</b></td>
+                <td width="20%" id="cuadro"><?php echo $data['cod_documento']; ?></td>
+                <td width="10%"></td>
+                <td width="30%"><b>CÓDIGO DE VALIDACIÓN (*)</b></td>
+                <td width="20%" id="cuadro"><?php echo $data['validacion_codigo']; ?></td>
+            </tr>
+            <tr>
+                <td colspan="5" style="text-align: justify;"><b>(*) El código de validación no es su contraseña de acceso al sistema de evaluación docente. Su contraseña fue remitida al correo electrónico que consta en este formato de inscripción.</b></td>
+            </tr> 
+            <tr>
+                <td colspan="5" style="text-align: justify;"><b>Declaro que estoy conforme con los datos consignados en el presente formato de inscripción, los que son veraces. Así mismo, he leído y
+                        acepto las disposiciones contenidas en la Norma Técnica que regulan el <?php echo $this->titulo_norma_acta; ?>, aprobada mediante <?php echo $this->rsg_norma_acta;?>.</b></td>
+            </tr>            
+        </tbody>
+    </table>
+    <table id="tbl_header">
+        <tbody>
+            <tr>
+                <td width="10%"><b>IMPORTANTE:</b></td>
+                <td width="90%" style="text-align: justify;">Para culminar este proceso de inscripción, es requisito imprescindible que se acerque a cualquier agencia autorizada del Banco de la Nación dentro del plazo de inscripción, portando su DNI o Carnet de Extranjería y el presente formato impreso.</td>
+            </tr>
+            <tr>
+                <td width="100%" colspan="2">Hora de entrega:</td>
+            </tr>
+        </tbody>
+    </table>
+    <table id="tbl_header">
+        <tbody>
+            <tr>
+                <td width="50%">
+                    <table style="width: 100%;">
+                        <tr><td width="40%" style="height: 40px; border: 1px solid;"></td><td width="60%"  style="height: 40px; border: 1px solid;"></td></tr>
+                        <tr><td  style="height: 35px; border: 1px solid;text-align: center;">Firma del postulante</td><td  style="height: 35px; border: 1px solid;text-align: center;">Firma y sello-fecha del registrador del banco</td></tr>
+                    </table>
+                </td>
+                <td width="50%"></td>
+            </tr>
+        </tbody>
+    </table>   
+
+    <table id="tbl_header">
+        <tbody>
+            <tr>
+                <td width="100%"  colspan="2">
+                    <hr>                   
+                </td>
+            </tr>
+            <tr>
+                <td style="width:50%;text-align:center;">
+			<img src="<?php echo $base_url; ?>/img/logo-minedu1.png"/>
+                </td>
+                <td style="width:50%;text-align:center;">
+                    <img src="<?php echo $base_url; ?>/img/logo-banco-nacion.png" />
+                </td>
+            </tr>
+            <tr>
+                <td width="100%" style="text-align: center;"  colspan="2">
+                    DESGLOSABLE PARA SER USADO SOLO EN CASO DE CONTINGENCIA                 
+                </td>
+            </tr>
+        </tbody>
+    </table>
+
+    <table  style="margin: 5px 10px 0px 10px; width: 95%;">
+        <tbody>
+            <tr>
+                <td style="text-align: center;"><b><?php echo $this->name_concurso; ?></b>               
+                </td>
+            </tr>
+            <tr>
+                <td style="text-align: center;"><b><?php echo $this->rsg_norma_acta;?></b>
+                </td>
+            </tr>
+            <tr>
+                <td style="text-align: center;"><b>FORMATO DE INSCRIPCIÓN</b>         
+                </td>
+            </tr>
+            <tr>
+                <td  width="100%">Hora de entrega:</td>                
+            </tr>
+        </tbody>
+    </table>
+    <table id="tbl_header2" cellpadding="0px !important;" cellspacing="0px !important;">
+        <tr>
+            <td  width="100%"  colspan="3" style="padding: 10px;border: 1px solid #c3c3c3;">
+                Datos del postulante
+            </td>
+        </tr>
+        <tr>
+            <td  width="25%" style="padding: 10px;border: 1px solid #c3c3c3;">Tipo de documento</td>
+            <td  width="50%" style="padding: 10px;border: 1px solid #c3c3c3;"><?php echo $data['documento_tipo']; ?></td>
+            <td  width="25%"></td>
+        </tr>
+        <tr>
+            <td  width="25%" style="padding: 10px;border: 1px solid #c3c3c3;">Número de documento</td>
+            <td  width="50%" style="padding: 10px;border: 1px solid #c3c3c3;"><b><?php echo $data['cod_documento']; ?></b></td>
+            <td  width="25%"></td>
+        </tr>
+        <tr>
+            <td  width="25%" style="padding: 10px;border: 1px solid #c3c3c3;">Apellidos y nombres</td>
+            <td  width="50%" style="padding: 10px;border: 1px solid #c3c3c3;"><?php echo $data['apellido_paterno'] . ' ' . $data['apellido_materno'] . ' ' . $data['nombres']; ?></td>
+            <td  width="25%" style="text-align: center;" rowspan="2">Firma y sello-fecha del registrador del banco</td>
+        </tr>
+        <tr>
+            <td  width="25%" style="padding: 10px;border: 1px solid #c3c3c3;">Código de validación</td>
+            <td  width="50%" style="padding: 10px;border: 1px solid #c3c3c3;"><b><?php echo $data['validacion_codigo']; ?></b></td>
+
+        </tr>
+    </table>
+    <table style="margin-left: 20px; margin-right: 20px;"><tr><td colspan="3">Si este formato es utilizado por el Banco de la Nación EN CASO DE CONTINGENCIA, recibirá un correo electrónico con la confirmación de su inscripción en no más de 48 horas.</td></tr></table>
+
+</div>

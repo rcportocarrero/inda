@@ -1,0 +1,666 @@
+<?php
+$base_url       = $this->basePath();
+$datos          = $this->datos[0];
+$datos_nexus    = $this->datos_nexus[0];
+
+
+//Habilitar o desactivar campo sede
+if($this->variables['vrb_15']){
+    $disabled = '';
+}else{
+    $disabled = 'disabled';
+}
+
+?>
+
+<form class="form-horizontal" style="color: #777777;" id="frm_inscripcion">
+    <h3 style="color: white; font-weight: bold; padding: 5px; text-align: left;" class="bg_principal ">&nbsp;&nbsp;&nbsp;Formulario de Inscripción</h3>
+    <p>
+        Los datos que se detallan a continuación lo identificarán durante el <?php echo $app_config['name_concurso_corto']; ?>.
+    </p>
+    <p>
+        Complete la información solicitada y verifique que los datos sean correctos.
+    </p>
+
+    <fieldset>
+        <legend>
+            <h2 style="color: #777777;">
+                <b>Datos del postulante</b>
+            </h2>
+        </legend>
+        <div class="row">
+            <div class="col-lg-8 col-md-8 col-sm-12 col-xs-12">
+                <div class="form-group">
+                    <label class="col-lg-5 col-md-5 col-sm-12 col-xs-12 control-label-right" for="textDocumento">Documento de identidad: </label>
+                    <div class="col-lg-7 col-md-7 col-sm-12 col-xs-12">
+                        <label class="control-label"><?php echo $datos['username']; ?></label>                        
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-lg-8 col-md-8 col-sm-12 col-xs-12 ">
+                <div class="form-group">
+
+                    <label class="col-lg-5 col-md-5 col-sm-12 col-xs-12 control-label-right" for="textApePaterno">Apellido paterno: <label style="color: #f36b45; font-size: 16px;">*</label></label>
+                    <div class="col-lg-7 col-md-7 col-sm-12 col-xs-12">
+                            <label class="control-label"><b><?php echo htmlspecialchars($datos['last_name'], ENT_QUOTES); ?></b></label>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-lg-8 col-md-8 col-sm-12 col-xs-12 ">
+                <div class="form-group">
+                    <label class="col-lg-5 col-md-5 col-sm-12 col-xs-12 control-label-right" for="textApeMaterno">Apellido materno: <label style="color: #f36b45; font-size: 16px;">*</label></label>
+                    <div class="col-lg-7 col-md-7 col-sm-12 col-xs-12">                        
+                        <?php
+                        if (intval($datos['flg_obtencion_datos']) === 2 && intval($editable) === 1)
+                        {
+                            ?>
+                            <input type="text" name="textApeMaterno" id="textApeMat" class="form-control" maxlength="35" value="<?php echo htmlspecialchars($datos['apellido_materno'], ENT_QUOTES); ?>">
+                            <?php
+                        }
+                        else
+                        {
+                            ?>
+                            <label class="control-label"><b><?php echo htmlspecialchars($datos['apellido_materno'], ENT_QUOTES); ?></b></label>
+                            <input type="hidden" name="textApeMaterno" id="textApeMat" class="form-control" maxlength="35" value="<?php echo htmlspecialchars($datos['apellido_materno'], ENT_QUOTES); ?>">
+                            <?php
+                        }
+                        ?>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-lg-8 col-md-8 col-sm-12 col-xs-12 ">
+                <div class="form-group">
+                    <label class="col-lg-5 col-md-5 col-sm-12 col-xs-12 control-label-right" for="textNombres">Nombres: <label style="color: #f36b45; font-size: 16px;">*</label></label>
+                    <div class="col-lg-7 col-md-7 col-sm-12 col-xs-12">
+                            <label class="control-label"><b><?php echo htmlspecialchars($datos['first_name'], ENT_QUOTES); ?></b></label>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-lg-8 col-md-8 col-sm-12 col-xs-12 ">
+                <div class="form-group">
+                    <label class="col-lg-5 col-md-5 col-sm-12 col-xs-12 control-label-right" for="textFNacimiento">Fecha de nacimiento: <label style="color: #f36b45; font-size: 16px;">*</label></label>
+                    <!--<div class="col-lg-7 col-md-7 col-sm-12 col-xs-12">-->
+                    <div class="col-lg-3 col-md-3 col-sm-4 col-xs-12">
+                        <?php
+                        if(is_null($datos['fecha_nacimiento']) || empty($datos['fecha_nacimiento'])){
+                            $fec_nac    = '';
+                        }else{
+                            $fec_nacimiento = new \DateTime($datos['fecha_nacimiento']);
+                            $fec_nac =  $fec_nacimiento->format('d-m-Y');
+                        }
+                         
+                        if (intval($datos['flg_obtencion_datos']) === 2)
+                        {
+                            ?>
+                            <label class="control-label"><b><?php echo $fec_nac;?></b></label>
+                            <input type="hidden" name="textFNacimiento" id="textFNacimiento" class="form-control" maxlength="35" value="<?php echo $fec_nac; ?>">
+                            <?php
+                        }
+                        else
+                        {
+                            ?>
+                            <input type="text" name="textFNacimiento" id="textFNacimiento" class="form-control" maxlength="35" value="<?php echo $fec_nac; ?>">
+                            <?php
+                        }
+                        ?>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row" id="sexo_row">
+            <div class="col-lg-8 col-md-8 col-sm-12 col-xs-12 ">
+                <div class="form-group">
+                    <label class="col-lg-5 col-md-5 col-sm-12 col-xs-12 control-label-right" for="radSexo">Sexo: <label style="color: #f36b45; font-size: 16px;">*</label></label>                    
+                    <?php
+                    if (intval($datos['flg_obtencion_datos']) === 2)
+                    {
+                        if (intval($datos['sexo']) === 0)
+                        {
+                            $sexo = 'FEMENINO';
+                        }
+                        if (intval($datos['sexo']) === 1)
+                        {
+                            $sexo = 'MASCULINO';
+                        }
+                        ?>
+                        <div class="col-lg-7 col-md-7 col-sm-12 col-xs-12">
+                            <label class="control-label"><b><?php echo $sexo; ?></b></label>
+                            <input type="hidden" name="radSexo_" id="radSexo_" class="form-control" maxlength="35" value="<?php echo $datos['sexo']; ?>">
+                        </div>
+                        <?php
+                    }
+                    else
+                    {
+                        $sexo = '';
+                        if (intval($datos['sexo']) === 0)
+                        {
+                            $sexo = 'checked';
+                        }
+                        if (intval($datos['sexo']) === 1)
+                        {
+                            $sexo = 'checked';
+                        }
+                        
+                        ?>
+                    
+                    
+                        <div class="radio col-lg-7 col-md-7 col-sm-12 col-xs-12" id="sexo_cs">
+                            <label><input type="radio" name="radSexo" value="1" <?php echo $sexo;?>>Masculino</label>
+                            <label style="margin-left: 30px;"><input type="radio" name="radSexo" value="0" <?php echo $sexo;?>>Femenino</label> 
+                        </div>
+                        <?php
+                    }
+                    ?>
+
+
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-8 col-md-8 col-sm-12 col-xs-12 ">
+                <div class="form-group">
+
+                    <label class="col-lg-5 col-md-5 col-sm-12 col-xs-12 control-label-right" for="textEmail">Correo electrónico: </label>
+                    <div class="col-lg-7 col-md-7 col-sm-12 col-xs-12">
+                        <label class="control-label"><?php echo $datos['email']; ?></label>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-lg-8 col-md-8 col-sm-12 col-xs-12 ">
+                <div class="form-group">
+
+                    <label class="col-lg-5 col-md-5 col-sm-12 col-xs-12 control-label-right" for="textTelFijo">Teléfono fijo (incluya el código de ciudad): </label>
+                    <div class="col-lg-3 col-md-3 col-sm-4 col-xs-12">
+                        <select name="codigo_ciudad" id="cod_ciudad" class="form-control" >
+                            <option value="0">--SELECCIONAR--</option>
+                            <?php
+                            foreach ($this->ciudad as $ciudad)
+                            {
+                                ?>
+                                <option value="<?php echo $ciudad['id_ciudad']; ?>"><?php echo $ciudad['descripcion']; ?></option>
+                                <?php
+                            }
+                            ?>
+                        </select>
+                    </div>
+                    <div class="col-lg-4 col-md-4 col-sm-8 col-xs-12">
+                        <input type="text" name="textTelFijo" id="textTelFijo" class="form-control" required="required" maxlength="7" value="">
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-lg-8 col-md-8 col-sm-12 col-xs-12 ">
+                <div class="form-group">
+                    <label class="col-lg-5 col-md-5 col-sm-12 col-xs-12 control-label-right" for="textCelular">Teléfono móvil: <label style="color: #f36b45; font-size: 16px;">*</label></label>
+                    <div class="col-lg-7 col-md-7 col-sm-12 col-xs-12">
+                        <?php 
+                            $celular = '';
+                            if(!is_null($datos['celular']) && intval($datos['celular']) != 0){
+                                $celular = $datos['celular'];
+                            }
+                        ?>
+                        <input type="text" name="textCelular" id="textCelular" class="form-control" maxlength="9" value="<?php echo $celular; ?>">
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+           <div class="col-lg-8 col-md-8 col-sm-12 col-xs-12 ">
+                <div class="form-group">
+                    <label class="col-lg-5 col-md-5 col-sm-12 col-xs-12 control-label-right" for="textProcedencia">Ley de procedencia antes de la Ley de Reforma Magisterial: <label style="color: #f36b45; font-size: 16px;">*</label></label>
+                    <div class="col-lg-7 col-md-7 col-sm-12 col-xs-12">
+                        <select name="ley_procede" id="ley_procede" class="form-control">
+                                        <option value="0">--SELECCIONAR--</option>
+                                        <?php
+                                        foreach ($this->ley as $le)
+                                        {
+                                            ?>
+                                            <option value="<?php echo $le['id_ley']; ?>"><?php echo $le['des_ley']; ?></option>
+                                            <?php
+                                        }
+                                        ?> 
+                                    </select>
+                    </div>
+                </div>
+            </div>                                             
+        </div>
+
+        <div class="row">
+            <div class="col-lg-8 col-md-8 col-sm-12 col-xs-12 ">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h4>Discapacidad (esta información será considerada para determinar el aula donde rendirá la Prueba Única Nacional): <label style="color: #f36b45; font-size: 16px;">*</label></h4>
+                    </div>
+                    <div class="panel-body">
+                        <div class="form-group">
+                            <label class="col-lg-5 col-md-5 col-sm-12 col-xs-12 control-label" for="discapacidad">
+                                <!--Discapacidad:-->
+                            </label>
+                            <div class="col-lg-7 col-md-7 col-sm-12 col-xs-12">
+                                <select name="discapacidad" id="discapacidad" class="form-control">
+                                    <option value="0">--SELECCIONAR--</option>
+                                    <?php
+                                    foreach ($this->discapacidad as $discapacidad)
+                                    {
+                                        ?>
+                                        <option value="<?php echo $discapacidad['disc_id']; ?>"><?php echo $discapacidad['disc_desc']; ?></option>
+                                        <?php
+                                    }
+                                    ?>  
+                                </select>
+                            </div>
+                        </div>
+                        NOTA: Si usted no tiene ninguna discapacidad, seleccione la opción NINGUNA.
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-lg-8 col-md-8 col-sm-12 col-xs-12 ">
+                <div class="panel panel-default">
+                    <div class="panel-heading"><h4>Título de profesor o licenciatura en educación obtenido en: <label style="color: #f36b45; font-size: 16px;">*</label></h4></div>
+                    <div class="panel-body">
+                        <div class="form-group">
+                            <div class="checkbox col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                <label class="col-lg-5 col-md-5 col-sm-12 col-xs-12 control-label">
+                                    <input type="checkbox" id="chk_titulo_isp" name="chk_titulo_isp" value="1">
+                                    <b>Institutos y Escuelas</b>
+                                </label>
+                                <div class="col-lg-7 col-md-7 col-sm-12 col-xs-12">
+                                    <select name="sel_Isp" id="sel_Isp" class="form-control">
+                                        <option value="0">--SELECCIONAR--</option>
+                                        <?php
+                                        foreach ($this->instituto as $instituto)
+                                        {
+                                            ?>
+                                            <option value="<?php echo $instituto['isp_id']; ?>"><?php echo $instituto['descripcion']; ?></option>
+                                            <?php
+                                        }
+                                        ?> 
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-group" id="otros_isp">
+                            <label class="col-lg-5 col-md-5 col-sm-12 col-xs-12 control-label-right" for="isp_otros">Especifique: </label>
+                            <div class="col-lg-7 col-md-7 col-sm-12 col-xs-12">
+                                <input type="text" name="isp_otros" id="isp_otros" class="form-control" style="text-transform: uppercase;" maxlength="130" value="">
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <div class="checkbox col-lg-12 col-md-12 col-sm-12 col-xs-12">
+
+                                <label class="col-lg-5 col-md-5 col-sm-12 col-xs-12 control-label">
+                                    <input type="checkbox" id="chk_titulo_uni" name="chk_titulo_uni" value="1">
+                                    <b>Universidad</b>
+                                </label>
+                                <div class="col-lg-7 col-md-7 col-sm-12 col-xs-12">
+                                    <select name="sel_universidad" id="sel_universidad" class="form-control">
+                                        <option value="0">--SELECCIONAR--</option>
+                                        <?php
+                                        foreach ($this->universidad as $universidad)
+                                        {
+                                            ?>
+                                            <option value="<?php echo $universidad['id']; ?>"><?php echo $universidad['descripcion']; ?></option>
+                                            <?php
+                                        }
+                                        ?>
+                                    </select>
+
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-group"  id="otros_uni">
+                            <label class="col-lg-5 col-md-5 col-sm-12 col-xs-12 control-label-right" style="" for="universidad_otros">Especifique: </label>
+                            <div class="col-lg-7 col-md-7 col-sm-12 col-xs-12">
+                                <input type="text" name="universidad_otros" id="universidad_otros" class="form-control" style="text-transform: uppercase;" maxlength="130" value="">
+                            </div>
+                        </div>
+                        NOTA: Debe seleccionar al menos un instituto y/o universidad.
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-lg-8 col-md-8 col-sm-12 col-xs-12 ">
+                <div class="panel panel-default">
+                    <div class="panel-heading" >
+                        <h4>Años de experiencia: <label style="color: #f36b45; font-size: 16px;">*</label></h4>
+                        <!--<h4>Años de experiencia laboral en el sector educación: <label style="color: #f36b45; font-size: 16px;">*</label></h4>-->
+                    </div>                        
+
+                    <div class="panel-body">
+
+                        <div class="form-group">
+
+                            <label class="col-lg-5 col-md-5 col-sm-12 col-xs-12 control-label" for="text_experiencia_sector_publico">En el sector público: </label>
+                            <div class="col-lg-7 col-md-7 col-sm-12 col-xs-12">
+                                <select name="text_experiencia_sector_publico" id="text_experiencia_sector_publico" class="form-control">
+                                    <?php
+                                    foreach ($this->sector_pub as $sector_pub)
+                                    {
+                                        ?>
+                                        <option value="<?php echo $sector_pub['id_exp_laboral']; ?>"><?php echo $sector_pub['des_descripcion']; ?></option>
+                                        <?php
+                                    }
+                                    ?>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-group">
+
+                            <label class="col-lg-5 col-md-5 col-sm-12 col-xs-12 control-label" for="text_experiencia_sector_privado">En el sector privado: </label>
+                            <div class="col-lg-7 col-md-7 col-sm-12 col-xs-12">
+                                <select name="text_experiencia_sector_privado" id="text_experiencia_sector_privado" class="form-control">
+                                    <?php
+                                    foreach ($this->sector_pri as $sector_pri)
+                                    {
+                                        ?>
+                                        <option value="<?php echo $sector_pri['id_exp_laboral']; ?>"><?php echo $sector_pri['des_descripcion']; ?></option>
+                                        <?php
+                                    }
+                                    ?>
+                                </select>
+                            </div>
+                        </div>
+                        <!--NOTA: En caso usted no cuente con experiencia laboral en el sector educación seleccione la opción SIN EXPERIENCIA.-->
+                        NOTA: En caso usted no cuente con experiencia en el sector privado seleccione la opción SIN EXPERIENCIA.
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <legend>
+            <h2 style="color: #777777;"><b>Datos de postulación</b></h2>
+        </legend>
+        <div class="row" >
+            <div class="col-lg-8 col-md-8 col-sm-12 col-xs-12 ">
+                   <div class="form-group">
+
+                            <label class="col-lg-5 col-md-5 col-sm-12 col-xs-12 control-label-right" for="region">
+                                Región:
+                            </label>
+                            <div class="col-lg-7 col-md-7 col-sm-12 col-xs-12">
+                                <input type="text" name="textRegion" id="textRegion" class="form-control" value="<?php echo $datos_nexus['des_region'];?>" disabled>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-lg-5 col-md-5 col-sm-12 col-xs-12 control-label-right" for="dreugel">
+                                Dependencia:
+                            </label>
+                            <div class="col-lg-7 col-md-7 col-sm-12 col-xs-12">
+                                 <input type="text" name="textDreUgel" id="textDreUgel" class="form-control" value="<?php echo $datos_nexus['desc_dre_ugel'];?>" disabled>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-lg-5 col-md-5 col-sm-12 col-xs-12 control-label-right" for="dreugel">
+                                Escala magisterial:
+                            </label>
+                            <div class="col-lg-7 col-md-7 col-sm-12 col-xs-12">
+                                 <input type="text" name="textDreUgel" id="textDreUgel" class="form-control" value="<?php echo $datos_nexus['des_escala'];?>" disabled>
+                            </div>
+                        </div>
+<!--                        <div class="form-group">
+                            <label class="col-lg-5 col-md-5 col-sm-12 col-xs-12 control-label-right" for="dreugel">
+                                ¿Usted cumple el tiempo de servicios requeridos?
+                            </label>
+                            <div class="col-lg-7 col-md-7 col-sm-12 col-xs-12">
+                                 <div class="btn-group" data-toggle="buttons">
+                                    <label class="btn btn-default">
+                                        <input type="radio" name="frm_inscr_rd" id="frm_inscr_rd_si" value="1"> Sí
+                                    </label>
+                                    <label class="btn btn-default">
+                                        <input type="radio" name="frm_inscr_rd" id="frm_inscr_rd_no" value="2"> No
+                                    </label>
+                                </div>
+                            </div>
+                        </div>-->
+            </div>
+        </div>
+        
+        <div class="row">
+            <div class="col-lg-8 col-md-8 col-sm-12 col-xs-12 ">
+                <div class="panel panel-default">  
+                    <div class="panel-heading" >
+                        <h4>Grupo de inscripción:</h4>
+                    </div>                        
+
+                    <div class="panel-body">
+                     
+                        <div class="form-group">
+                            <label class="col-lg-5 col-md-5 col-sm-12 col-xs-12 control-label" for="nivelnexus">
+                                Grupo de competencia: <label style="color: #f36b45; font-size: 16px;">*</label>
+                            </label>
+                            <div class="col-lg-7 col-md-7 col-sm-12 col-xs-12">
+                                
+                                <?php
+                                if(intval($datos_nexus['flg_permite_edicion']) === 0){
+                                    //No permite editar
+                                    foreach ($this->nivel as $nivel)
+                                    {
+                                        if(intval($datos_nexus['id_nivel']) === intval($nivel['id_nivel'])){
+                                        ?>
+                                <label class="control-label"><b><?php echo mb_strtoupper($nivel['desc_nivel']);?></b></label>
+                                            <input type="hidden" name="nivelnexus" id="nivelnexus" class="form-control" maxlength="4" value="<?php echo $nivel['id_nivel']; ?>">
+                                        <?php
+                                        }
+                                    }                                   
+                                }else{
+                                ?>
+                                <select name="nivelnexus" id="nivelnexus" class="form-control" required="required">
+                                    <option value="">--SELECCIONAR--</option>
+                                    <?php
+                                    foreach ($this->nivel as $nivel)
+                                    {
+                                        ?>
+                                        <option value="<?php echo $nivel['id_nivel']; ?>"><?php echo $nivel['desc_nivel']; ?></option>
+                                        <?php
+                                    }
+                                    ?>
+                                </select>
+                                <?php
+                                    }
+                                ?>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="col-lg-5 col-md-5 col-sm-12 col-xs-12 control-label" for="grupo_inscripcion">
+                                Grupo de inscripción: <label style="color: #f36b45; font-size: 16px;">*</label>
+                            </label>
+                            <div class="col-lg-7 col-md-7 col-sm-12 col-xs-12">
+                                <?php
+                                   if(count($this->grupo_ins) > 0){
+                                       ?>
+                                       <select name="grupo_inscripcion" id="grupo_inscripcion" class="form-control" required="required">
+                                    <option value="">--SELECCIONAR--</option>
+                                    <?php
+                                        foreach ($this->grupo_ins as $grupo_in)
+                                    {
+                                        ?>
+                                        <option value="<?php echo $grupo_in['id']; ?>"><?php echo $grupo_in['descripcion']; ?></option>
+                                        <?php
+                                    }
+                                      ?>
+                                    </select>
+                                    <?php
+                                   }else{
+                                       ?>
+                                        <select name="grupo_inscripcion" id="grupo_inscripcion" class="form-control" required="required">
+                                            <option value="">--SELECCIONAR--</option>
+                                        </select>
+                                        <?php
+                                   }
+                                ?>                                
+                            </div>
+                        </div>
+                        
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="row" >
+            <div class="col-lg-8 col-md-8 col-sm-12 col-xs-12 ">
+                <div class="form-group">
+                    <label class="col-lg-5 col-md-5 col-sm-12 col-xs-12 control-label-right" for="sede_prueba">
+                        Sede donde rendirá la Prueba Única Nacional: <label style="color: #f36b45; font-size: 16px;">*</label>
+                    </label>
+                    <div class="col-lg-7 col-md-7 col-sm-12 col-xs-12">
+                        <?php
+                            //Consultar si está deshabilitado o no
+                            if(!$this->variables['vrb_15']){
+                                //Habilitado
+                                ?>
+                                    <label class="control-label"><b><?php echo $datos_nexus['nombre'];?></b></label>
+                                    <input type="hidden" name="sede_prueba" id="sede_prueba" class="form-control" maxlength="4" value="<?php echo $datos_nexus['sede_id']; ?>">
+                        <?php
+                            }else{
+                            //Deshabilitado
+                            ?>
+                                <select name="sede_prueba" id="sede_prueba" class="form-control" <?php echo $disabled; ?>>
+                                    <option value="0">--SELECCIONAR--</option>
+                                    <?php
+                                    foreach ($this->sede as $sede)
+                                    {
+                                        if($this->variables['vrb_16']){ 
+                                            if(intval($datos_nexus['sede_id']) === intval($sede['sede_id'])){
+                                                //Si es igual lo dejamos seleccionado
+                                                $selected = 'selected="selected"';
+                                            }else{
+                                                $selected = '';
+                                            }
+                                        ?>
+                                            <option value="<?php echo $sede['sede_id']; ?>" <?php echo $selected?>><?php echo $sede['nombre']; ?></option>
+                                        <?php
+                                        }else{
+                                             ?>
+                                            <option value="<?php echo $sede['sede_id']; ?>"><?php echo $sede['nombre']; ?></option>
+                                        <?php
+                                        }
+                                    }
+                                    ?>
+                                </select>
+                        <?php
+                            }
+                        ?>                        
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+            <div class="row" >
+                <div class="col-lg-8 col-md-8 col-sm-12 col-xs-12 ">
+                    <div class="form-group">
+                        <label class="col-lg-5 col-md-5 col-sm-12 col-xs-12 control-label-right" for="sel_enterar_nombramiento">
+                            ¿A través de qué medio se enteró del concurso? <label style="color: #f36b45; font-size: 16px;">*</label>
+                        </label>
+                        <div class="col-lg-7 col-md-7 col-sm-12 col-xs-12">
+                            <select name="sel_enterar_nombramiento" id="sel_enterar_nombramiento" class="form-control" required="required">
+                                <option value="0">--SELECCIONAR--</option>
+                                <?php
+                                foreach ($this->medio as $medio)
+                                {
+                                    ?>
+                                    <option value="<?php echo $medio['id']; ?>"><?php echo $medio['descripcion']; ?></option>
+                                    <?php
+                                }
+                                ?>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+        </div>
+        
+        
+
+        <div class="row">
+            <div class="col-lg-8 col-md-8 col-sm-12 col-xs-12 ">
+
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h4>Para concluir, lea y seleccione según corresponda:</h4>
+                    </div>
+                    <div class="panel-body">
+                        <div class="form-group">
+                            <!--<div class="form-group">-->
+                            <div class="checkbox col-lg-12 col-md-12 col-sm-12 col-xs-12">
+								<label>
+									<input type="checkbox" id="chk_cumple_req" name="chk_cumple_req"  value="1">Declaro cumplir con los requisitos establecidos en el numeral 5.7 de la Norma Técnica aprobada por <b><?php echo $this->rvm; ?></b>: 
+								</label>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="checkbox col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                <label  >
+                                    <input type="checkbox" id="chk_dj_cumple_req" name="chk_dj_cumple_req" value="1">
+                                    Declaro que los datos consignados en el presente formato de inscripción son veraces. Así mismo, he leído y acepto las disposiciones contenidas en la Norma Técnica que regulan los concursos públicos para el Ascenso de Escala magisterial 2017 en el marco de la Carrera Pública Magisterial de la Ley de la Reforma Magisterial, aprobada mediante <?php echo $this->rvm; ?>
+                                </label>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="checkbox col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                <label  >
+                                    <input type="checkbox" id="chk_optional" name="chk_optional"  value="1">
+                                    Otorgo mi consentimiento libre, previo, informado, expreso e inequívoco para que el Ministerio de Educación incluya mis datos personales sensibles o no, consignados en el presente documento, en sus sistemas y base de datos y pueda dar tratamiento a mi información.
+
+Igualmente autorizo el tratamiento de los datos personales suministrados para realizar estudios estadísticos, remitir información sobre los procesos de evaluación a través de medios electrónicos, llamadas telefónicas o correspondencia escrita.
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-8 col-md-8 col-sm-12 col-xs-12 ">
+                <div>
+                    <b style="color: #f36b45; font-size: 12px;">
+                        (*) Campos obligatorios.
+                    </b>
+                </div>
+            </div>
+            <br>
+            <br>
+        </div>
+        <div class="row">
+            <div class="col-lg-8 col-md-8 col-sm-12 col-xs-12 ">
+                <button type="button" class="btn boton col-lg-12 col-md-12 col-sm-12 col-xs-12 " id="btn_grabar" name="btn_grabar">GUARDAR</button>
+            </div>
+        </div>
+        <br>
+    </fieldset>
+
+</form>
+
+
+
+

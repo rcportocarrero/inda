@@ -1,0 +1,263 @@
+<?php
+$base_url = $this->basePath();
+?>
+<style type="text/css">
+    #wrap_formato{
+        background-color: #FFF;
+        overflow: hidden;
+        margin-bottom: 150px;
+        border: 1px solid #c3c3c3;
+        font-size: 13px;
+        font-family: Tahoma,Verdana,Segoe,sans-serif;
+        color: #777;
+    }
+
+    #wrap_formato h1{
+        font-size: 16px;
+        text-align: center;
+        margin: 15px 20px;
+    }
+
+    #wrap_formato #tbl_header{
+        width: 95%;
+        margin: 5px 20px 20px 20px;
+    }
+    #tbl_cabecera{
+        width: 95%;
+        margin: 5px 20px 20px 20px;
+    }
+    #wrap_formato #tbl_header2{
+        width: 70%;
+        margin: 20px auto;
+        border: 1px solid #c3c3c3;
+    }
+
+    #wrap_formato #table {
+        display: table;
+        width: 98%;
+        background: #fff;
+        margin: 0 auto;
+        box-sizing: border-box;
+        border-spacing: 0;
+        border-collapse: separate;
+    }
+
+    #wrap_formato #table th{
+        background: rgb(205,206,211);
+        color: #333;
+        font-weight: bold;
+        font-size: 12px;
+    }
+
+    #wrap_formato #table td{
+        background: rgb(243,243,245);
+        color: rgb(66,66,66);
+        font-size: 12px;
+    }
+    #cuadro{
+        border: 1px solid #c3c3c3;
+        padding: 5px;
+        text-align: center;
+        font-weight: bold;
+        font-size: 22px;
+    }
+
+    #wrap_formato #table th,
+    #wrap_formato #table td{
+        border: 1px solid #c3c3c3;
+        padding: 2px 4px;
+    }
+    #wrap_formato #table th.blank,
+    #wrap_formato #table td.blank{
+        border: 0;
+        background: none;
+    }
+
+    #wrap_formato #table th.blank_head,
+    #wrap_formato #table td.blank_head{
+        border-bottom: 0;
+    }
+
+    .bs-callout-warning {
+        border-left-color: #aa6708 !important;
+    }
+    .bs-callout {
+        padding: 8px;
+        margin: 10px;
+        border: 1px solid #eee;
+        border-left-width: 5px;
+        border-radius: 3px;
+    }
+</style>
+<div id="wrap_formato">
+    <?php
+    if (count($data) === 0)
+    {
+        ?>
+        <div class="bs-callout bs-callout-warning" id="callout-navbar-btn-context">
+            <h4>No existen datos para esta consulta.</h4> 
+        </div>
+        <?php
+    }
+    else
+    {
+
+        if (intval($data['validacion_estado']) === 1)
+        {
+            ?>
+            <div class="bs-callout bs-callout-warning" id="callout-navbar-btn-context">
+                <h4>Confirmado en el Banco de la Nación <?php echo $data['validacion_fecha']; ?></h4> 
+            </div>
+            <?php
+        }
+        ?>
+        <h3 style="margin: 10px; color: white; font-weight: bold; padding: 5px;" class="bg_principal">&nbsp;&nbsp;&nbsp;Formato de Inscripción Digital</h3>
+        <table id="tbl_header" style="font-size: 15px;">
+            <tbody>
+                <tr>
+                    <td  style="text-align: center;"><b><?php echo mb_strtoupper($data['titulo_concurso']); ?></b></td>
+                </tr>
+                <tr>
+                    <td style="text-align: center;"><b><?php echo $data['rsg_norma_acta']; ?></b>
+                    </td>
+                </tr>
+                <tr>
+                    <td style="text-align: center;"><b>FORMATO DE INSCRIPCIÓN</b>         
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <table id="tbl_header">
+            <tbody>
+                <tr>
+                    <td width="100%" colspan="4">
+                        <h4> <b>Datos del postulante</b></h4>
+                    </td>
+                </tr>
+                <tr>
+                    <td width="20%"><b>Tipo de documento:</b></td>
+                    <td width="30%"><?php echo $data['documento_tipo']; ?></td>
+                    <td width="20%"><b>Correo electrónico:</b></td>
+                    <td width="30%"><?php echo $data['correo']; ?></td>
+                </tr>
+                <tr>
+                    <td width="20%"><b>Número de documento:</b></td>
+                    <td width="30%"><?php echo $data['cod_documento']; ?></td>
+                    <td width="20%"><b>Teléfono fijo:</b></td>
+                    <td width="30%"><?php echo $data['telefono']; ?></td>
+                </tr>
+                <tr>
+                    <td width="20%"><b>Apellido paterno:</b></td>
+                    <td width="30%"><?php echo $data['apellido_paterno']; ?></td>
+                    <td width="20%"><b>Celular:</b></td>
+                    <td width="30%"><?php echo $data['celular']; ?></td>
+                </tr>
+                <tr>
+                    <td width="20%"><b>Apellido materno:</b></td>
+                    <td width="30%"><?php echo $data['apellido_materno']; ?></td>
+                    <td width="20%" rowspan="3" valign="top"><b>Discapacidad:</b></td>
+                    <td width="30%" rowspan="3" valign="top"><?php echo $data['disc_desc']; ?></td>
+                </tr>
+                <tr>
+                    <td width="20%" valign="top"><b>Nombres:</b></td>
+                    <td width="30%" valign="top"><?php echo $data['nombres']; ?></td>
+                </tr>
+                <tr>
+                    <td width="100%" colspan="4">
+                        <h4>
+                            <b>Datos de postulación</b>
+                        </h4>
+                    </td>
+                </tr>       
+                <tr>
+                    <td width="30%"><b>Región:</b></td>
+                    <td width="70%" colspan="3"><?php echo $data['des_region']; ?></td>              
+                </tr>
+                <tr>
+                    <td width="30%"><b>Dependencia:</b></td>
+                    <td width="70%" colspan="3"><?php echo $data['desc_dre_ugel']; ?></td>              
+                </tr>
+                <tr>
+                    <td width="30%"><b>Escala magisterial:</b></td>
+                    <td width="70%" colspan="3"><?php echo $data['des_escala']; ?></td>              
+                </tr>
+                <tr>
+                    <td width="30%"><b>Grupo de competencia:</b></td>
+                    <td width="70%" colspan="3"><?php echo $data['desc_nivel']; ?></td>              
+                </tr>
+                <tr>
+                    <td width="30%"><b>Grupo de inscripción:</b></td>
+                    <td width="70%" colspan="3"><?php echo $data['desc_grupo']; ?></td>          
+                </tr>
+                <tr>
+                    <td width="30%"><b>Sede donde rendirá la Prueba Única Nacional:</b></td>
+                    <td width="70%" colspan="3"><?php echo $data['sede']; ?></td>
+                </tr>
+                <tr>
+                    <td width="30%"><b>Fecha y hora de registro de inscripción:</b></td>
+                    <td width="70%" colspan="3"><?php echo $data['fecha_registro']; ?></td>
+                </tr>
+            </tbody>
+        </table>
+        <table id="tbl_header">
+            <tbody>
+                <tr>
+                    <td width="20%"><b>NÚMERO DE DOCUMENTO</b></td>
+                    <td width="20%" id="cuadro"><?php echo $data['cod_documento']; ?></td>
+                    <td width="10%"></td>
+                    <td width="20%"><b>CÓDIGO DE VALIDACIÓN (*)</b></td>
+                    <td width="20%" id="cuadro"><?php echo $data['validacion_codigo']; ?></td>
+                    <td width="10%"></td>
+                </tr>
+                <tr>
+                    <td colspan="6" style="text-align: justify;"><b>(*) El código de validación no es su contraseña de acceso al sistema de evaluación docente. Su contraseña fue remitida al correo electrónico que consta en este formato de inscripción.</b></td>
+                </tr>            
+                <tr>
+                    <td colspan="6" style="text-align: justify;"><b>Declaro que estoy conforme con los datos consignados en el presente formato de inscripción, los que son veraces. Así mismo, he leído y
+                            acepto las disposiciones contenidas en la Norma Técnica que regulan el <?php echo $data['titulo_norma_acta']; ?>, aprobada mediante <?php echo $data['rsg_norma_acta']; ?>.</b></td>
+                </tr>            
+            </tbody>
+        </table>
+        <table id="tbl_header">
+            <tbody>
+                <tr>
+                    <td width="10%"><b>IMPORTANTE:</b></td>
+                    <td width="90%" style="text-align: justify;">Para culminar este proceso de inscripción, es requisito imprescindible que se acerque a cualquier agencia autorizada del Banco de la Nación dentro del plazo de inscripción, portando su DNI o Carnet de Extranjería y el presente formato impreso.</td>
+                </tr>
+                <?php
+                if (intval($data['validacion_estado']) !== 1)
+                {
+                    if (intval($this->tiene_formato) === 1)
+                    {
+                        ?>
+                        <tr>
+                            <td width="10%"><b>Nota:</b></td>
+                            <td width="90%" style="text-align: justify;font-size:14px" class="rojo_minedu">Usted ya cuenta con un registro de inscripción confirmado en el Banco de la Nación, por favor verifique el registro confirmado desde el listado de formatos.</td>
+                        </tr>
+                        <?php
+                    }
+                }
+                ?>
+            </tbody>
+        </table>
+        <table id="tbl_header">
+            <tbody>
+                <tr>
+                    <td style="text-align: left; padding-left:10px">
+                        <button type="button" class="btn boton col-lg-8 col-md-10 col-sm-12 col-xs-12 " id="btn_generar_nuevo" name="btn_generar_nuevo">Nuevo formato</button>
+                    </td>
+                    <td style="text-align: left; padding-left:10px">
+                        <button type="button" class="btn boton col-lg-8 col-md-10 col-sm-12 col-xs-12 " id="btn_lista_generados" name="btn_lista_generados">Listado de formatos</button>
+                    </td>
+                    <td style="text-align: left; padding-left:10px">
+                        <button type="button" class="btn btn-rojo col-lg-8 col-md-10 col-sm-12 col-xs-12 " id="btn_descargar_formato" name="btn_dwn_pdf">Descargar formato de inscripción</button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>   
+    </div>
+    <div id="lista_ins"></div>
+
+    <?php
+}
+?>

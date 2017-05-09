@@ -10,11 +10,12 @@
                 "id": "mnuPerfilUsuario",
                 "metodo": "menu_datos_usuario",
                 "titulo": "Perfil de usuario"
-            },{
-                        "id": "mnuSeleccion",
-                        "metodo": "menu_seleccion",
-                        "nombre": "Selección de IIEE"
-                    }
+            }, {
+                "id": "mnuSeleccion",
+                "metodo": "menu_seleccion",
+                "titulo": "Selección de IIEE"
+            }
         ]
     }
 }
+

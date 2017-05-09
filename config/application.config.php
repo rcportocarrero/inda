@@ -12,6 +12,7 @@ return array(
         'Application',
         'BaseX',
         'Usuario',
+        'Seleccion',
 //        'Admin',
         'Dashboard',
         'AssetManager',
