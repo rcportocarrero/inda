@@ -14,7 +14,7 @@
 return [
     'apigility' => [
         'config' => [
-            'url' => 'http://11.35.100.48:8001/apps/ws/died_wsv6/public/',
+            'url' => 'http://167.114.170.28:7000/web/',
             'grant_type' => 'password',
             'client_id' => 'testclient',
             'client_secret' => 'testpass',

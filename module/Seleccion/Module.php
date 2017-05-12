@@ -27,9 +27,14 @@ class Module {
     public function getServiceConfig() {
         return array(
             'factories' => array(
-                'Seleccion\Model\SedeTable' => function($sm) {
+                'Seleccion\Model\SpTable' => function($sm) {
                     $dbAdapter = $sm->get('db_maestro');
-                    $table = new \Seleccion\Model\SedeTable($dbAdapter);
+                    $table = new \Seleccion\Model\SpTable($dbAdapter);
+                    return $table;
+                },
+                'Seleccion\Model\SeleccionTable' => function($sm) {
+                    $dbAdapter = $sm->get('db_maestro');
+                    $table = new \Seleccion\Model\SeleccionTable($dbAdapter);
                     return $table;
                 },
                 'Seleccion\Validator\SeleccionValidator' => function() {

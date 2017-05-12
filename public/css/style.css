@@ -1,12 +1,3 @@
-/*Variables header*/
-/*Colores por concurso*/
-/*Acceso*/
-/*@color_principal_concurso: #098CA6;
-@color_secundario_concurso: #93C5CD;*/
-/*@color_principal_concurso: #98AA3A;*/
-/*@color_secundario_concurso: #BFC39C;*/
-/*@color_principal_concurso: #427f76;*/
-/*@dashboard_banner_top: @color_secundario_concurso;*/
 html {
   position: relative;
   min-height: 100%;
@@ -43,7 +34,7 @@ body {
   content: url('../img/logo_ministerio_educacion.gif');
 }
 .banner_top_titulo {
-  background-color: white;
+  background-color: #d6dada;
   height: 120px;
   padding: 20px 50px;
 }
@@ -136,23 +127,7 @@ a:hover {
   background-color: #de4e28;
   color: white;
 }
-/*.menu_1{
 
-    font-weight: bold;
-}
-
-.menu_1 li{
-    background-color: #9A999E;
-    color: #FFF;
-    padding: 10px;
-}
-
-.menu_1 li:hover{
-    background-color: #098CA6;
-    color: white;
-    cursor: pointer;
-    cursor: hand;
-}*/
 .nav > li > a {
   padding: 0px !important;
 }
@@ -164,25 +139,15 @@ a:hover {
 .navbar-collapse.in {
   overflow-y: visible !important;
 }
-/*.menu_1 > li > a {
-    color: @dashboard_menu_li_color ;
-}*/
-/*.menu > li > a:hover {
-    background-color: @dashboard_menu_bg_color !important;
-    color: @dashboard_menu_color !important;
-}*/
-/*.menu_1 li:hover, .menu_1 li.clicked {
-    background-color: @dashboard_menu_bg_color !important;
-    color: @dashboard_menu_color;
-}*/
+
 .banner_top {
   background-color: #e08179 !important;
   border-color: #e08179 !important;
   /*height: 40px;*/
 }
 .dashboard_barra_top {
-  background-color: #93c5cd;
-  color: white;
+  background-color: #CAE7EA;
+  color: #706F6F;
   padding: 8px;
   font-weight: bold;
 }

@@ -11,7 +11,7 @@ function load_form(state, uuid) {
         return;
     }
 
-    BaseX.load_html(root + '/seleccion/seleccion/indexpresentacion', {
+    BaseX.load_html(root + '/seleccion/index/indexpresentacion', {
         data: {
             state: state,
             uuid: uuid

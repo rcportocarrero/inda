@@ -5,12 +5,12 @@ return [
         'adapters' => array(
             'db_maestro' => array(
                 'charset' => 'utf8',
-                'database' => 'db_died_maestro',
+                'database' => 'cpm_trayectoria',
                 'driver' => 'PDO_Mysql',
-                'hostname' => '11.35.100.48',
-                'username' => 'developer',
-                'password' => 'developerdied2016**//peru',
-                'port' => '33061',
+                'hostname' => '11.35.100.29',
+                'username' => 'invitada_qa',
+                'password' => 'machete123',
+                'port' => '3306',
                 'profiler' => true, 
             ),
         ),

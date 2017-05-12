@@ -42,7 +42,7 @@ $cambio_config = $this->cambio_config;
         <div class="row row-fluid">
             <div class="col-md-12 banner_top_titulo">
                 <div class="col-md-6 col-sm-6 col-xs-12">
-                    <img class="img-responsive center-block img_logo_evdocente" src="<?php echo $base_url; ?>/img/etiqueta-ev.jpg"/>
+                    <img class="img-responsive center-block img_logo_evdocente" src="<?php echo $base_url; ?>/img/indago.png"/>
                 </div>
                 <div class="col-md-6 col-sm-6 col-xs-12">
                     <a target="_blank" href="http://www.minedu.gob.pe/" class="text-center">
@@ -101,8 +101,11 @@ $cambio_config = $this->cambio_config;
             echo $this->headScript()
                     ->prependFile($this->basePath('js/app/menu_datos_usuario.js?v=' . md5(time())))
                     ->prependFile($this->basePath('js/app/menu_presentacion.js?v=' . md5(time())))
+                    ->prependFile($this->basePath('js/app/menu_seleccion.js?v=' . md5(time())))
                     ->prependFile($this->basePath('js/app/menu.js?v=' . md5(time())))
                     ->prependFile($this->basePath('js/app/app.js?v=' . md5(time())))                    
+                    ->prependFile($this->basePath('js/seleccion.js?v=' . md5(time())))                    
+                    ->prependFile($this->basePath('js/util_seleccion.js?v=' . md5(time())))                    
                     ->prependFile($this->basePath('js/bootstrap-datepicker.min.js?v=' . md5(time())))
                     ->prependFile($this->basePath('js/lib/datepicker-locale-es.js'))
                     ->prependFile($this->basePath('js/lib/moment.js'))

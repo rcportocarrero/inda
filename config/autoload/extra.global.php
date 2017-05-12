@@ -34,7 +34,7 @@ return array(
         ]
     ),
     'apigility' => array(
-        'url' => 'http://localhost/ws/died_ws2/public', // Url de Apigility
+        'url' => 'http://167.114.170.28:7000/web', // Url de Apigility
         'acl' => 21, //  Código de ACL
         'app_id' => 2, //  Código de App
         'template_email_id' => 1, //  ID del Template de Email

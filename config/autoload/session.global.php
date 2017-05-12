@@ -2,6 +2,6 @@
 
 return [
     'session' => [
-        'name' => 'sesion_died_base_app',
+        'name' => 'sesion_demo_app',
     ]
 ];
