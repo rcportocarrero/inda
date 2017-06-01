@@ -40,15 +40,16 @@ $cambio_config = $this->cambio_config;
 //                ->prependFile($this->basePath('js_rd/jquery/183/jquery.min.js?v=' . md5(time())))
                 ->prependFile($this->basePath('js_rd/bootstrap/320/bootstrap.min.js?v=' . md5(time())))
                 ->prependFile($this->basePath('js/app/menu.js?v=' . md5(time())))
-                 ->prependFile($this->basePath('js/app/app.js?v=' . md5(time())))
+                ->prependFile($this->basePath('js/app/app.js?v=' . md5(time())))
                 ->prependFile($this->basePath('js_rd/ui/1112/jquery-ui.js'), 'text/javascript', array('conditional' => 'lt IE 9',))
                 ->prependFile($this->basePath('js_rd/bootstrap/bootbox/440/bootbox.js'), 'text/javascript', array('conditional' => 'lt IE 9',))
                 ->prependFile($this->basePath('js_rd/app/jsforallpages.js'), 'text/javascript', array('conditional' => 'lt IE 9',))
-                  ->prependFile($this->basePath('js/lib/jqgrid/i18n/grid.locale-es.js'))
+                ->prependFile($this->basePath('js/lib/jqgrid/i18n/grid.locale-es.js'))
                 ->prependFile($this->basePath('js/lib/jqgrid/jquery.jqGrid.min.js'))
                 ->prependFile($this->basePath('js/lib/BaseXJS/jquery.filter_input.js'))
                 ->prependFile($this->basePath('js/lib/BaseXJS/jquery.commons.js'))
                 ->prependFile($this->basePath('js/app/_strings.js'))
+                ->prependFile($this->basePath('js/lib/handlebars-v4.0.5.js'))
                 ->prependFile($this->basePath('js/lib/BaseXJS/BaseX.js')) 
                 ->prependFile($this->basePath('js/jquery.min.js'))
                 ->prependFile($this->basePath('js_rd/app/jsforinst.js'), 'text/javascript', array('conditional' => 'lt IE 9',));
@@ -65,7 +66,7 @@ $cambio_config = $this->cambio_config;
         <div class="container">
             <div class="col-md-12 col-md-offset-0">
                 <div class="col-xs-2 col-sm-2 col-md-1">
-                    <img src="<?php echo $base_url; ?>/img/indago.png" class="sri">
+                    <img src="<?php echo $base_url; ?>/img/indago.png" class="sri" width="260px">
                 </div>
                 <div class="col-xs-6 col-sm-6 col-md-8">
                     <span class="h4"></span>
@@ -85,16 +86,12 @@ $cambio_config = $this->cambio_config;
             <input type="hidden" id="hdn_sesion_token" name="hdn_sesion_token" value="<?php echo $this->token_sesion; ?>" />
             <div class="col-md-12 col-md-offset-0">
                 <!-- LINKS -->
-                <div class="nav-field" >
-                    <ul class="nav nav-tabs">
-                        <li>
+                <div style="text-align: right; padding: 15px;">
                             <div class="link-boton2">
                                 <a href="<?php echo $this->url('usuario/sec', array('action' => 'logout')); ?>">
                                     <img src="<?php echo $base_url; ?>/img/logout.png" alt="" width="140" height="36" class="logout">
                                 </a>
                             </div>
-                        </li>
-                    </ul>
                 </div>
                 <!-- LINKS -->
 
@@ -103,7 +100,7 @@ $cambio_config = $this->cambio_config;
                     <div class="row">
                         <div class="first-line col-md-12">
                             <div class="col-xs-6 col-sm-6 col-md-6">
-                                <p class="centrado"><b>Bienvenido: Oscar Querevalu </b></p>
+                                <p class="centrado"><b>Bienvenido: <?php echo $usuario->display_name; ?></b></p>
                             </div>
                             <div class="col-xs-3 col-sm-3 col-md-3">
                                 <p class="centrado"><b>Rol: Analista</b></p>

@@ -16,6 +16,8 @@ use Zend\Mime\Message as MimeMessage;
 use Zend\Validator\ValidatorChain;
 use Zend\Validator\StringLength;
 use Zend\Validator\Regex;
+use GuzzleHttp\Client;
+use BaseX\Util\Util;
 
 /*
  * Description of IndexController
@@ -29,329 +31,200 @@ class IndexController extends \BaseX\Controller\BaseController {
     protected $enable_layout = false;
     protected $_seleccionTable = null;
 
-    public function getSeleccionTable()
-    {
-        if (!$this->_seleccionTable)
-        {
+    public function getSeleccionTable() {
+        if (!$this->_seleccionTable) {
             $sm = $this->getServiceLocator();
             $this->_seleccionTable = $sm->get('Seleccion\Model\SeleccionTable');
         }
         return $this->_seleccionTable;
     }
 
-    public function instrumentosAction()
-    {
+    public function instrumentosAction() {
         $viewModel = new ViewModel();
         $viewModel->setTerminal(TRUE);
         return $viewModel;
     }
 
-    public function inicioAction()
-    {
+    public function instrumentosdetAction() {
         $viewModel = new ViewModel();
         $viewModel->setTerminal(TRUE);
         return $viewModel;
     }
 
-    public function reportesAction()
-    {
+    public function inicioAction() {
         $viewModel = new ViewModel();
         $viewModel->setTerminal(TRUE);
         return $viewModel;
     }
 
-    public function getDataGrillaAction()
-    {
-        $grid = [
-            [
-                'id_instrumento' => 1,
-                'nombre' => 'Ficha de cotejo sobre la ejecución de los grupos de inter aprendizaje',
-                'meta' => 40,
-                'informantes' => 'Docentes',
-                'estado' => '0/20',
-            ],
-            [
-                'id_instrumento' => 2,
-                'nombre' => 'Ficha de prueba 1',
-                'meta' => 50,
-                'informantes' => 'Docentes',
-                'estado' => '0/20',
-            ],
-            [
-                'id_instrumento' => 3,
-                'nombre' => 'Ficha de prueba 2',
-                'meta' => 20,
-                'informantes' => 'Docentes',
-                'estado' => '0/20',
-            ],
-            [
-                'id_instrumento' => 4,
-                'nombre' => 'Ficha de prueba 3',
-                'meta' => 10,
-                'informantes' => 'Docentes',
-                'estado' => '0/20',
-            ],
-            [
-                'id_instrumento' => 5,
-                'nombre' => 'Ficha de prueba 4',
-                'meta' => 30,
-                'informantes' => 'Docentes',
-                'estado' => '0/20',
-            ]
+    public function reportesAction() {
+        $viewModel = new ViewModel();
+        $viewModel->setTerminal(TRUE);
+        return $viewModel;
+    }
+
+    public function getInstrumentosAction() {
+        Util::Session()->id_instrumento = '';
+        $params = [
         ];
+        $result = $this->curl_('instrument/list', $params, false);
 
-        return new JsonModel($grid);
+        $resultados = [];
+        if (intval($result['code']) === 200) {
+            $json_response = json_decode($result['data'], true);
+
+            if (count($json_response) > 0) {
+                foreach ($json_response as $lista) {
+                    $rpta = [];
+                    $rpta = [
+                        'a' => $lista['a'],
+                        'b' => $lista['b'],
+                        'f' => $lista['f'],
+                        'g' => $lista['g'],
+                        'h' => $lista['h'],
+                        'i' => $lista['i'],
+                        'j' => $lista['j'],
+                    ];
+                    $num_sincronizado = 0;
+                    $cantidad_instrumentos = 0;
+                    foreach ($lista['q'] as $lista) {
+                        $cantidad_instrumentos++;
+                        if ((Boolean) $lista['b'] !== false) {
+                            $num_sincronizado++;
+                        }
+                    }
+
+                    $rpta['n'] = $num_sincronizado . '/' . $cantidad_instrumentos;
+                    $rpta['m'] = 20;
+                    $rpta['i'] = 'Docentes';
+                    array_push($resultados, $rpta);
+                }
+            }
+        }
+
+        return new JsonModel($resultados);
     }
 
-    public function getDataGrillaDetailAction()
-    {
+    public function setInstrumentosAction() {
 
+        $request = $this->getRequest();
+        $id = $request->getPost('id_instrumento', '');
+        Util::Session()->id_instrumento = $id;
+        $respuesta = [
+            'sucess' => 200,
+        ];
+        return new JsonModel($respuesta);
+    }
+
+    public function pruebaAction() {
+        $result_dre = $this->curl_('loginsuccess', [], false);
+            if (intval($result_dre['code']) === 200) {
+                $json_dre = json_decode($result_dre['data'], true);                
+                echo $result_dre['data'];
+        }
+        exit;
+    }
+
+    public function getInstrumentosDetailAction() {
+        $params = [
+            'id_instrumento' => Util::Session()->id_instrumento
+        ];
+        $result = $this->curl_('instrumentemployee/list', $params, true);
+
+        if (intval($result['code']) === 200) {
+            $resultados = [];
+
+            Util::Session()->listado_dre_ugel = [];
+            Util::Session()->dre_ = [];
+            Util::Session()->ugel_x_dre = [];
+
+            $result_dre = $this->curl_('dre/list', $params, true);
+            if (intval($result_dre['code']) === 200) {
+                $json_dre = json_decode($result_dre['data'], true);
+                Util::Session()->listado_dre_ugel = $json_dre;
+                $listado_dre = Util::Session()->listado_dre_ugel;
+                $arr_dre = [];
+                foreach ($listado_dre as $dre) {
+                    $data = [
+                        'id' => $dre['a'],
+                        'desc' => $dre['c']
+                    ];
+                    array_push($arr_dre, $data);
+                    $ar_ugel_x_dre[$dre['a']] = [];
+                    foreach ($dre['g'] as $ugel) {
+                        $ar_ugel = [
+                            'id' => $ugel['a'],
+                            'desc' => $ugel['c']
+                        ];
+                        array_push($ar_ugel_x_dre[$dre['a']], $ar_ugel);
+                    }
+                }
+                Util::Session()->dre_ = $arr_dre;
+                Util::Session()->ugel_x_dre = $ar_ugel_x_dre;
+            }
+
+            $json_response = json_decode($result['data'], true);
+            $resultados = [];
+            if (count($json_response) > 0) {
+                foreach ($json_response as $listaInstrumentos) {
+                    $i = 0;
+                    foreach ($listaInstrumentos['j'] as $lista) {
+                        $i++;
+                    }
+                    $rpta = [
+                        'id_instrumento' => $listaInstrumentos['d'],
+                        'id_instrumento_empleado' => $listaInstrumentos['a'],
+                        'a' => $listaInstrumentos['a'],
+                        'informante' => $listaInstrumentos['i']['k']['c'] . ' ' . $listaInstrumentos['i']['k']['d'] . ' ' . $listaInstrumentos['i']['k']['e'],
+                        'estado' => '0/' . $i,
+                        'id_dre' => $listaInstrumentos['i']['g']['a'],
+                        'cod_dre' => $listaInstrumentos['i']['g']['b'],
+                        'id_ugel' => $listaInstrumentos['i']['h']['a'],
+                        'cod_ugel' => $listaInstrumentos['i']['h']['b'],
+                        'institucion_educativa' => $listaInstrumentos['i']['i']['c']
+                    ];
+                    array_push($resultados, $rpta);
+                }
+            }
+            $respuesta = [
+                'empleados' => $resultados,
+                'lista_dre' => Util::Session()->dre_,
+            ];
+        } else {
+            $respuesta = [];
+        }
+        return new JsonModel($respuesta);
+    }
+
+    public function getUgelDreAction() {
         $request = $this->params();
-        $id = $request->fromQuery('id', '');
-        
-        $grid = [
-            [
-                'id_instrumento' => 1,
-                'nombre' => '9878987 Jesus Niño Lindo',
-                'informante' => 'Sanchez Alvarez Nelson',
-                'estado' => '0/20',
-            ],
-             [
-                'id_instrumento' => 2,
-                'nombre' => '0777912 Inca Garcilaso',
-                'informante' => 'Zapata Guzman Doris',
-                'estado' => '0/20',
-            ],
-             [
-                'id_instrumento' => 3,
-                'nombre' => '0078977	Kcalvin KClein',
-                'informante' => 'Sanchez Alvarez Greta',
-                'estado' => '0/20',
-            ],
+        $id =  $request->fromQuery('id', '');
+        $ugel_x_dre = Util::Session()->ugel_x_dre[$id];
 
-        ];
-
-        return new JsonModel($grid);
+        return new JsonModel($ugel_x_dre);
     }
 
-    public function getInstrumentosAction()
-    {
-        //$slct = $this->getSeleccionTable()->carga_region();
-        $data_instrumento = [
-            [
-                'id_instrumento' => 1,
-                'nombre' => 'Ficha de cotejo sobre la ejecución de los grupos de inter aprendizaje',
-                'id_tipo_estrategia' => 1,
-                'id_tipo_intervencion' => 1,
-                'id_tipo_instrumento' => 1,
-                'id_tipo_ambito' => 1,
-                'id_tipo_muestra' => 1,
-                'tipoEstrategia' => [
-                    'id_tipo_estrategia' => 1,
-                    'nombre' => 'Tipo de estrategia 01'
-                ],
-                'tipoIntervencion' => [
-                    'id_tipo_intervencion' => 1,
-                    'nombre' => 'Tipo de intervencion 01'
-                ],
-                'tipoInstrumento' => [
-                    'id_tipo_instrumento' => 1,
-                    'nombre' => 'Tipo de instrumento 01'
-                ],
-                'tipoAmbito' => [
-                    'id_tipo_ambito' => 1,
-                    'nombre' => 'Tipo de ambito 01'
-                ],
-                'tipoMuestra' => [
-                    'id_tipo_muestra' => 1,
-                    'nombre' => 'Tipo de muestra 01'
-                ],
-                'listaGrupoPregunta' => null,
-                'listaInstrumentoEmpleado' => [
-                    [
-                        'id_instrumento_empleado' => 1,
-                        'sincronizado' => false,
-                        'instrumentoCompletado' => false,
-                        'id_instrumento' => 1,
-                        'id_aplicador' => 1,
-                        'id_informante' => 2,
-                        'instrumento' => null,
-                        'aplicador' => null,
-                        'informante' => null,
-                        'listaRespuestaPregunta' => null
-                    ],
-                    [
-                        'id_instrumento_empleado' => 2,
-                        'sincronizado' => false,
-                        'instrumentoCompletado' => false,
-                        'id_instrumento' => 1,
-                        'id_aplicador' => 1,
-                        'id_informante' => 3,
-                        'instrumento' => null,
-                        'aplicador' => null,
-                        'informante' => null,
-                        'listaRespuestaPregunta' => null
-                    ],
-                    [
-                        'id_instrumento_empleado' => 3,
-                        'sincronizado' => false,
-                        'instrumentoCompletado' => false,
-                        'id_instrumento' => 1,
-                        'id_aplicador' => 1,
-                        'id_informante' => 4,
-                        'instrumento' => null,
-                        'aplicador' => null,
-                        'informante' => null,
-                        'listaRespuestaPregunta' => null
-                    ],
-                    [
-                        'id_instrumento_empleado' => 4,
-                        'sincronizado' => false,
-                        'instrumentoCompletado' => false,
-                        'id_instrumento' => 1,
-                        'id_aplicador' => 1,
-                        'id_informante' => 5,
-                        'instrumento' => null,
-                        'aplicador' => null,
-                        'informante' => null,
-                        'listaRespuestaPregunta' => null
-                    ],
-                    [
-                        'id_instrumento_empleado' => 5,
-                        'sincronizado' => false,
-                        'instrumentoCompletado' => false,
-                        'id_instrumento' => 1,
-                        'id_aplicador' => 1,
-                        'id_informante' => 6,
-                        'instrumento' => null,
-                        'aplicador' => null,
-                        'informante' => null,
-                        'listaRespuestaPregunta' => null
-                    ],
-                    [
-                        'id_instrumento_empleado' => 6,
-                        'sincronizado' => false,
-                        'instrumentoCompletado' => false,
-                        'id_instrumento' => 1,
-                        'id_aplicador' => 1,
-                        'id_informante' => 7,
-                        'instrumento' => null,
-                        'aplicador' => null,
-                        'informante' => null,
-                        'listaRespuestaPregunta' => null
-                    ],
-                    [
-                        'id_instrumento_empleado' => 7,
-                        'sincronizado' => false,
-                        'instrumentoCompletado' => false,
-                        'id_instrumento' => 1,
-                        'id_aplicador' => 1,
-                        'id_informante' => 8,
-                        'instrumento' => null,
-                        'aplicador' => null,
-                        'informante' => null,
-                        'listaRespuestaPregunta' => null
-                    ],
-                    [
-                        'id_instrumento_empleado' => 8,
-                        'sincronizado' => false,
-                        'instrumentoCompletado' => false,
-                        'id_instrumento' => 1,
-                        'id_aplicador' => 1,
-                        'id_informante' => 9,
-                        'instrumento' => null,
-                        'aplicador' => null,
-                        'informante' => null,
-                        'listaRespuestaPregunta' => null
-                    ],
-                    [
-                        'id_instrumento_empleado' => 9,
-                        'sincronizado' => false,
-                        'instrumentoCompletado' => false,
-                        'id_instrumento' => 1,
-                        'id_aplicador' => 1,
-                        'id_informante' => 10,
-                        'instrumento' => null,
-                        'aplicador' => null,
-                        'informante' => null,
-                        'listaRespuestaPregunta' => null
-                    ],
-                    [
-                        'id_instrumento_empleado' => 10,
-                        'sincronizado' => false,
-                        'instrumentoCompletado' => false,
-                        'id_instrumento' => 1,
-                        'id_aplicador' => 1,
-                        'id_informante' => 11,
-                        'instrumento' => null,
-                        'aplicador' => null,
-                        'informante' => null,
-                        'listaRespuestaPregunta' => null
-                    ],
-                    [
-                        'id_instrumento_empleado' => 11,
-                        'sincronizado' => false,
-                        'instrumentoCompletado' => false,
-                        'id_instrumento' => 1,
-                        'id_aplicador' => 1,
-                        'id_informante' => 12,
-                        'instrumento' => null,
-                        'aplicador' => null,
-                        'informante' => null,
-                        'listaRespuestaPregunta' => null
-                    ],
-                    [
-                        'id_instrumento_empleado' => 12,
-                        'sincronizado' => false,
-                        'instrumentoCompletado' => false,
-                        'id_instrumento' => 1,
-                        'id_aplicador' => 1,
-                        'id_informante' => 13,
-                        'instrumento' => null,
-                        'aplicador' => null,
-                        'informante' => null,
-                        'listaRespuestaPregunta' => null
-                    ],
-                    [
-                        'id_instrumento_empleado' => 13,
-                        'sincronizado' => false,
-                        'instrumentoCompletado' => false,
-                        'id_instrumento' => 1,
-                        'id_aplicador' => 1,
-                        'id_informante' => 14,
-                        'instrumento' => null,
-                        'aplicador' => null,
-                        'informante' => null,
-                        'listaRespuestaPregunta' => null
-                    ],
-                    [
-                        'id_instrumento_empleado' => 14,
-                        'sincronizado' => false,
-                        'instrumentoCompletado' => false,
-                        'id_instrumento' => 1,
-                        'id_aplicador' => 1,
-                        'id_informante' => 15,
-                        'instrumento' => null,
-                        'aplicador' => null,
-                        'informante' => null,
-                        'listaRespuestaPregunta' => null
-                    ],
-                    [
-                        'id_instrumento_empleado' => 15,
-                        'sincronizado' => false,
-                        'instrumentoCompletado' => false,
-                        'id_instrumento' => 1,
-                        'id_aplicador' => 1,
-                        'id_informante' => 16,
-                        'instrumento' => null,
-                        'aplicador' => null,
-                        'informante' => null,
-                        'listaRespuestaPregunta' => null
-                    ]
-                ]
-            ]
+    public function getPreguntasAction() {
+        $request = $this->params();
+        $id = Util::Session()->id_instrumento;
+        $id_emp =  $request->fromQuery('id_instrumento_emp', '');
+
+        $params = [
+            'id_instrumento' => $id,
+            'id_instrumento_empleado' => $id_emp,
         ];
-        return new JsonModel($data_instrumento);
+        $result = $this->curl_('instrumentemployee/questions', $params,true);
+        $json_response = json_decode($result['data'], true);
+
+        return new JsonModel($json_response);
     }
+
+    public function preguntasAction() {
+        $view = new ViewModel();
+        $view->setTerminal(TRUE);
+        return $view;
+    }
+
+    
 
 }

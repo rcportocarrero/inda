@@ -1,41 +1,14 @@
 <?php
 
-/**
- * Global Configuration Override
- *
- * You can use this file for overriding configuration values from modules, etc.
- * You would place values in here that are agnostic to the environment and not
- * sensitive to security.
- *
- * @NOTE: In practice, this file will typically be INCLUDED in your source
- * control, so do not include passwords or other sensitive information in this
- * file.
- */
 return [
     'apigility' => [
         'config' => [
-            'url' => 'http://167.114.170.28:7000/web/',
-            'grant_type' => 'password',
-            'client_id' => 'testclient',
-            'client_secret' => 'testpass',
-            'debug' => false
-//            'auth_url' => 'auth',
+//            'url' => 'http://167.114.170.28:7000/web/',
+            'url' => 'http://167.114.170.28:7500/web/',
+            'url_login' => 'http://167.114.170.28:7000/',
+            'user' => 'invitado',
+            'pass' => '123456',
         ],
-    ],
-    'soap' => [
-        'config' => [
-            'url' => 'http://192.168.210.187:8080/prjMINEDUPP/ReniecWS?wsdl',
-            'username' => 'USRDIEDDES',
-            'password' => '3aad29b8',
-            'ip' => '192.168.210.103',
-            'debug' => false
-        ],
-    ],
-    'auth' => [
-        'mode' => 'oauth', // oauth => 'Apigility' -/- local => 'en su propia bd'
-        'app_id' => 2,
-        'acl_id' => 21,
-        'multirole' => 0,
     ],
     'module_layouts' => [
         'Application' => 'layout/layout.phtml',

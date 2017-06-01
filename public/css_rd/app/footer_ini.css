@@ -1,8 +1,8 @@
 /* FOOTER PAGINA INICIO */
 
-.footer { position: relative; background-color: #d6dada; clear: both; margin-top: -70px; }
+.footer { position: relative; background-color: #69C7C1; clear: both; margin-top: -70px; }
 .footer .container { padding-bottom: 5px; }
-.footer .container h3 { color: #15a4bd; font-size: 20px; }
+.footer .container h3 { color: #FFF; font-size: 20px; }
 .correo { position: absolute; margin-top: 10px; }
 .footer .container .canales h3, footer .container .telefono h3 { font-size: 21px; }
 .footer .container .canales h3 { padding-top: 10px;  }

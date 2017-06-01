@@ -12,7 +12,7 @@ class IndexController extends \BaseX\Controller\BaseController {
     public function indexAction() {
         $config = $this->getConfig();
         $app_config = $config['app'];
-        $usuario_dashboard = $config['usuario']['dashboard'];
+//        $usuario_dashboard = $config['usuario']['dashboard'];
         $usuario_cambio = $config['usuario']['num_caracteres'];        
         $users_acl = json_decode($this->getSessionStorage()->get('users_acl'));
         $username = $this->getSessionStorage()->get('user');
@@ -22,14 +22,14 @@ class IndexController extends \BaseX\Controller\BaseController {
         $this->layout()->apps_config_caracteres = $usuario_cambio;
         $this->layout()->apps_var = $app_config;
         $this->layout()->users_acl = $users_acl;
-        $this->layout()->dashboard_config = $usuario_dashboard;
+        $this->layout()->dashboard_config = 'opc_msje_app';
         $this->layout()->cambio_config = $usuario_cambio;        
         $this->layout()->token_sesion = $this->Session()->token_sesion;
 
         $params_view = [
             'apps_var'          => $app_config,
             'users_acl'         => $users_acl,
-            'dashboard_config'  => $usuario_dashboard,
+            'dashboard_config'  => 'opc_msje_app',
         ];
 
         $view = new ViewModel($params_view);

@@ -16,10 +16,10 @@ html, body { height: 100%; }
 /* CAJA  USUARIO - INSTITUCION - ROL  */
 .container p { font-family: 'Calibri'; font-size: 18px; }
 .container .texto { padding: 15px; color: #706F6F; text-align: justify; } 
-.container .caja1 { background-color: #CAE7EA; padding: 8px 6px 3px 20px; color: #706F6F; margin-bottom:10px; }
+.container .caja1 { background-color: #69C7C1; padding: 8px 6px 3px 20px; color: #FFF; margin-bottom:10px; }
 .container .caja1 .first-line { padding: 0px; }
-.container .caja1 p { font-size: 15px; }
-.container .caja1 p.centrado { margin-top: 15px; text-align: center; }
+.container .caja1 p { font-size: 18px; }
+.container .caja1 p.centrado { margin-top: 18px; text-align: center; }
 
 
 /* PAG CONTACTO */
